@@ -8,21 +8,19 @@ import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/common/widgets/icon_button_popular.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
-import 'package:screens/features/login_sign_up/widgets/rich_text_sign_up.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../common/widgets/text_field_pasword.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
-  final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -32,7 +30,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    fullNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -57,8 +54,8 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.h,
               children: [
-                Text("Create an account", style: AppStyles.w500s35),
-                Text("Let’s create your account.", style: AppStyles.w400s16),
+                Text("Login to your account", style: AppStyles.w500s35),
+                Text("It’s great to see you again.", style: AppStyles.w400s16),
               ],
             ),
             Form(
@@ -67,30 +64,6 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 spacing: 16.h,
                 children: [
-                  // FULL NAME
-                  TextFieldNotPasword(
-                    controller: fullNameController,
-                    title: "Full Name",
-                    hint: "Enter your full name",
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        _updateState(() => fullNameValid = false);
-                        return "Full name should not be empty";
-                      }
-                      if (value.length <= 10) {
-                        _updateState(() => fullNameValid = false);
-                        return "Must be at least 10 characters long";
-                      }
-                      if (!value.trim().contains(" ")) {
-                        _updateState(() => fullNameValid = false);
-                        return "There must be a space between first name and last name";
-                      }
-                      _updateState(() => fullNameValid = true);
-                      return null;
-                    },
-                    succes: fullNameValid,
-                  ),
-
                   // EMAIL
                   TextFieldNotPasword(
                     controller: emailController,
@@ -133,12 +106,28 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-            RichTextSignUp(),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  style: AppStyles.w400s14,
+                  children: [
+                    TextSpan(
+                      text: "Forgot your password? ",
+                      style: AppStyles.w400s14,
+                    ),
+                    TextSpan(
+                      text: "Reset your password",
+                      style: AppStyles.w500s14,
+
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                  ],
+                ),
+              ),
+            ),
             TextButtonPopular(
-              title: "Create an Account",
-              onPressed: fullNameValid && emailValid && passwordValid
-                  ? () {}
-                  : null,
+              title: "Login",
+              onPressed: fullNameValid && emailValid && passwordValid ? () {} : null,
             ),
             Row(
               children: const [
@@ -181,15 +170,15 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: AppStyles.w400s14,
                   children: [
                     TextSpan(
-                      text: "Already have an account? ",
+                      text: "Don’t have an account? ",
                       style: AppStyles.w400s14,
                     ),
                     TextSpan(
-                      text: "Log In",
+                      text: "Join",
                       style: AppStyles.w500s14,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          context.go(Routers.login);
+                          context.go(Routers.signUp);
                         },
                     ),
                   ],
