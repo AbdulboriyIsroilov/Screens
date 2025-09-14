@@ -27,9 +27,6 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       vsync: this,
       duration: Duration(seconds: 2),
     );
-    controller.addListener(() {
-      setState(() {});
-    });
     controller.forward();
     Future.delayed(Duration(seconds: 4),(){
       context.go(Routers.onboarding);
@@ -57,15 +54,18 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
               fit: BoxFit.cover,
             ),
           ),
-          AnimatedRotation(
-            duration: Duration(seconds: 0),
-            turns: controller.value * 1,
-            child: Align(
-              alignment: alignmentTween.evaluate(controller),
-              child: SvgPicture.asset(
-                AppSvgs.splash,
-                width: tween.evaluate(controller).w,
-                height: tween.evaluate(controller).h,
+          AnimatedBuilder(
+            animation: controller,
+            builder:(context,child)=> AnimatedRotation(
+              duration: Duration(seconds: 0),
+              turns: controller.value * 1,
+              child: Align(
+                alignment: alignmentTween.evaluate(controller),
+                child: SvgPicture.asset(
+                  AppSvgs.splash,
+                  width: tween.evaluate(controller).w,
+                  height: tween.evaluate(controller).h,
+                ),
               ),
             ),
           ),

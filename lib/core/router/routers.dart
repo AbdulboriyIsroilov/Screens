@@ -4,4 +4,8 @@ class Routers {
 
   static const signUp = "/sign-up";
   static const login = "/login";
+
+  static const forgotPassword = "/forget-password";
+  static const enterDigitCode = "/enter-digit-code";
+  static const resetPassword = "/reset-password";
 }

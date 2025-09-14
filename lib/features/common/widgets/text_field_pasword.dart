@@ -10,14 +10,14 @@ class TextFieldPasword extends StatefulWidget {
   const TextFieldPasword({
     super.key,
     required this.controller,
-    required this.text,
+    required this.title,
     required this.hint,
     required this.validator,
     this.succes = false,
   });
 
   final TextEditingController controller;
-  final String text, hint;
+  final String title, hint;
   final String? Function(String?) validator;
   final bool succes;
 
@@ -35,7 +35,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.text,
+          widget.title,
           style: AppStyles.w500s16.copyWith(height: 0.3),
         ),
         TextFormField(

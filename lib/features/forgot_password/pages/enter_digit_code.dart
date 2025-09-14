@@ -1,0 +1,125 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
+import 'package:screens/data/models/forgot_password_models/reset_password_verify.dart';
+
+import '../../../core/router/routers.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_style.dart';
+import '../../../data/models/forgot_password_models/reset_password_email.dart';
+import '../../common/widgets/app_bar_leading.dart';
+import '../../common/widgets/text_button_popular.dart';
+import '../managers/forgot_password_view_model.dart';
+
+class EnterDigitCode extends StatefulWidget {
+  const EnterDigitCode({super.key});
+
+  @override
+  State<EnterDigitCode> createState() => _EnterDigitCodeState();
+}
+
+class _EnterDigitCodeState extends State<EnterDigitCode> {
+  String kod = "";
+
+  @override
+  Widget build(BuildContext context) {
+    bool toliq = kod.length == 4;
+
+    return Scaffold(
+      appBar: AppBarLeading(
+        onPressed: () {
+          context.pop();
+        },
+      ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(24.w, 14.h, 25.w, 44.h),
+        child: Column(
+          spacing: 24.h,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Enter 4 Digit Code",
+                  style: AppStyles.w500s35,
+                ),
+                Text(
+                  "Enter 4 digit code that your receive on your email (${context.read<ForgotPasswordViewModel>().email}).",
+                  style: AppStyles.w400s16,
+                  maxLines: 2,
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 49.w),
+              child: PinCodeTextField(
+                appContext: context,
+                length: 4,
+                onChanged: (val) => setState(() => kod = val),
+                autoFocus: true,
+                keyboardType: TextInputType.number,
+                cursorColor: Colors.white,
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(10.r),
+                  fieldHeight: 50.h,
+                  fieldWidth: 54.w,
+                  activeColor: AppColors.grey,
+                  selectedColor: AppColors.black,
+                  inactiveColor: AppColors.grey,
+                  activeFillColor: Colors.transparent,
+                  selectedFillColor: Colors.transparent,
+                  inactiveFillColor: Colors.transparent,
+                ),
+                textStyle: AppStyles.w500s35,
+              ),
+            ),
+            Consumer<ForgotPasswordViewModel>(
+              builder: (context, vm, child) => Center(
+                child: RichText(
+                  text: TextSpan(
+                    style: AppStyles.w400s14,
+                    children: [
+                      TextSpan(
+                        text: "Email not received? ",
+                        style: AppStyles.w400s14,
+                      ),
+                      TextSpan(
+                        text: "Resend code",
+                        style: AppStyles.w500s14,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await vm.fetchForgotEmail(
+                              passwordModel: ResetPasswordEmail(email: vm.email),
+                            );
+                            context.push(Routers.enterDigitCode);
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+            Consumer<ForgotPasswordViewModel>(
+              builder: (context, vm, child) => TextButtonPopular(
+                title: "Send Code",
+                onPressed: toliq
+                    ? () async {
+                        await vm.fetchForgotVerify(
+                          passwordModel: ResetPasswordVerify(email: vm.email, code: kod),
+                        );
+                        context.push(Routers.resetPassword);
+                      }
+                    : null,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
