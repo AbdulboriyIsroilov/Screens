@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:screens/core/utils/app_colors.dart';
+import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_reset.dart';
 import 'package:screens/features/common/widgets/text_field_pasword.dart';
 
@@ -50,7 +53,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               children: [
                 Text(
                   "Reset Password",
-                  style: AppStyles.w500s35,
+                  style: AppStyles.w500s32,
                 ),
                 Text(
                   "Set the new password for your account so you can login and access all the features.",
@@ -103,12 +106,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 ],
               ),
             ),
+            Spacer(),
             Consumer<ForgotPasswordViewModel>(
               builder: (context, vm, child) => TextButtonPopular(
                 title: "Send Code",
                 onPressed: passwordValid && confirmPasswordValid
                     ? () async {
-                        if (confirmPasswordController.text != passwordController.text) {
+                        if (confirmPasswordController.text == passwordController.text) {
                           await vm.fetchForgotReset(
                             passwordModel: ResetPassword(
                               email: vm.email,
@@ -116,11 +120,53 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                               password: passwordController.text,
                             ),
                           );
-                          context.push(Routers.login);
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return Center(
+                                child: Container(
+                                  width: 341.w,
+                                  height: 292.h,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    borderRadius: BorderRadius.circular(20.r),
+                                  ),
+                                  padding: EdgeInsets.all(24.w),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      SizedBox(width: 78.5.w,height: 78.5.h,child: SvgPicture.asset(AppSvgs.correct)),
+                                      Text(
+                                        "Password Changed!",
+                                        style: AppStyles.w600s20,
+                                      ),
+                                      Text(
+                                        "Your can now use your new password to login to your account.",
+                                        style: AppStyles.w400s14,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      TextButtonPopular(
+                                        title: "Login ",
+                                        width: 293,
+                                        height: 54,
+                                        style: AppStyles.w500s16w,
+                                        onPressed: () {
+                                          context.go(Routers.login);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Passwords do not match")),
+                          );
                         }
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text("does not equal")));
                       }
                     : null,
               ),

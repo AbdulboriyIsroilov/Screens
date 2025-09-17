@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 8.h,
                 children: [
-                  Text("Login to your account", style: AppStyles.w500s35),
+                  Text("Login to your account", style: AppStyles.w500s32),
                   Text("It’s great to see you again.", style: AppStyles.w400s16),
                 ],
               ),
@@ -79,9 +79,9 @@ class _LoginPageState extends State<LoginPage> {
                           _updateState(() => emailValid = false);
                           return "Email should not be empty";
                         }
-                        if (!value.endsWith("@gmail.com")) {
+                        if (!value.endsWith(".com")) {
                           _updateState(() => emailValid = false);
-                          return "should end with @gmail.com";
+                          return "should end with .com";
                         }
                         _updateState(() => emailValid = true);
                         return null;
@@ -146,9 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                               ).showSnackBar(SnackBar(content: Text("Error")));
                             },
                             onSuccess: () {
-                              ScaffoldMessenger.of(
-                                context,
-                              ).showSnackBar(SnackBar(content: Text("Success")));
+                              context.go(Routers.home);
                             },
                           );
                         }

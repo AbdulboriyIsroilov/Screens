@@ -8,4 +8,6 @@ class Routers {
   static const forgotPassword = "/forget-password";
   static const enterDigitCode = "/enter-digit-code";
   static const resetPassword = "/reset-password";
+
+  static const home = "/home";
 }

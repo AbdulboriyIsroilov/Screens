@@ -4,6 +4,7 @@ import 'package:screens/core/router/routers.dart';
 import 'package:screens/features/forgot_password/pages/enter_digit_code.dart';
 import 'package:screens/features/forgot_password/pages/forgot_password_page.dart';
 import 'package:screens/features/forgot_password/pages/reset_password_page.dart';
+import 'package:screens/features/home/pages/home_page.dart';
 import 'package:screens/features/login_sign_up/pages/login_page.dart';
 import 'package:screens/features/login_sign_up/pages/sign_up_page.dart';
 import 'package:screens/features/onboarding/pages/onboarding_page.dart';
@@ -12,7 +13,7 @@ import '../../features/forgot_password/managers/forgot_password_view_model.dart'
 import '../../features/onboarding/pages/splash_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.forgotPassword,
+  initialLocation: Routers.splash,
 
   routes: <RouteBase>[
     GoRoute(
@@ -51,5 +52,14 @@ final router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: Routers.home,
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>?;
+        final categoryId = extra?["categoryId"] ?? 0;
+        return HomePage(categoryId: categoryId);
+      },
+    ),
+
   ],
 );

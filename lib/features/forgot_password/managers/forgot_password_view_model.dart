@@ -4,7 +4,7 @@ import 'package:screens/data/models/forgot_password_models/reset_password_email.
 import 'package:screens/data/models/forgot_password_models/reset_password_reset.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_verify.dart';
 
-import '../../../data/repositories/forgot_password_repository.dart';
+import '../../../data/repositories/forgot_password_repositories.dart';
 
 class ForgotPasswordViewModel extends ChangeNotifier {
   ForgotPasswordViewModel({

@@ -63,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 8.h,
                 children: [
-                  Text("Create an account", style: AppStyles.w500s35),
+                  Text("Create an account", style: AppStyles.w500s32),
                   Text("Let’s create your account.", style: AppStyles.w400s16),
                 ],
               ),

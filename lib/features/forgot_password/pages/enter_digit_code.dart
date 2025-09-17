@@ -44,7 +44,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
               children: [
                 Text(
                   "Enter 4 Digit Code",
-                  style: AppStyles.w500s35,
+                  style: AppStyles.w500s32,
                 ),
                 Text(
                   "Enter 4 digit code that your receive on your email (${context.read<ForgotPasswordViewModel>().email}).",
@@ -74,7 +74,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                   selectedFillColor: Colors.transparent,
                   inactiveFillColor: Colors.transparent,
                 ),
-                textStyle: AppStyles.w500s35,
+                textStyle: AppStyles.w500s32,
               ),
             ),
             Consumer<ForgotPasswordViewModel>(
@@ -95,7 +95,6 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                             await vm.fetchForgotEmail(
                               passwordModel: ResetPasswordEmail(email: vm.email),
                             );
-                            context.push(Routers.enterDigitCode);
                           },
                       ),
                     ],

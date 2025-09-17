@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routers.dart';
@@ -17,7 +18,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
   final tween = Tween<double>(begin: 0, end: 134);
-  final alignmentTween = AlignmentTween(begin: Alignment.topRight,end: Alignment.center);
+  final alignmentTween = AlignmentTween(begin: Alignment.topRight, end: Alignment.center);
   late AnimationController controller;
 
   @override
@@ -27,10 +28,22 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       vsync: this,
       duration: Duration(seconds: 2),
     );
-    controller.forward();
-    Future.delayed(Duration(seconds: 4),(){
-      context.go(Routers.onboarding);
-    });
+    final FlutterSecureStorage secureStorage = FlutterSecureStorage();
+    secureStorage.read(key: "token").then(
+      (value) {
+        if (value != null) {
+          controller.forward();
+          Future.delayed(Duration(seconds: 4), () {
+            context.go(Routers.home);
+          });
+        } else {
+          controller.forward();
+          Future.delayed(Duration(seconds: 4), () {
+            context.go(Routers.onboarding);
+          });
+        }
+      },
+    );
   }
 
   @override
@@ -56,7 +69,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
           ),
           AnimatedBuilder(
             animation: controller,
-            builder:(context,child)=> AnimatedRotation(
+            builder: (context, child) => AnimatedRotation(
               duration: Duration(seconds: 0),
               turns: controller.value * 1,
               child: Align(

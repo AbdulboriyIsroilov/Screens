@@ -47,7 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               children: [
                 Text(
                   "Forgot password",
-                  style: AppStyles.w500s35,
+                  style: AppStyles.w500s32,
                 ),
                 Text(
                   "Enter your email for the verification process. We will send 4 digits code to your email.",

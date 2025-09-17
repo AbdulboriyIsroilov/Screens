@@ -13,12 +13,14 @@ class TextButtonPopular extends StatelessWidget {
     this.height = 54,
     required this.title,
     this.color = AppColors.black,
+    this.style = AppStyles.w500s16w,
   });
 
   final VoidCallback? onPressed;
   final int width, height;
   final String title;
   final Color color;
+  final TextStyle style;
 
   static void _defaultOnPressed() {}
 
@@ -37,7 +39,7 @@ class TextButtonPopular extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: AppStyles.w500s16w,
+        style: style,
       ),
     );
   }

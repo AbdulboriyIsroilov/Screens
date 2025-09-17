@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
-import 'package:screens/data/repositories/auth_repostoriy.dart';
+import 'package:screens/data/repositories/auth_repostories.dart';
 
-import '../data/repositories/forgot_password_repository.dart';
+import '../data/repositories/forgot_password_repositories.dart';
 import '../features/common/managers/app_theme_view_model.dart';
 import 'auth_interceptor.dart';
 import 'client.dart';
