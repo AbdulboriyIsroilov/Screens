@@ -14,14 +14,16 @@ import '../widgets/recipe_list_app_bar_bottom.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.categoryId});
+
   final int categoryId;
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final controller = TextEditingController();
-  bool all = true,ontap = false;
+  bool all = true, ontap = false;
 
   @override
   void dispose() {
@@ -32,7 +34,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (conetext) => HomeCubit(categoriesRep: conetext.read(), productRepo: context.read()),
+      create: (conetext) =>
+          HomeCubit(categoriesRep: conetext.read(), productRepo: context.read())
+            ..fetchProduct(categoryId: widget.categoryId),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Scaffold(
           extendBody: true,
@@ -46,7 +50,10 @@ class _HomePageState extends State<HomePage> {
               SvgPicture.asset(AppSvgs.bell),
               SizedBox(width: 25.w),
             ],
-            bottom: RecipeListAppBarBottom(selectedIndex: widget.categoryId, searchController: controller,),
+            bottom: HomeAppBarBottom(
+              selectedIndex: widget.categoryId,
+              searchController: controller,
+            ),
           ),
           body: GridView.builder(
             padding: EdgeInsets.fromLTRB(24.w, 8.h, 25.w, 100.h),

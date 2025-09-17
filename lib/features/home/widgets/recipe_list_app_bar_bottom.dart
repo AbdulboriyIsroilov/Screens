@@ -12,8 +12,8 @@ import 'bottom_item.dart';
 
 final controller = ScrollController();
 
-class RecipeListAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
-  const RecipeListAppBarBottom({
+class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBarBottom({
     super.key,
     required this.selectedIndex,
     required this.searchController,
