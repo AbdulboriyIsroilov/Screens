@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:screens/core/utils/app_style.dart';
 
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
 
 class BottomNavigationBarMain extends StatefulWidget {
-  const BottomNavigationBarMain({super.key});
+  const BottomNavigationBarMain({
+    super.key,
+    required this.isActive,
+  });
+
+  final int isActive;
 
   @override
-  State<BottomNavigationBarMain> createState() =>
-      _BottomNavigationBarMainState();
+  State<BottomNavigationBarMain> createState() => _BottomNavigationBarMainState();
 }
 
 class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   final List<String> _routes = [
     Routers.home,
     Routers.home,
-    Routers.home,
+    Routers.saved,
     Routers.home,
     Routers.home,
   ];
+
+  @override
+  void initState() {
+    _currentIndex = widget.isActive;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,26 +57,58 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColors.white,
         selectedItemColor: AppColors.black,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: AppColors.greyDark,
+        selectedLabelStyle: AppStyles.w500s12,
+        unselectedLabelStyle: AppStyles.w500s12,
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppSvgs.home),
+            icon: SvgPicture.asset(
+              AppSvgs.home,
+              colorFilter: ColorFilter.mode(
+                _currentIndex == 0 ? AppColors.black : AppColors.grey,
+                BlendMode.modulate,
+              ),
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppSvgs.search),
+            icon: SvgPicture.asset(
+              AppSvgs.search,
+              colorFilter: ColorFilter.mode(
+                _currentIndex == 1 ? AppColors.black : AppColors.grey,
+                BlendMode.modulate,
+              ),
+            ),
             label: "Search",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppSvgs.heart),
+            icon: SvgPicture.asset(
+              AppSvgs.heart,
+              colorFilter: ColorFilter.mode(
+                _currentIndex == 2 ? AppColors.black : AppColors.grey,
+                BlendMode.modulate,
+              ),
+            ),
             label: "Saved",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppSvgs.cart),
+            icon: SvgPicture.asset(
+              AppSvgs.cart,
+              colorFilter: ColorFilter.mode(
+                _currentIndex == 3 ? AppColors.black : AppColors.grey,
+                BlendMode.modulate,
+              ),
+            ),
             label: "Cart",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppSvgs.user),
+            icon: SvgPicture.asset(
+              AppSvgs.user,
+              colorFilter: ColorFilter.mode(
+                _currentIndex == 4 ? AppColors.black : AppColors.grey,
+                BlendMode.modulate,
+              ),
+            ),
             label: "Account",
           ),
         ],

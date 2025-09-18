@@ -10,4 +10,10 @@ class Routers {
   static const resetPassword = "/reset-password";
 
   static const home = "/home";
+  static const search = "/search";
+  static const saved = "/saved";
+  static const card = "/card";
+  static const account = "/account";
+
+  static const notifications = "/notifications";
 }

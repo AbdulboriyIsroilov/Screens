@@ -38,7 +38,7 @@ class ApiClient {
 
   Future<Result<T>> post<T>(
       String path, {
-        required Map<String, dynamic> data,
+        required Object? data,
       }) async {
     try {
       var response = await _dio.post(

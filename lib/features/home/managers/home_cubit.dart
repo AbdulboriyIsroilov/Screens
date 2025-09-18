@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:screens/data/repositories/categories_repostories.dart';
+import 'package:screens/data/repositories/categories_repositories.dart';
 import 'package:screens/data/repositories/product_repositories.dart';
 import 'package:screens/features/home/managers/home_state.dart';
 
@@ -21,26 +21,18 @@ class HomeCubit extends Cubit<HomeState> {
 
     var result = await _categoriesRepo.getCategories();
     result.fold(
-      (error) => emit(
-        state.copyWith(errorMessage: error.toString(), loading: false),
-      ),
-      (success) => emit(
-        state.copyWith(categories: success, loading: false),
-      ),
+      (error) => emit(state.copyWith(errorMessage: error.toString(), loading: false)),
+      (success) => emit(state.copyWith(categories: success, loading: false)),
     );
   }
 
   Future<void> fetchProduct({required int categoryId}) async {
     emit(state.copyWith(loadingProduct: true, errorProduct: null));
 
-    var result = await _productRepo.getProduct(categoryId == 0 ? {}: {"CategoryId":categoryId});
+    var result = await _productRepo.getProduct(categoryId == -1 ? {} : {"CategoryId": categoryId});
     result.fold(
-      (error) => emit(
-        state.copyWith(errorProduct: error.toString(), loadingProduct: false),
-      ),
-      (success) => emit(
-        state.copyWith(product: success, loadingProduct: false),
-      ),
+      (error) => emit(state.copyWith(errorProduct: error.toString(), loadingProduct: false)),
+      (success) => emit(state.copyWith(product: success, loadingProduct: false)),
     );
   }
 }

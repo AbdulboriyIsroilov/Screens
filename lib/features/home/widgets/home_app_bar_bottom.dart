@@ -28,7 +28,8 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (conetext) => HomeCubit(categoriesRep: conetext.read(), productRepo: context.read()),
+      create: (conetext) =>
+          HomeCubit(categoriesRep: conetext.read(), productRepo: context.read()),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Column(
           spacing: 10.h,
@@ -65,19 +66,20 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
                 child: Row(
                   spacing: 8.w,
                   children: [
-                    BottomItem(title: "All", isSelected: selectedIndex == 0, id: 0),
+                    BottomItem(title: "All", isSelected: selectedIndex == -1, id: -1),
                     ...List.generate(
-                    state.categories.length,
-                    (index) => BottomItem(
-                      id: state.categories[index].id,
-                      title: state.categories[index].title,
-                      isSelected: state.categories[index].id == selectedIndex,
+                      state.categories.length,
+                      (index) => BottomItem(
+                        id: state.categories[index].id,
+                        title: state.categories[index].title,
+                        isSelected: state.categories[index].id == selectedIndex,
+                      ),
                     ),
-                  ),]
+                  ],
                 ),
               ),
             ),
-            SizedBox()
+            SizedBox(),
           ],
         ),
       ),

@@ -16,4 +16,11 @@ class ProductRepositories {
           (value) => Result.ok(value.map((item)=> ProductModel.fromJson(item)).toList()),
     );
   }
+  Future<Result<List<ProductModel>>> getSavedProduct() async {
+    var response = await _client.get<List>("/products/saved-products");
+    return response.fold(
+          (error) => Result.error(error),
+          (value) => Result.ok(value.map((item)=> ProductModel.fromJson(item)).toList()),
+    );
+  }
 }

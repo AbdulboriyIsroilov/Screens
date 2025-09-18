@@ -7,13 +7,15 @@ import 'package:screens/features/forgot_password/pages/reset_password_page.dart'
 import 'package:screens/features/home/pages/home_page.dart';
 import 'package:screens/features/login_sign_up/pages/login_page.dart';
 import 'package:screens/features/login_sign_up/pages/sign_up_page.dart';
+import 'package:screens/features/notifications/pages/notifications_page.dart';
 import 'package:screens/features/onboarding/pages/onboarding_page.dart';
 
 import '../../features/forgot_password/managers/forgot_password_view_model.dart';
 import '../../features/onboarding/pages/splash_page.dart';
+import '../../features/saved/pages/saved_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.splash,
+  initialLocation: Routers.home,
 
   routes: <RouteBase>[
     GoRoute(
@@ -56,10 +58,18 @@ final router = GoRouter(
       path: Routers.home,
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>?;
-        final categoryId = extra?["categoryId"] ?? 0;
+        final categoryId = extra?["categoryId"] ?? -1;
         return HomePage(categoryId: categoryId);
       },
     ),
+    GoRoute(
+      path: Routers.saved,
+      builder: (context, state) => SavedPage(),
+    ),
 
+    GoRoute(
+      path: Routers.notifications,
+      builder: (context, state) => NotificationsPage(index: (state.extra as Map)["index"]),
+    ),
   ],
 );

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:screens/core/router/router.dart';
 import 'package:screens/core/router/routers.dart';
@@ -16,7 +15,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    debugPrint("reques ketti");
+    // debugPrint("reques ketti");
     var token = await secureStorage.read(key: "token");
     if (token != null) {
       options.headers["Authorization"] = "Bearer $token";
@@ -31,7 +30,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    debugPrint("response keldi");
+    // debugPrint("response keldi");
     if (response.statusCode == 401) {
       var login = await secureStorage.read(key: "login");
       var password = await secureStorage.read(key: "password");

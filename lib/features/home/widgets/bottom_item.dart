@@ -22,7 +22,7 @@ class BottomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(
+        context.go(
           Routers.home,
           extra: {
             "categoryId": id,

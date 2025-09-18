@@ -1,52 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:screens/core/utils/app_colors.dart';
-import 'package:screens/core/utils/app_style.dart';
+import 'package:screens/core/utils/app_svg.dart';
+import 'package:screens/features/common/managers/like_cubit.dart';
 
-class IconButtonPopular extends StatelessWidget {
+import '../../../core/utils/app_colors.dart';
+
+class IconButtonPopular extends StatefulWidget {
   const IconButtonPopular({
     super.key,
-    this.onPressed = _defaultOnPressed,
-    this.width = 341,
-    this.height = 54,
-    required this.icon,
-    required this.title,
-    this.color = AppColors.black,
-    this.fColor = AppColors.black,
+    required this.isLike,
+    required this.id,
   });
 
-  final VoidCallback? onPressed;
-  final int width, height;
-  final String icon, title;
-  final Color color, fColor;
+  final bool isLike;
+  final int id;
 
-  static void _defaultOnPressed() {}
+  @override
+  State<IconButtonPopular> createState() => _IconButtonPopularState();
+}
+
+class _IconButtonPopularState extends State<IconButtonPopular> {
+  late bool isLike;
+
+  @override
+  void initState() {
+    isLike = widget.isLike;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      style: TextButton.styleFrom(
-        backgroundColor: color,
-        disabledBackgroundColor: AppColors.grey,
-        fixedSize: Size(width.w, height.h),
-        side: BorderSide(color: AppColors.grey, width: 2),
+      style: IconButton.styleFrom(
+        backgroundColor: AppColors.white,
+        fixedSize: Size(34.w, 34.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),
       ),
-      onPressed: onPressed,
-      icon: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 10.w,
-        children: [
-          SvgPicture.asset(icon),
-          Text(
-            title,
-            style: AppStyles.w500s16.copyWith(color: fColor),
-          ),
-        ],
-      ),
+      onPressed: () {
+        isLike
+            ? context.read<LikeCubit>().unsaveLike(id: widget.id)
+            : context.read<LikeCubit>().saveLike(id: widget.id);
+        isLike = !isLike;
+        setState(() {});
+      },
+      icon: isLike ? SvgPicture.asset(AppSvgs.heartFilled) : SvgPicture.asset(AppSvgs.heart),
     );
   }
 }

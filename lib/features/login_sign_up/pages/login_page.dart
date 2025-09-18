@@ -7,7 +7,7 @@ import 'package:screens/core/router/routers.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/auth_models/login_model.dart';
-import 'package:screens/features/common/widgets/icon_button_popular.dart';
+import 'package:screens/features/common/widgets/icon_text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
 import 'package:screens/features/login_sign_up/managers/login_view_model.dart';
@@ -176,12 +176,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              IconButtonPopular(
+              IconTextButtonPopular(
                 icon: AppSvgs.logosGoogleIcon,
                 color: Colors.transparent,
                 title: "Sign Up with Google",
               ),
-              IconButtonPopular(
+              IconTextButtonPopular(
                 icon: AppSvgs.logosFacebook,
                 color: AppColors.blue,
                 fColor: AppColors.white,
