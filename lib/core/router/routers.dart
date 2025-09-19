@@ -16,4 +16,5 @@ class Routers {
   static const account = "/account";
 
   static const notifications = "/notifications";
+  static const productDetail = "/product-detail";
 }

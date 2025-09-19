@@ -46,14 +46,17 @@ class NotificationsPage extends StatelessWidget {
                         NotificationsDayWidgets(
                           state: state.notificationsBugun,
                           title: 'Today',
+                          day: 1,
                         ),
                         NotificationsDayWidgets(
                           state: state.notificationsKecha,
                           title: 'Yesterday',
+                          day: 2,
                         ),
                         NotificationsDayWidgets(
                           state: state.notificationsEski,
                           title: 'The Old Days',
+                          day: 3,
                         ),
                       ],
                     ),

@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_verify.dart';
+import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
 
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
@@ -12,7 +13,7 @@ import '../../../core/utils/app_style.dart';
 import '../../../data/models/forgot_password_models/reset_password_email.dart';
 import '../../common/widgets/app_bar_leading.dart';
 import '../../common/widgets/text_button_popular.dart';
-import '../managers/forgot_password_view_model.dart';
+import '../managers/forgot_password_cubit.dart';
 
 class EnterDigitCode extends StatefulWidget {
   const EnterDigitCode({super.key});
@@ -47,7 +48,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                   style: AppStyles.w500s32,
                 ),
                 Text(
-                  "Enter 4 digit code that your receive on your email (${context.read<ForgotPasswordViewModel>().email}).",
+                  "Enter 4 digit code that your receive on your email (${context.read<ForgotPasswordCubit>().state.email}).",
                   style: AppStyles.w400s16,
                   maxLines: 2,
                 ),
@@ -77,8 +78,8 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                 textStyle: AppStyles.w500s32,
               ),
             ),
-            Consumer<ForgotPasswordViewModel>(
-              builder: (context, vm, child) => Center(
+            BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+              builder: (context, state) => Center(
                 child: RichText(
                   text: TextSpan(
                     style: AppStyles.w400s14,
@@ -92,8 +93,8 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                         style: AppStyles.w500s14,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
-                            await vm.fetchForgotEmail(
-                              passwordModel: ResetPasswordEmail(email: vm.email),
+                            await context.read<ForgotPasswordCubit>().fetchForgotEmail(
+                              passwordModel: ResetPasswordEmail(email: state.email),
                             );
                           },
                       ),
@@ -103,13 +104,13 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
               ),
             ),
             Spacer(),
-            Consumer<ForgotPasswordViewModel>(
-              builder: (context, vm, child) => TextButtonPopular(
+            BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+              builder: (context, state) => TextButtonPopular(
                 title: "Send Code",
                 onPressed: toliq
                     ? () async {
-                        await vm.fetchForgotVerify(
-                          passwordModel: ResetPasswordVerify(email: vm.email, code: kod),
+                        await context.read<ForgotPasswordCubit>().fetchForgotVerify(
+                          passwordModel: ResetPasswordVerify(email: state.email, code: kod),
                         );
                         context.push(Routers.resetPassword);
                       }

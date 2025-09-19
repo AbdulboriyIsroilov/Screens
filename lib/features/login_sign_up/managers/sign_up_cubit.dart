@@ -1,41 +1,38 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:screens/features/login_sign_up/managers/sign_up_state.dart';
 
 import '../../../data/models/auth_models/sign_up_model.dart';
 import '../../../data/repositories/auth_repostories.dart';
 
-class SignUpViewModel extends ChangeNotifier {
-  SignUpViewModel({
+class SignUpCubit extends Cubit<SignUpState> {
+  SignUpCubit({
     required AuthRepository signRepo,
-  }) : _signRepo = signRepo;
-
+  }) : _signRepo = signRepo,
+       super(SignUpState.initial());
   final AuthRepository _signRepo;
-  bool isLoading = true;
-  String token = "";
 
   void fetchSignUp({
     required SignUpModel authModel,
     required VoidCallback onError,
     required VoidCallback onSuccess,
   }) async {
-    isLoading = true;
-    notifyListeners();
-
     final data = await _signRepo.register({
       "fullName":authModel.fullName,
       "email": authModel.email,
       "password": authModel.password,
     });
+
     data.fold(
-      (e) {
+          (e) {
+        emit(state.copyWith(errorMessage: e.toString()));
         onError();
       },
-      (success) {
-        token = success;
+          (success) {
+        emit(state.copyWith(token: success));
         onSuccess();
       },
     );
-
-    isLoading = false;
-    notifyListeners();
   }
 }

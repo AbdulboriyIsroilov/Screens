@@ -27,7 +27,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
     Routers.home,
     Routers.saved,
     Routers.home,
-    Routers.home,
+    Routers.signUp,
   ];
 
   @override

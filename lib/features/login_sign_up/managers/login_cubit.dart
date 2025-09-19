@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:screens/features/login_sign_up/managers/login_state.dart';
 
 import '../../../data/models/auth_models/login_model.dart';
 import '../../../data/repositories/auth_repostories.dart';
 
-class LoginViewModel extends ChangeNotifier {
-  LoginViewModel({
+class LoginCubit extends Cubit<LoginState> {
+  LoginCubit({
     required AuthRepository loginRepo,
-  }) : _loginRepo = loginRepo;
-
+  }) : _loginRepo = loginRepo,
+       super(LoginState.initial());
   final AuthRepository _loginRepo;
-  bool isLoading = true;
-  String token = "";
-  String? errorMessage;
 
   void fetchLogin({
     required LoginModel authModel,
     required VoidCallback onError,
     required VoidCallback onSuccess,
   }) async {
-    isLoading = true;
-    notifyListeners();
-
     final data = await _loginRepo.login({
       "login": authModel.login,
       "password": authModel.password,
@@ -28,16 +24,13 @@ class LoginViewModel extends ChangeNotifier {
 
     data.fold(
       (e) {
-        errorMessage = e.toString();
+        emit(state.copyWith(errorMessage: e.toString()));
         onError();
       },
       (success) {
-        token = success;
+        emit(state.copyWith(token: success));
         onSuccess();
       },
     );
-
-    isLoading = false;
-    notifyListeners();
   }
 }

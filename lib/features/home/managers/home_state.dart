@@ -5,6 +5,7 @@ import 'package:screens/data/models/product_models/product_model.dart';
 class HomeState extends Equatable {
   final String? errorMessage, errorProduct, errorSave, errorUnsave;
   final bool loading, loadingProduct;
+  final int isSellect;
   final List<CategoriesModel> categories;
   final List<ProductModel> product;
 
@@ -15,6 +16,7 @@ class HomeState extends Equatable {
     required this.errorUnsave,
     required this.loading,
     required this.loadingProduct,
+    required this.isSellect,
     required this.categories,
     required this.product,
   });
@@ -27,6 +29,7 @@ class HomeState extends Equatable {
         errorUnsave: null,
         loading: true,
         loadingProduct: true,
+        isSellect: -1,
         categories: [],
         product: [],
       );
@@ -38,6 +41,7 @@ class HomeState extends Equatable {
     String? errorUnsave,
     bool? loading,
     bool? loadingProduct,
+    int? isSellect,
     List<CategoriesModel>? categories,
     List<ProductModel>? product,
   }) =>
@@ -48,6 +52,7 @@ class HomeState extends Equatable {
         errorUnsave: errorUnsave ?? this.errorUnsave,
         loading: loading ?? this.loading,
         loadingProduct: loadingProduct ?? this.loadingProduct,
+        isSellect: isSellect ?? this.isSellect,
         categories: categories ?? this.categories,
         product: product ?? this.product,
       );
@@ -61,6 +66,7 @@ class HomeState extends Equatable {
         errorUnsave,
         loading,
         loadingProduct,
+        isSellect,
         categories,
         product,
       ];

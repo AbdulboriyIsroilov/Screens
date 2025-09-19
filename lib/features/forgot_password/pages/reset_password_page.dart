@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_reset.dart';
 import 'package:screens/features/common/widgets/text_field_pasword.dart';
+import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
 
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_style.dart';
 import '../../common/widgets/app_bar_leading.dart';
 import '../../common/widgets/text_button_popular.dart';
-import '../managers/forgot_password_view_model.dart';
+import '../managers/forgot_password_cubit.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({super.key});
@@ -107,16 +108,16 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               ),
             ),
             Spacer(),
-            Consumer<ForgotPasswordViewModel>(
-              builder: (context, vm, child) => TextButtonPopular(
+            BlocBuilder<ForgotPasswordCubit,ForgotPasswordState>(
+              builder: (context,state) => TextButtonPopular(
                 title: "Send Code",
                 onPressed: passwordValid && confirmPasswordValid
                     ? () async {
                         if (confirmPasswordController.text == passwordController.text) {
-                          await vm.fetchForgotReset(
+                          await context.read<ForgotPasswordCubit>().fetchForgotReset(
                             passwordModel: ResetPassword(
-                              email: vm.email,
-                              code: vm.code,
+                              email: state.email,
+                              code: state.code,
                               password: passwordController.text,
                             ),
                           );

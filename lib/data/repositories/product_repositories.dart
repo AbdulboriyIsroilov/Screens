@@ -1,4 +1,5 @@
 import 'package:screens/core/client.dart';
+import 'package:screens/data/models/product_models/product_detail_model.dart';
 import 'package:screens/data/models/product_models/product_model.dart';
 
 import '../../core/utils/result.dart';
@@ -16,6 +17,15 @@ class ProductRepositories {
           (value) => Result.ok(value.map((item)=> ProductModel.fromJson(item)).toList()),
     );
   }
+  
+  Future<Result<ProductDetailModel>> getProductDetail({required int id})async{
+    var response = await _client.get("/products/detail/$id");
+    return response.fold(
+          (error) => Result.error(error),
+          (val) => Result.ok(ProductDetailModel.fromJson(val as Map<String, dynamic>)),
+    );
+  }
+  
   Future<Result<List<ProductModel>>> getSavedProduct() async {
     var response = await _client.get<List>("/products/saved-products");
     return response.fold(

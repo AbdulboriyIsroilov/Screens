@@ -8,7 +8,7 @@ import 'package:screens/data/models/forgot_password_models/reset_password_email.
 import 'package:screens/features/common/widgets/app_bar_leading.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
-import 'package:screens/features/forgot_password/managers/forgot_password_view_model.dart';
+import 'package:screens/features/forgot_password/managers/forgot_password_cubit.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -74,18 +74,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
             Spacer(),
-            Consumer<ForgotPasswordViewModel>(
-              builder: (context, vm, child) => TextButtonPopular(
-                title: "Send Code",
-                onPressed: emailValid
-                    ? () async {
-                        await vm.fetchForgotEmail(
-                          passwordModel: ResetPasswordEmail(email: emailController.text),
-                        );
-                        context.push(Routers.enterDigitCode);
-                      }
-                    : null,
-              ),
+            TextButtonPopular(
+              title: "Send Code",
+              onPressed: emailValid
+                  ? () async {
+                await context.read<ForgotPasswordCubit>().fetchForgotEmail(
+                  passwordModel: ResetPasswordEmail(email: emailController.text),
+                );
+                context.push(Routers.enterDigitCode);
+              }
+                  : null,
             ),
           ],
         ),

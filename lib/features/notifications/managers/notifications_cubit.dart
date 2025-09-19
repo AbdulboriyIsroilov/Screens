@@ -32,7 +32,6 @@ class NotificationsCubit extends Cubit<NotificationsState> {
         List<NotificationsModel> bugun = [];
         List<NotificationsModel> kecha = [];
         List<NotificationsModel> eski = [];
-
         for (final notif in success) {
           final notifDate = DateTime.parse(notif.date);
           final notifDay = DateTime(notifDate.year, notifDate.month, notifDate.day);

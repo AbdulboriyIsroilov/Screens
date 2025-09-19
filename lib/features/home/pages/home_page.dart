@@ -35,51 +35,46 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (conetext) =>
-          HomeCubit(categoriesRep: conetext.read(), productRepo: context.read())
-            ..fetchProduct(categoryId: widget.categoryId),
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) => Scaffold(
-          extendBody: true,
-          appBar: AppBar(
-            surfaceTintColor: Colors.transparent,
-            title: Text(
-              "Discover",
-              style: AppStyles.w500s32,
-            ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  context.push(Routers.notifications, extra: {"index": 0});                },
-                icon: SvgPicture.asset(AppSvgs.bell),
-              ),
-              SizedBox(width: 25.w),
-            ],
-            bottom: HomeAppBarBottom(
-              selectedIndex: widget.categoryId,
-              searchController: controller,
-            ),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) => Scaffold(
+        extendBody: true,
+        appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
+          title: Text(
+            "Discover",
+            style: AppStyles.w500s32,
           ),
-          body: state.loadingProduct
-              ? LoadingWidget()
-              : GridView.builder(
-                  padding: EdgeInsets.fromLTRB(24.w, 8.h, 25.w, 100.h),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 19.w,
-                    mainAxisSpacing: 20.h,
-                    mainAxisExtent: 224.h,
-                  ),
-                  itemCount: state.product.length,
-                  itemBuilder: (context, index) {
-                    return ProductCardBig(
-                      state: state.product[index],
-                    );
-                  },
-                ),
-          bottomNavigationBar: BottomNavigationBarMain(isActive: 0),
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.push(Routers.notifications, extra: {"index": 0});                },
+              icon: SvgPicture.asset(AppSvgs.bell),
+            ),
+            SizedBox(width: 25.w),
+          ],
+          bottom: HomeAppBarBottom(
+            selectedIndex: state.isSellect,
+            searchController: controller,
+          ),
         ),
+        body: state.loadingProduct
+            ? LoadingWidget()
+            : GridView.builder(
+                padding: EdgeInsets.fromLTRB(24.w, 8.h, 25.w, 100.h),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 19.w,
+                  mainAxisSpacing: 20.h,
+                  mainAxisExtent: 224.h,
+                ),
+                itemCount: state.product.length,
+                itemBuilder: (context, index) {
+                  return ProductCardBig(
+                    state: state.product[index],
+                  );
+                },
+              ),
+        bottomNavigationBar: BottomNavigationBarMain(isActive: 0),
       ),
     );
   }

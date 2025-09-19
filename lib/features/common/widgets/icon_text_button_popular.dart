@@ -13,7 +13,7 @@ class IconTextButtonPopular extends StatelessWidget {
     required this.icon,
     required this.title,
     this.color = AppColors.black,
-    this.fColor = AppColors.black,
+    this.fColor = AppColors.white,
   });
 
   final VoidCallback? onPressed;
