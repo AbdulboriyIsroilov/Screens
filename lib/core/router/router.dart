@@ -94,7 +94,7 @@ final router = GoRouter(
       builder: (context, state) {
         final id = (state.extra as Map)["id"];
         return BlocProvider(
-          create: (context)=> ProductDateilCubit(productRepo: context.read(), id: id),
+          create: (context)=> ProductDateilCubit(productRepo: context.read(), id: id, reviewsRepo: context.read()),
           child: ProductDetailPage(),
         );
       },

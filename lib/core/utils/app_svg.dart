@@ -50,6 +50,7 @@ class AppSvgs {
   static const searchDuotone = "assets/icons/Search-duotone.svg";
   static const splash = "assets/icons/splash.svg";
   static const star = "assets/icons/Star.svg";
+  static const starBloon = "assets/icons/Star_bloon.svg";
   static const trash = "assets/icons/Trash.svg";
   static const twitter = "assets/icons/Twitter.svg";
   static const user = "assets/icons/User.svg";

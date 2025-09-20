@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:screens/core/utils/themes.dart';
+import 'package:screens/data/repositories/reviews_repositories.dart';
 import 'package:screens/features/common/managers/like_cubit.dart';
 
 import 'core/dependencies.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
             RepositoryProvider(create: (context) => ProductRepositories(client: context.read())),
             RepositoryProvider(create: (context) => UserRepositories(client: context.read())),
             RepositoryProvider(create: (context) => NotificationsRepositories(client: context.read())),
+            RepositoryProvider(create: (context) => ReviewsRepositories(client: context.read())),
           ],
           child: MultiBlocProvider(
             providers: [
