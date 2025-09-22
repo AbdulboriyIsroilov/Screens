@@ -1,7 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../data/models/product_models/product_model.dart';
+
 class LikeState extends Equatable {
   final String? errorSave, errorUnsave;
+
 
   const LikeState({required this.errorSave, required this.errorUnsave});
 

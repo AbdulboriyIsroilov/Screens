@@ -22,7 +22,7 @@ class BottomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<HomeCubit>().fetchProduct(categoryId: id);
+        context.read<HomeCubit>().fetchProducts(categoryId: id);
       },
       child: Container(
         height: 36.h,

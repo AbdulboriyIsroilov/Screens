@@ -11,7 +11,7 @@ class HomeCubit extends Cubit<HomeState> {
        _productRepo = productRepo,
        super(HomeState.initial()) {
     fetchCategories();
-    fetchProduct();
+    fetchProducts();
   }
 
   final CategoriesRepositoriy _categoriesRepo;
@@ -27,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<void> fetchProduct({int? categoryId}) async {
+  Future<void> fetchProducts({int? categoryId}) async {
     emit(state.copyWith(loadingProduct: true, errorProduct: null));
 
     var result = await _productRepo.getProduct(categoryId == -1 ? {} : {"CategoryId": categoryId});

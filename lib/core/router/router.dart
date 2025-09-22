@@ -21,7 +21,7 @@ import '../../features/saved/managers/saved_cubit.dart';
 import '../../features/saved/pages/saved_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.home,
+  initialLocation: Routers.splash,
 
   routes: <RouteBase>[
     GoRoute(
