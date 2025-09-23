@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
@@ -13,6 +14,8 @@ import 'package:screens/features/common/widgets/icon_text_button_popular.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
 import 'package:screens/features/product_dateil/managers/product_dateil_cubit.dart';
 import 'package:screens/features/product_dateil/managers/product_dateil_state.dart';
+import 'package:screens/features/saved/managers/saved_bloc.dart';
+import 'package:screens/features/saved/managers/saved_event.dart';
 
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key});
@@ -34,11 +37,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return BlocBuilder<ProductDateilCubit, ProductDetailState>(
       builder: (context, state) => Scaffold(
         extendBody: true,
         appBar: AppBarCommon(
-          title: "Details",
+          title: local.details,
           activ: 1,
           onPressed: () {
             context.pop();
@@ -85,7 +89,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           SizedBox(width: 4.w),
                           Text("${state.detail.rating.toStringAsFixed(1)}/5", style: AppStyles.w500s16),
                           SizedBox(width: 6.w),
-                          Text("(${state.detail.reviewsCount} reviews)", style: AppStyles.w400s16),
+                          Text("(${state.detail.reviewsCount} ${local.reviews})", style: AppStyles.w400s16),
                         ],
                       ),
                       Text(state.detail.description, style: AppStyles.w400s16),
@@ -127,7 +131,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         );
                                 }),
                               ),
-                              Text("${state.detail.reviewsCount} Ratings", style: AppStyles.w400s16),
+                              Text("${state.detail.reviewsCount} ${local.ratings}", style: AppStyles.w400s16),
                             ],
                           ),
                         ],
@@ -135,7 +139,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("${state.reviews.length} Reviews", style: AppStyles.w600s16),
+                          Text("${state.reviews.length} ${local.reviews}", style: AppStyles.w600s16),
                           DropdownButton<String>(
                             value: _selectedFilter,
                             underline: const SizedBox(),
@@ -221,13 +225,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Price", style: AppStyles.w400s16),
+                  Text(local.price, style: AppStyles.w400s16),
                   Text("\$ ${state.detail.price}", style: AppStyles.w600s25),
                 ],
               ),
               IconTextButtonPopular(
                 icon: AppSvgs.bag,
-                title: "Add to Cart",
+                title: local.add_to_cart,
                 width: 240,
                 height: 54,
               ),

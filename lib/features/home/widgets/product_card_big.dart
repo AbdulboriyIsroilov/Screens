@@ -22,10 +22,7 @@ class ProductCardBig extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-          Routers.productDetail,
-          extra: {
-            "id": state.id,
-          },
+          Routers.productDetailsById(id: state.id)
         );
       },
       child: SizedBox(

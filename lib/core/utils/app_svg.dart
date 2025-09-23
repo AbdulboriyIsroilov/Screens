@@ -3,6 +3,7 @@ class AppSvgs {
   static const address = "assets/icons/Address.svg";
   static const arrow = "assets/icons/Arrow.svg";
   static const arrowRight = "assets/icons/arrow-right.svg";
+  static const arrowRightChevron = "assets/icons/arrow_right_chevron.svg";
   static const backArrow = "assets/icons/back_arrow.svg";
   static const bag = "assets/icons/Bag.svg";
   static const bell = "assets/icons/Bell.svg";
@@ -14,6 +15,7 @@ class AppSvgs {
   static const cancelCircle = "assets/icons/Cancel-circle.svg";
   static const cardDuotone = "assets/icons/Card-duotone.svg";
   static const cart = "assets/icons/Cart.svg";
+  static const card = "assets/icons/Card.svg";
   static const cartDuotone = "assets/icons/Cart-duotone.svg";
   static const cash = "assets/icons/Cash.svg";
   static const check = "assets/icons/Check.svg";
@@ -59,5 +61,9 @@ class AppSvgs {
   static const warningCircle = "assets/icons/WarningCircle.svg";
   static const web = "assets/icons/Web.svg";
   static const whatsapp = "assets/icons/Whatsapp.svg";
+  static const language = "assets/icons/language.svg";
+  static const uz = "assets/icons/flag-uz.svg";
+  static const en = "assets/icons/flag-en.svg";
+  static const ru = "assets/icons/flag-ru.svg";
 }
 

@@ -1,18 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:screens/data/repositories/product_repositories.dart';
+import 'package:screens/features/saved/managers/saved_event.dart';
 import 'package:screens/features/saved/managers/saved_state.dart';
 
-class SavedCubit extends Cubit<SavedState> {
-  SavedCubit({
+import '../../../data/repositories/product_repositories.dart';
+
+class SavedBloc extends Bloc<SavedEvent, SavedState> {
+  SavedBloc({
     required ProductRepositories savedProductRepo,
   }) : _savedProductRepo = savedProductRepo,
        super(SavedState.initial()) {
-    fetchSavedProduct();
+    on<SavedProductEvent>(_fetchSavedProduct);
+    add(SavedProductEvent());
   }
 
   final ProductRepositories _savedProductRepo;
 
-  Future<void> fetchSavedProduct() async {
+  Future<void> _fetchSavedProduct(SavedProductEvent event, Emitter<SavedState> emit) async {
     emit(state.copyWith(loading: true));
     var result = await _savedProductRepo.getSavedProduct();
     result.fold(

@@ -4,10 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_colors.dart';
 
-class search_text_field extends StatelessWidget {
-  const search_text_field({
+class SearchTextField extends StatelessWidget {
+  const SearchTextField({
     super.key,
     required this.controller,
   });
@@ -16,6 +17,7 @@ class search_text_field extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return TextField(
       controller: controller,
       style: AppStyles.w500s16,
@@ -34,7 +36,7 @@ class search_text_field extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
           borderSide: BorderSide(color: AppColors.grey),
         ),
-        hintText: "Search for clothes...",
+        hintText: local.search_for_clothes,
         hintStyle: AppStyles.w400s16.copyWith(
           color: AppColors.black.withValues(alpha: 0.5),
         ),

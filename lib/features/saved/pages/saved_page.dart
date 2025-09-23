@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
 import 'package:screens/features/common/widgets/empty_widget.dart';
+import 'package:screens/features/saved/managers/saved_bloc.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_svg.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../common/widgets/loading_widget.dart';
-import '../managers/saved_cubit.dart';
 import '../managers/saved_state.dart';
 import '../widgets/product_card_small.dart';
 
@@ -16,18 +17,19 @@ class SavedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBarCommon(
-        title: "Saved Items",
+        title: local.saved_items,
         activ: 2,
       ),
-      body: BlocBuilder<SavedCubit, SavedState>(
+      body: BlocBuilder<SavedBloc, SavedState>(
         builder: (context, state) => state.loading
             ? LoadingWidget()
             : state.savedProduct.isEmpty
             ? EmptyWidget(
-                title1: "No Saved Items!",
-                title2: "You don’t have any saved items. Go to home and add some.",
+                title1: local.saved_null_title1,
+                title2: local.saved_null_title2,
                 svg: AppSvgs.heartDuotone,
               )
             : GridView.builder(

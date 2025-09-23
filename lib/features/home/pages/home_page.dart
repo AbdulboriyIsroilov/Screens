@@ -10,6 +10,7 @@ import 'package:screens/features/home/managers/home_cubit.dart';
 import 'package:screens/features/home/managers/home_state.dart';
 import 'package:screens/features/home/widgets/product_card_big.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/router/routers.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../widgets/home_app_bar_bottom.dart';
@@ -35,13 +36,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) => Scaffold(
         extendBody: true,
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,
           title: Text(
-            "Discover",
+            local.discover,
             style: AppStyles.w500s32,
           ),
           actions: [

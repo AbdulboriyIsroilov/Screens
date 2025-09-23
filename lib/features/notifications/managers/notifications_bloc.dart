@@ -1,29 +1,31 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:screens/data/repositories/notifications_repositories.dart';
+import 'package:screens/features/notifications/managers/notifications_event.dart';
 import 'package:screens/features/notifications/managers/notifications_state.dart';
 
 import '../../../data/models/notifications_models/notifications_model.dart';
+import '../../../data/repositories/notifications_repositories.dart';
 
-class NotificationsCubit extends Cubit<NotificationsState> {
-  NotificationsCubit({
+class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
+  NotificationsBloc({
     required NotificationsRepositories notificationsRepo,
   }) : _notificationsRepo = notificationsRepo,
        super(NotificationsState.initial()) {
-    fetchNotifications();
+    on<NotificationEvent>(_fetchNotifications);
+    add(NotificationEvent());
   }
 
   final NotificationsRepositories _notificationsRepo;
 
-  Future<void> fetchNotifications() async {
+  Future<void> _fetchNotifications(NotificationEvent event, Emitter<NotificationsState> emit) async {
     emit(state.copyWith(loading: true));
 
     var result = await _notificationsRepo.getNotifications();
 
     result.fold(
-          (error) => emit(
+      (error) => emit(
         state.copyWith(errorMessage: error.toString(), loading: false),
       ),
-          (success) {
+      (success) {
         final now = DateTime.now();
         final today = DateTime(now.year, now.month, now.day);
         final yesterday = today.subtract(const Duration(days: 1));
@@ -45,15 +47,16 @@ class NotificationsCubit extends Cubit<NotificationsState> {
           }
         }
 
-        emit(state.copyWith(
-          loading: false,
-          errorMessage: null,
-          notificationsBugun: bugun,
-          notificationsKecha: kecha,
-          notificationsEski: eski,
-        ));
+        emit(
+          state.copyWith(
+            loading: false,
+            errorMessage: null,
+            notificationsBugun: bugun,
+            notificationsKecha: kecha,
+            notificationsEski: eski,
+          ),
+        );
       },
     );
   }
-
 }

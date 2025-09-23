@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:screens/core/utils/app_style.dart';
 
+import '../../../core/l10n/app_localizations.dart';
+
 class RichTextSignUp extends StatelessWidget {
   const RichTextSignUp({
     super.key,
@@ -17,7 +19,7 @@ class RichTextSignUp extends StatelessWidget {
         ),
         children: [
           TextSpan(
-            text: "By signing up you agree to our ",
+            text: MyLocalizations.of(context)!.signup_text,
             style: AppStyles.w400s14,
           ),
           TextSpan(
@@ -31,7 +33,7 @@ class RichTextSignUp extends StatelessWidget {
             style: AppStyles.w500s14,
             recognizer: TapGestureRecognizer()..onTap = () {},
           ),
-          TextSpan(text: ", and ", style: AppStyles.w400s14),
+          TextSpan(text: ", ${MyLocalizations.of(context)!.and} ", style: AppStyles.w400s14),
           TextSpan(
             text: "Cookie Use",
             style: AppStyles.w500s14,

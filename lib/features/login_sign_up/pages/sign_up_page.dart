@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/router/routers.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
@@ -49,6 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Padding(
@@ -61,8 +63,8 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.h,
               children: [
-                Text("Create an account", style: AppStyles.w500s32),
-                Text("Let’s create your account.", style: AppStyles.w400s16),
+                Text(local.create_an_account, style: AppStyles.w500s32),
+                Text(local.lets_create_your_account, style: AppStyles.w400s16),
               ],
             ),
             Form(
@@ -74,8 +76,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   // FULL NAME
                   TextFieldNotPasword(
                     controller: fullNameController,
-                    title: "Full Name",
-                    hint: "Enter your full name",
+                    title: local.full_name,
+                    hint: local.enter_your_full_name,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => fullNameValid = false);
@@ -94,12 +96,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                     succes: fullNameValid,
                   ),
-
                   // EMAIL
                   TextFieldNotPasword(
                     controller: emailController,
-                    title: "Email",
-                    hint: "Enter your email address",
+                    title: local.email,
+                    hint: local.enter_your_email_address,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => emailValid = false);
@@ -114,12 +115,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                     succes: emailValid,
                   ),
-
                   // PASSWORD
                   TextFieldPasword(
                     controller: passwordController,
-                    title: "Password",
-                    hint: "Enter your password",
+                    title: local.password,
+                    hint: local.enter_your_password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => passwordValid = false);
@@ -139,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             RichTextSignUp(),
             TextButtonPopular(
-              title: "Create an Account",
+              title: local.create_an_account,
               onPressed: fullNameValid && emailValid && passwordValid
                   ? () {
                 context.read<SignUpCubit>().fetchSignUp(
@@ -163,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   : null,
             ),
             Row(
-              children: const [
+              children: [
                 Expanded(
                   child: Divider(
                     thickness: 2,
@@ -173,8 +173,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    "OR",
-                    style: AppStyles.w400s14,
+                    local.or,
+                    style: AppStyles.w400s14.copyWith(color: AppColors.greyDark),
                   ),
                 ),
                 Expanded(
@@ -188,13 +188,14 @@ class _SignUpPageState extends State<SignUpPage> {
             IconTextButtonPopular(
               icon: AppSvgs.logosGoogleIcon,
               color: Colors.transparent,
-              title: "Sign Up with Google",
+              title: local.google,
+              fColor: AppColors.black,
             ),
             IconTextButtonPopular(
               icon: AppSvgs.logosFacebook,
               color: AppColors.blue,
               fColor: AppColors.white,
-              title: "Sign Up with Facebook",
+              title: local.facebook,
             ),
             Spacer(),
             Center(
@@ -203,11 +204,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: AppStyles.w400s14,
                   children: [
                     TextSpan(
-                      text: "Already have an account? ",
+                      text: "${local.already_have_an_account} ",
                       style: AppStyles.w400s14,
                     ),
                     TextSpan(
-                      text: "Log In",
+                      text: local.log_in,
                       style: AppStyles.w500s14,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {

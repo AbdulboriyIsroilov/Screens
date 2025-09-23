@@ -19,10 +19,10 @@ class ProductRepositories {
   }
   
   Future<Result<ProductDetailModel>> getProductDetail({required int id})async{
-    var response = await _client.get("/products/detail/$id");
+    var response = await _client.get<Map<String,dynamic>>("/products/detail/$id");
     return response.fold(
           (error) => Result.error(error),
-          (val) => Result.ok(ProductDetailModel.fromJson(val as Map<String, dynamic>)),
+          (val) => Result.ok(ProductDetailModel.fromJson(val)),
     );
   }
   

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:screens/features/home/widgets/search_text_field.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
 import '../managers/home_cubit.dart';
@@ -27,6 +28,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) => Column(
         spacing: 10.h,
@@ -36,7 +38,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                search_text_field(controller: searchController),
+                SearchTextField(controller: searchController),
                 Ink(
                   decoration: ShapeDecoration(
                     color: AppColors.black,
@@ -63,7 +65,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 spacing: 8.w,
                 children: [
-                  BottomItem(title: "All", isSelected: selectedIndex == -1, id: -1),
+                  BottomItem(title: local.all, isSelected: selectedIndex == -1, id: -1),
                   ...List.generate(
                     state.categories.length,
                     (index) => BottomItem(

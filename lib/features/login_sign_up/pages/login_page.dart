@@ -12,6 +12,7 @@ import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
 import 'package:screens/features/login_sign_up/managers/login_cubit.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../common/widgets/text_field_pasword.dart';
 
@@ -45,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Padding(
@@ -57,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.h,
               children: [
-                Text("Login to your account", style: AppStyles.w500s32),
-                Text("It’s great to see you again.", style: AppStyles.w400s16),
+                Text(local.login_to_your_account, style: AppStyles.w500s32),
+                Text(local.its_great_to_see_you_again, style: AppStyles.w400s16),
               ],
             ),
             Form(
@@ -70,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
                   // EMAIL
                   TextFieldNotPasword(
                     controller: loginController,
-                    title: "Email",
-                    hint: "Enter your email address",
+                    title: local.email,
+                    hint: local.enter_your_email_address,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => emailValid = false);
@@ -90,8 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                   // PASSWORD
                   TextFieldPasword(
                     controller: passwordController,
-                    title: "Password",
-                    hint: "Enter your password",
+                    title: local.password,
+                    hint: local.enter_your_password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => passwordValid = false);
@@ -115,11 +117,11 @@ class _LoginPageState extends State<LoginPage> {
                   style: AppStyles.w400s14,
                   children: [
                     TextSpan(
-                      text: "Forgot your password? ",
+                      text: "${local.forgot_your_password} ",
                       style: AppStyles.w400s14,
                     ),
                     TextSpan(
-                      text: "Reset your password",
+                      text: local.reset_your_password,
                       style: AppStyles.w500s14,
 
                       recognizer: TapGestureRecognizer()
@@ -132,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             TextButtonPopular(
-              title: "Login",
+              title: local.login,
               onPressed: emailValid && passwordValid
                   ? () {
                 context.read<LoginCubit>().fetchLogin(
@@ -150,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                   : null,
             ),
             Row(
-              children: const [
+              children: [
                 Expanded(
                   child: Divider(
                     thickness: 2,
@@ -160,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    "OR",
+                    local.or,
                     style: AppStyles.w400s14,
                   ),
                 ),
@@ -175,13 +177,14 @@ class _LoginPageState extends State<LoginPage> {
             IconTextButtonPopular(
               icon: AppSvgs.logosGoogleIcon,
               color: Colors.transparent,
-              title: "Sign Up with Google",
+              title: local.google,
+              fColor: AppColors.black,
             ),
             IconTextButtonPopular(
               icon: AppSvgs.logosFacebook,
               color: AppColors.blue,
               fColor: AppColors.white,
-              title: "Sign Up with Facebook",
+              title: local.facebook,
             ),
             Spacer(),
             Center(
@@ -190,11 +193,11 @@ class _LoginPageState extends State<LoginPage> {
                   style: AppStyles.w400s14,
                   children: [
                     TextSpan(
-                      text: "Don’t have an account? ",
+                      text: "${local.dont_have_an_account} ",
                       style: AppStyles.w400s14,
                     ),
                     TextSpan(
-                      text: "Join",
+                      text: local.join,
                       style: AppStyles.w500s14,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {

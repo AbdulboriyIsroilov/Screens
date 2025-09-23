@@ -12,9 +12,12 @@ class Routers {
   static const home = "/home";
   static const search = "/search";
   static const saved = "/saved";
-  static const card = "/card";
+  static const cart = "/card";
   static const account = "/account";
 
   static const notifications = "/notifications";
-  static const productDetail = "/product-detail";
+  static const productDetail = "/product-detail/:id";
+  static String productDetailsById({required int id}){
+    return '/product-detail/$id';
+  }
 }

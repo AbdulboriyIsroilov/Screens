@@ -4,9 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/utils/themes.dart';
+import 'package:screens/data/repositories/cart_repositories.dart';
 import 'package:screens/data/repositories/reviews_repositories.dart';
 import 'package:screens/features/common/managers/like_cubit.dart';
+import 'package:screens/features/common/managers/localizatoin_cubit.dart';
+import 'package:screens/features/my_cart/managers/my_cart_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/auth_interceptor.dart';
 import 'core/client.dart';
@@ -19,8 +24,13 @@ import 'data/repositories/product_repositories.dart';
 import 'data/repositories/user_repositories.dart';
 import 'features/common/managers/app_theme_view_model.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = SharedPreferencesAsync();
+  final locale = await prefs.getString("locale") ?? "en";
+  runApp(BlocProvider(
+      create: (context)=>LocalizationCubit(locale: locale),
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -51,16 +61,22 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => UserRepositories(client: context.read())),
           RepositoryProvider(create: (context) => NotificationsRepositories(client: context.read())),
           RepositoryProvider(create: (context) => ReviewsRepositories(client: context.read())),
+          RepositoryProvider(create: (context) => CartRepositories(client: context.read())),
           BlocProvider(create: (context) => LikeCubit(userRepo: context.read())),
         ],
         child: ChangeNotifierProvider(
           create: (context) => AppThemeViewModel(),
-          builder: (context, child) => MaterialApp.router(
-            theme: themes.lightTheme,
-            darkTheme: themes.darkTheme,
-            themeMode: context.watch<AppThemeViewModel>().mode,
-            debugShowCheckedModeBanner: false,
-            routerConfig: router,
+          builder: (context, child) => BlocBuilder<LocalizationCubit,Locale>(
+            builder:(context,state)=> MaterialApp.router(
+              locale: state,
+              localizationsDelegates: MyLocalizations.localizationsDelegates,
+              supportedLocales: MyLocalizations.supportedLocales,
+              theme: themes.lightTheme,
+              darkTheme: themes.darkTheme,
+              themeMode: context.watch<AppThemeViewModel>().mode,
+              debugShowCheckedModeBanner: false,
+              routerConfig: router,
+            ),
           ),
         ),
       ),

@@ -1,0 +1,308 @@
+{
+    "create_an_account": "Create an account",
+    "@create_an_account":{
+        "description":"Bu signupni title1"
+    },
+
+    "lets_create_your_account": "Let’s create your account.",
+    "@lets_create_your_account":{
+        "description":"Bu signupni title2"
+    },
+
+    "full_name": "Full Name",
+    "@full_name":{
+        "description":"Bu textField fullName"
+    },
+
+    "enter_your_full_name": "Enter your full name",
+    "@enter_your_full_name":{
+        "description":"Bu textField fullName hitn"
+    },
+
+    "email": "Email",
+    "@email":{
+        "description":"Bu textField Email"
+    },
+
+    "enter_your_email_address": "Enter your email address",
+    "@enter_your_email_address":{
+        "description":"Bu textField fullName hitn"
+    },
+
+    "password": "Password",
+    "@password":{
+        "description":"Bu textField Password"
+    },
+
+    "enter_your_password": "Enter your password",
+    "@enter_your_password":{
+        "description":"Bu textField fullName hitn"
+    },
+
+    "create_an_account": "Create an Account",
+    "@create_an_account":{
+        "description":"Bu signUp button"
+    },
+
+    "or": "Or",
+    "@or":{
+        "description":"yoki"
+    },
+
+    "and": "and",
+    "@and":{
+        "description":"va"
+    },
+
+    "already_have_an_account": "Already have an account?",
+    "@already_have_an_account":{
+        "description":"Bu signUpdan loginga otish title"
+    },
+
+    "log_in": "Log In",
+    "@log_in":{
+        "description":"Bu signUpdan loginga otish"
+    },
+
+    "google": "Sign Up with Google",
+    "@google":{
+        "description":"Bu button google uchun"
+    },
+
+    "facebook": "Sign Up with Facebook",
+    "@facebook":{
+        "description":"Bu button facebook uchun"
+    },
+
+    "signup_text": "By signing up you agree to our",
+    "@signup_text":{
+        "description":"Bu signUp text"
+    },
+
+    "login_to_your_account": "Login to your account",
+    "@login_to_your_account":{
+        "description":"Bu login title1"
+    },
+
+    "its_great_to_see_you_again": "It’s great to see you again.",
+    "@its_great_to_see_you_again":{
+        "description":"Bu login title2"
+    },
+
+    "forgot_your_password": "Forgot your password? ",
+    "@forgot_your_password":{
+        "description":"Bu login text"
+    },
+
+    "reset_your_password": "Reset your password",
+    "@reset_your_password":{
+        "description":"Bu logindan forgetga otish"
+    },
+
+    "login": "Login",
+    "@login":{
+        "description":"Bu button login"
+    },
+
+    "dont_have_an_account": "Don’t have an account?",
+    "@dont_have_an_account":{
+        "description":"Bu logindan signUpga otish title"
+    },
+
+    "join": "Join",
+    "@join":{
+        "description":"Bu logindan signUpga otish"
+    },
+
+    "discover": "Discover",
+    "@discover":{
+        "description":"Bu home appbar title"
+    },
+
+    "search_for_clothes": "Search for clothes...",
+    "@search_for_clothes":{
+        "description":"Bu search textfield"
+    },
+
+    "all": "All",
+    "@all":{
+        "description":"Bu hammasi"
+    },
+
+    "home": "Home",
+    "@home":{
+        "description":"Bu bottomNavigationBar Home"
+    },
+
+    "search": "Search",
+    "@search":{
+        "description":"Bu bottomNavigationBar Search"
+    },
+
+    "saved": "Saved",
+    "@saved":{
+        "description":"Bu bottomNavigationBar Saved"
+    },
+
+    "cart": "Cart",
+    "@cart":{
+        "description":"Bu bottomNavigationBar Cart"
+    },
+
+    "account": "Account",
+    "@account":{
+        "description":"Bu bottomNavigationBar Account"
+    },
+
+    "notifications": "Notifications",
+    "@notifications":{
+        "description":"Bu notifications appbar title"
+    },
+
+    "today": "Today",
+    "@today":{
+        "description":"Bu notifications title1"
+    },
+
+    "yesterday": "Yesterday",
+    "@yesterday":{
+        "description":"Bu notifications title2"
+    },
+
+    "the_old_days": "The Old Days",
+    "@the_old_days":{
+        "description":"Bu notifications title3"
+    },
+
+    "notifications_null_title1": "You haven’t gotten any notifications yet!",
+    "@notifications_null_title1":{
+        "description":"Bu notifications yoq boldanidagi title1"
+    },
+
+    "notifications_null_title2": "We’ll alert you when something cool happens.",
+    "@notifications_null_title2":{
+        "description":"Bu notifications yoq boldanidagi title2"
+    },
+
+    "saved_items": "Saved Items",
+    "@saved_items":{
+        "description":"Bu saved appbar title"
+    },
+
+    "saved_null_title1": "No Saved Items!",
+    "@saved_null_title1":{
+        "description":"Bu saved yoq boldanidagi title1"
+    },
+
+    "saved_null_title2": "You don’t have any saved items. Go to home and add some.",
+    "@saved_null_title2":{
+        "description":"Bu saved yoq boldanidagi title2"
+    },
+
+    "details": "Details",
+    "@details":{
+        "description":"Bu details appbar title"
+    },
+
+    "add_to_cart": "Add to Cart",
+    "@add_to_cart":{
+        "description":"Bu details button"
+    },
+
+    "ratings": "Ratings",
+    "@ratings":{
+        "description":"Bu reviewsda reyting"
+    },
+
+    "reviews": "Reviews",
+    "@reviews":{
+        "description":"Bu reviews"
+    },
+
+    "my_orders": "My Orders",
+    "@my_orders":{
+        "description":"Bu Accaunt title1"
+    },
+
+    "my_details": "My Details",
+    "@my_details":{
+        "description":"Bu Accaunt title2"
+    },
+
+    "address_book": "Address Book",
+    "@address_book":{
+        "description":"Bu Accaunt title3"
+    },
+
+    "payment_methods": "Payment Methods",
+    "@payment_methods":{
+        "description":"Bu Accaunt title4"
+    },
+
+    "language": "Language",
+    "@language":{
+        "description":"Bu Accaunt title5"
+    },
+
+    "f_a_qs": "FAQs",
+    "@f_a_qs":{
+        "description":"Bu Accaunt title6"
+    },
+
+    "help_center": "Help Center",
+    "@help_center":{
+        "description":"Bu Accaunt title7"
+    },
+
+    "logout": "Logout",
+    "@logout":{
+        "description":"Bu Accaunt title8"
+    },
+
+    "switch_language": "Switch language",
+    "@switch_language":{
+        "description":"Bu Accauntda diologada title"
+    },
+
+    "choose_size": "Choose size",
+    "@choose_size":{
+        "description":"Bu detail sizes"
+    },
+
+    "price": "Price",
+    "@price":{
+        "description":"Bu detail price"
+    },
+
+    "size": "Siza",
+    "@siza":{
+        "description":"Bu cartdagi"
+    },
+
+    "my_cart": "My Cart",
+    "@my_cart":{
+        "description":"Bu cartdagi appbar title"
+    },
+
+    "sub_total": "Sub-total",
+    "@my_cart":{
+        "description":"Bu cartdagi title1"
+    },
+
+    "v_a_t": "VAT (%)",
+    "@v_a_t":{
+        "description":"Bu cartdagi title2"
+    },
+
+    "shipping_fee": "Shipping fee",
+    "@shipping_fee":{
+        "description":"Bu cartdagi title3"
+    },
+
+    "total": "Total",
+    "@total":{
+        "description":"Bu cartdagi title4"
+    }
+
+
+}

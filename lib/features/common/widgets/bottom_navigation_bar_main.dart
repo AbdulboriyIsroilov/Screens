@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_style.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
@@ -26,8 +27,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
     Routers.home,
     Routers.home,
     Routers.saved,
-    Routers.home,
-    Routers.signUp,
+    Routers.cart,
+    Routers.account,
   ];
 
   @override
@@ -38,6 +39,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -69,7 +71,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
                 BlendMode.modulate,
               ),
             ),
-            label: "Home",
+            label: local.home,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -79,7 +81,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
                 BlendMode.modulate,
               ),
             ),
-            label: "Search",
+            label: local.search,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -89,7 +91,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
                 BlendMode.modulate,
               ),
             ),
-            label: "Saved",
+            label: local.saved,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -99,7 +101,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
                 BlendMode.modulate,
               ),
             ),
-            label: "Cart",
+            label: local.cart,
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -109,7 +111,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
                 BlendMode.modulate,
               ),
             ),
-            label: "Account",
+            label: local.account,
           ),
         ],
       ),
