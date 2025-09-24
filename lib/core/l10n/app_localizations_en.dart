@@ -190,4 +190,15 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get total => 'Total';
+
+  @override
+  String get your_cart_is_empty => 'Your Cart Is Empty!';
+
+  @override
+  String get when_you_add_products_theyll_appear_here =>
+      'When you add products, they’ll appear here.';
+
+  @override
+  String get the_product_been_added_the_cart =>
+      'The product has been added to the cart.';
 }

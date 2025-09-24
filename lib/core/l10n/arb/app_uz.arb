@@ -59,6 +59,11 @@
   "sub_total": "Oraliq summa",
   "v_a_t": "QQS (%)",
   "shipping_fee": "Yetkazib berish narxi",
-  "total": "Jami"
+  "total": "Jami",
+  "your_cart_is_empty": "Savat bo‘sh!",
+  "when_you_add_products_theyll_appear_here": "Mahsulot qo‘shsangiz, ular shu yerda paydo bo‘ladi.",
+  "the_product_been_added_the_cart": "Mahsulot savatga qo‘shildi."
+
+
 
 }

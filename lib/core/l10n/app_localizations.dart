@@ -459,6 +459,24 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Total'**
   String get total;
+
+  /// Bu cartdagi null title1
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart Is Empty!'**
+  String get your_cart_is_empty;
+
+  /// Bu cartdagi null title2
+  ///
+  /// In en, this message translates to:
+  /// **'When you add products, they’ll appear here.'**
+  String get when_you_add_products_theyll_appear_here;
+
+  /// Bu detail succes add to cart
+  ///
+  /// In en, this message translates to:
+  /// **'The product has been added to the cart.'**
+  String get the_product_been_added_the_cart;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

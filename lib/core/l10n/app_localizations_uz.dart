@@ -190,4 +190,14 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get total => 'Jami';
+
+  @override
+  String get your_cart_is_empty => 'Savat bo‘sh!';
+
+  @override
+  String get when_you_add_products_theyll_appear_here =>
+      'Mahsulot qo‘shsangiz, ular shu yerda paydo bo‘ladi.';
+
+  @override
+  String get the_product_been_added_the_cart => 'Mahsulot savatga qo‘shildi.';
 }

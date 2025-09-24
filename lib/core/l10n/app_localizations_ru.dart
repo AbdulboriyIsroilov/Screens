@@ -189,4 +189,14 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get total => 'Итого';
+
+  @override
+  String get your_cart_is_empty => 'Корзина пуста!';
+
+  @override
+  String get when_you_add_products_theyll_appear_here =>
+      'Когда вы добавите товары, они появятся здесь.';
+
+  @override
+  String get the_product_been_added_the_cart => 'Товар был добавлен в корзину.';
 }

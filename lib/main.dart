@@ -28,9 +28,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = SharedPreferencesAsync();
   final locale = await prefs.getString("locale") ?? "en";
-  runApp(BlocProvider(
-      create: (context)=>LocalizationCubit(locale: locale),
-      child: MyApp()));
+  runApp(
+    BlocProvider(
+      create: (context) => LocalizationCubit(locale: locale),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -63,11 +66,12 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => ReviewsRepositories(client: context.read())),
           RepositoryProvider(create: (context) => CartRepositories(client: context.read())),
           BlocProvider(create: (context) => LikeCubit(userRepo: context.read())),
+          BlocProvider(create: (context) => MyCartBloc(cartRepo: context.read())),
         ],
         child: ChangeNotifierProvider(
           create: (context) => AppThemeViewModel(),
-          builder: (context, child) => BlocBuilder<LocalizationCubit,Locale>(
-            builder:(context,state)=> MaterialApp.router(
+          builder: (context, child) => BlocBuilder<LocalizationCubit, Locale>(
+            builder: (context, state) => MaterialApp.router(
               locale: state,
               localizationsDelegates: MyLocalizations.localizationsDelegates,
               supportedLocales: MyLocalizations.supportedLocales,

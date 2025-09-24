@@ -59,6 +59,11 @@
   "sub_total": "Промежуточный итог",
   "v_a_t": "НДС (%)",
   "shipping_fee": "Стоимость доставки",
-  "total": "Итого"
+  "total": "Итого",
+  "your_cart_is_empty": "Корзина пуста!",
+  "when_you_add_products_theyll_appear_here": "Когда вы добавите товары, они появятся здесь.",
+  "the_product_been_added_the_cart": "Товар был добавлен в корзину."
+
+
 
 }

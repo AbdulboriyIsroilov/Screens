@@ -11,7 +11,7 @@ class LikeCubit extends Cubit<LikeState> {
   final UserRepositories _userRepo;
 
   void saveLike({required int id}) async {
-    var data = await _userRepo.save(id: id);
+    var data = await _userRepo.postSave(id: id);
     data.fold(
           (error) => emit(state.copyWith(errorSave: error.toString())),
           (succes) => null,
@@ -19,7 +19,7 @@ class LikeCubit extends Cubit<LikeState> {
   }
 
   void unsaveLike({required int id}) async {
-    var data = await _userRepo.unsave(id: id);
+    var data = await _userRepo.postUnsave(id: id);
     data.fold(
           (error) => emit(state.copyWith(errorUnsave: error.toString())),
           (succes) => null,

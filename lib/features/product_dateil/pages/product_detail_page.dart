@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
@@ -14,8 +13,12 @@ import 'package:screens/features/common/widgets/icon_text_button_popular.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
 import 'package:screens/features/product_dateil/managers/product_dateil_cubit.dart';
 import 'package:screens/features/product_dateil/managers/product_dateil_state.dart';
-import 'package:screens/features/saved/managers/saved_bloc.dart';
-import 'package:screens/features/saved/managers/saved_event.dart';
+import 'package:screens/features/product_dateil/widgets/diolog.dart';
+import 'package:screens/features/product_dateil/widgets/reviews_widget.dart';
+
+import '../../../data/models/cart_models/my_cart_add_model.dart';
+import '../../my_cart/managers/my_cart_bloc.dart';
+import '../../my_cart/managers/my_cart_event.dart';
 
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key});
@@ -26,7 +29,7 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
   String _selectedFilter = "Most Relevant";
-
+  int? _selectedSizeId;
   final List<String> _filters = [
     "Most Relevant",
     "Newest",
@@ -87,34 +90,61 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         children: [
                           SvgPicture.asset(AppSvgs.star),
                           SizedBox(width: 4.w),
-                          Text("${state.detail.rating.toStringAsFixed(1)}/5", style: AppStyles.w500s16),
+                          Text(
+                            "${state.detail.rating.toStringAsFixed(1)}/5",
+                            style: AppStyles.w500s16,
+                          ),
                           SizedBox(width: 6.w),
-                          Text("(${state.detail.reviewsCount} ${local.reviews})", style: AppStyles.w400s16),
+                          Text(
+                            "(${state.detail.reviewsCount} ${local.reviews})",
+                            style: AppStyles.w400s16,
+                          ),
                         ],
                       ),
                       Text(state.detail.description, style: AppStyles.w400s16),
                       Text("Choose size", style: AppStyles.w600s20),
                       Row(
-                        children: List.generate(state.detail.productSizes.length, (index) {
-                          return Container(
-                            margin: EdgeInsets.only(right: 10.w),
-                            width: 50.w,
-                            height: 50.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.r),
-                              border: Border.all(color: AppColors.grey),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              state.detail.productSizes[index].title,
-                              style: AppStyles.w500s20,
-                            ),
-                          );
-                        }),
+                        children: List.generate(
+                          state.detail.productSizes.length,
+                          (index) {
+                            final size = state.detail.productSizes[index];
+                            final isSelected = _selectedSizeId == size.id;
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _selectedSizeId = size.id;
+                                });
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10.w),
+                                width: 50.w,
+                                height: 50.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  border: Border.all(
+                                    color: isSelected ? AppColors.succes : AppColors.grey,
+                                    width: isSelected ? 2 : 1,
+                                  ),
+                                  color: isSelected ? AppColors.succes.withOpacity(0.1) : null,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  size.title,
+                                  style: AppStyles.w500s20.copyWith(
+                                    color: isSelected ? AppColors.succes : AppColors.black,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                       Row(
                         children: [
-                          Text(state.detail.rating.toStringAsFixed(1), style: AppStyles.w600s64),
+                          Text(
+                            state.detail.rating.toStringAsFixed(1),
+                            style: AppStyles.w600s64,
+                          ),
                           SizedBox(width: 18.w),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,11 +157,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                       : SizedBox(
                                           width: 19.w,
                                           height: 19.h,
-                                          child: SvgPicture.asset(AppSvgs.starBloon),
+                                          child: SvgPicture.asset(
+                                            AppSvgs.starBloon,
+                                          ),
                                         );
                                 }),
                               ),
-                              Text("${state.detail.reviewsCount} ${local.ratings}", style: AppStyles.w400s16),
+                              Text(
+                                "${state.detail.reviewsCount} ${local.ratings}",
+                                style: AppStyles.w400s16,
+                              ),
                             ],
                           ),
                         ],
@@ -139,7 +174,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("${state.reviews.length} ${local.reviews}", style: AppStyles.w600s16),
+                          Text(
+                            "${state.reviews.length} ${local.reviews}",
+                            style: AppStyles.w600s16,
+                          ),
                           DropdownButton<String>(
                             value: _selectedFilter,
                             underline: const SizedBox(),
@@ -163,47 +201,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         children: [
                           ...List.generate(state.reviews.length, (index) {
                             final review = state.reviews[index];
-                            return Column(
-                              spacing: 6.h,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  spacing: 6.w,
-                                  children: List.generate(5, (i) {
-                                    return i < review.rating
-                                        ? SizedBox(
-                                            width: 17.w,
-                                            height: 15.5.h,
-                                            child: SvgPicture.asset(AppSvgs.star),
-                                          )
-                                        : SizedBox(
-                                            width: 17.w,
-                                            height: 15.5.h,
-                                            child: SvgPicture.asset(AppSvgs.starBloon),
-                                          );
-                                  }),
-                                ),
-                                Text(
-                                  review.comment,
-                                  style: AppStyles.w400s14,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Row(
-                                  spacing: 8.w,
-                                  children: [
-                                    Text(review.userFullName, style: const TextStyle(fontWeight: FontWeight.bold)),
-                                    Text(
-                                      "• ${DateFormat('d MMM, HH:mm').format(DateTime.parse(review.created))}",
-                                      style: AppStyles.w400s14,
-                                    ),
-                                  ],
-                                ),
-                                const Divider(
-                                  color: AppColors.grey,
-                                ),
-                              ],
-                            );
+                            return ReviewsWidget(review: review);
                           }),
                         ],
                       ),
@@ -234,6 +232,27 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 title: local.add_to_cart,
                 width: 240,
                 height: 54,
+                onPressed: () {
+                  if (_selectedSizeId == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Iltimos, avval o‘lcham tanlang"),
+                      ),
+                    );
+                    return;
+                  } else {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (context) {
+                        return Diolog(local: local);
+                      },
+                    );
+                    context.read<MyCartBloc>().add(
+                      CartAddEvent(MyCartAddModel(productId: state.detail.id, sizeId: _selectedSizeId!)),
+                    );
+                  }
+                },
               ),
             ],
           ),

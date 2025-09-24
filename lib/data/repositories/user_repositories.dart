@@ -8,7 +8,7 @@ class UserRepositories {
   }) : _client = client;
   final ApiClient _client;
 
-  Future<Result<void>> save({required int id}) async {
+  Future<Result<void>> postSave({required int id}) async {
     var response = await _client.post("/auth/save/$id",data: null);
     return response.fold(
           (error) => Result.error(error),
@@ -16,7 +16,7 @@ class UserRepositories {
     );
   }
 
-  Future<Result<void>> unsave({required int id}) async {
+  Future<Result<void>> postUnsave({required int id}) async {
     var response = await _client.post("/auth/unsave/$id",data: null);
     return response.fold(
           (error) => Result.error(error),
