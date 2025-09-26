@@ -22,7 +22,7 @@
   "login": "Kirish",
   "dont_have_an_account": "Akkauntingiz yo‘qmi?",
   "join": "Qo‘shilish",
-  "discover": "Kashf eting",
+  "discover": "Kashf qiling",
   "search_for_clothes": "Kiyimlarni qidiring...",
   "all": "Hammasi",
   "home": "Bosh sahifa",
@@ -62,7 +62,27 @@
   "total": "Jami",
   "your_cart_is_empty": "Savat bo‘sh!",
   "when_you_add_products_theyll_appear_here": "Mahsulot qo‘shsangiz, ular shu yerda paydo bo‘ladi.",
-  "the_product_been_added_the_cart": "Mahsulot savatga qo‘shildi."
+  "the_product_been_added_the_cart": "Mahsulot savatga qo‘shildi.",
+  "general_notifications": "Umumiy bildirishnomalar",
+  "sound": "Ovoz",
+  "vibrate": "Vibratsiya",
+  "go_to_checkout": "To‘lovga o‘tish",
+  "onboarding": "O‘zingizni o‘ziga xos tarzda belgilang.",
+  "payment_method": "To‘lov usuli",
+  "saved_cards": "Saqlangan kartalar",
+  "default_card": "Asosiy",
+  "add_new_card": "Yangi karta qo‘shish",
+  "apply": "Tasdiqlash",
+  "new_card": "Yangi karta",
+  "add_debit_credit_card": "Debit yoki kredit karta qo‘shish",
+  "card_number": "Karta raqami",
+  "expiry_date": "Amal qilish muddati",
+  "security_code": "Xavfsizlik kodi",
+  "enter_your_card_number": "Karta raqamingizni kiriting",
+  "add_card": "Karta qo‘shish"
+
+
+
 
 
 

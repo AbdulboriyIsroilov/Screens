@@ -62,8 +62,24 @@
   "total": "Итого",
   "your_cart_is_empty": "Корзина пуста!",
   "when_you_add_products_theyll_appear_here": "Когда вы добавите товары, они появятся здесь.",
-  "the_product_been_added_the_cart": "Товар был добавлен в корзину."
-
+  "the_product_been_added_the_cart": "Товар был добавлен в корзину.",
+  "general_notifications": "Общие уведомления",
+  "sound": "Звук",
+  "vibrate": "Вибрация",
+  "go_to_checkout": "Перейти к оплате",
+  "onboarding": "Определите себя по-своему.",
+  "payment_method": "Способ оплаты",
+  "saved_cards": "Сохраненные карты",
+  "default_card": "Основная",
+  "add_new_card": "Добавить новую карту",
+  "apply": "Применить",
+  "new_card": "Новая карта",
+  "add_debit_credit_card": "Добавить дебетовую или кредитную карту",
+  "card_number": "Номер карты",
+  "expiry_date": "Срок действия",
+  "security_code": "Код безопасности",
+  "enter_your_card_number": "Введите номер вашей карты",
+  "add_card": "Добавить карту"
 
 
 }

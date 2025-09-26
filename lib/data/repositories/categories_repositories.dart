@@ -12,7 +12,6 @@ class CategoriesRepositoriy {
   Future<Result<List<CategoriesModel>>> getCategories() async {
     var response = await _client.get<List>("/categories/list");
     return response.fold(
-
       (error) => Result.error(error),
       (value) => Result.ok(value.map((item)=> CategoriesModel.fromJson(item)).toList()),
     );

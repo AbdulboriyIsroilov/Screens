@@ -21,10 +21,12 @@ class AccountPages extends StatelessWidget {
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBarCommon(title: local.account, activ: 4),
       body: Column(
-        spacing: 15.h,
+        spacing: 7.h,
         children: [
+          SizedBox(height: 15.h),
           Padding(
             padding: EdgeInsets.only(left: 24.w, right: 24.w),
             child: AccountRow(svg: AppSvgs.box, title: local.my_orders),
@@ -42,7 +44,13 @@ class AccountPages extends StatelessWidget {
                 AccountRow(svg: AppSvgs.details, title: local.details),
                 AccountRow(svg: AppSvgs.home, title: local.address_book),
                 AccountRow(svg: AppSvgs.card, title: local.payment_methods),
-                AccountRow(svg: AppSvgs.bell, title: local.notifications),
+                AccountRow(
+                  svg: AppSvgs.bell,
+                  title: local.notifications,
+                  onPressed: () {
+                    context.push(Routers.notificationSettings);
+                  },
+                ),
                 AccountRow(
                   svg: AppSvgs.language,
                   title: local.language,
@@ -174,7 +182,13 @@ class AccountPages extends StatelessWidget {
             color: AppColors.grey,
           ),
           AccountRow(svg: AppSvgs.question, title: local.f_a_qs),
-          AccountRow(svg: AppSvgs.headphones, title: local.help_center),
+          AccountRow(
+            svg: AppSvgs.headphones,
+            title: local.help_center,
+            onPressed: () {
+              context.push(Routers.helpCenter);
+            },
+          ),
           Container(
             width: double.infinity,
             height: 8.h,

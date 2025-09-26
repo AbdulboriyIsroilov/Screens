@@ -317,6 +317,91 @@
     "the_product_been_added_the_cart": "The product has been added to the cart.",
     "@the_product_been_added_the_cart":{
         "description":"Bu detail succes add to cart"
+    },
+
+    "general_notifications": "General Notifications",
+    "@general_notifications":{
+        "description":"Bu settings notif"
+    },
+
+    "sound": "Sound",
+    "@sound":{
+        "description":"Bu settings notif"
+    },
+
+    "vibrate": "Vibrate",
+    "@vibrate":{
+        "description":"Bu settings notif"
+    },
+
+    "go_to_checkout": "Go To Checkout",
+    "@go_to_checkout":{
+        "description":"Bu my cart button"
+    },
+
+    "onboarding": "Define yourself in your unique way.",
+    "@onboarding":{
+        "description":"Bu onb title"
+    },
+
+    "payment_method": "Payment Method",
+    "@payment_method":{
+        "description":"Bu card appbar"
+    },
+
+    "saved_cards": "Saved Cards",
+    "@saved_cards":{
+        "description":"Bu card title"
+    },
+
+    "default_card": "Default",
+    "@default_card":{
+        "description":"Bu card default"
+    },
+
+    "add_new_card": "Add New Card",
+    "@add_new_card":{
+        "description":"Bu add card button"
+    },
+
+    "apply": "Apply",
+    "@apply":{
+        "description":"Bu card succes"
+    },
+
+    "new_card": "New Card",
+    "@new_card":{
+        "description":"Bu new card appbar"
+    },
+
+    "add_debit_credit_card": "Add Debit or Credit Card",
+    "@add_debit_credit_card":{
+        "description":"Bu newc title"
+    },
+
+    "card_number": "Card number",
+    "@card_number":{
+        "description":"Bu newc card numger"
+    },
+
+    "expiry_date": "Expiry Date",
+    "@expiry_date":{
+        "description":"Bu newc data"
+    },
+
+    "security_code": "Security Code",
+    "@security_code":{
+        "description":"Bu newc cvc"
+    },
+
+    "enter_your_card_number": "Enter your card number",
+    "@enter_your_card_number":{
+        "description":"Bu newc hitn"
+    },
+
+    "add_card": "Add Card",
+    "@add_card":{
+        "description":"Bu newc succes"
     }
 
 

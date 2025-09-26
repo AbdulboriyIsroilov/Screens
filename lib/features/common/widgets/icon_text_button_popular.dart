@@ -40,7 +40,7 @@ class IconTextButtonPopular extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 10.w,
         children: [
-          SvgPicture.asset(icon),
+          SvgPicture.asset(icon,width: 24.w,height: 24.h,),
           Text(
             title,
             style: AppStyles.w500s16.copyWith(color: fColor),

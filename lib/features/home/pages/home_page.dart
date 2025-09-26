@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     MyLocalizations local = MyLocalizations.of(context)!;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) => Scaffold(
+        resizeToAvoidBottomInset: true,
         extendBody: true,
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,

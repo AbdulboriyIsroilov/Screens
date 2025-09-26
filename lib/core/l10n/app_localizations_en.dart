@@ -201,4 +201,55 @@ class MyLocalizationsEn extends MyLocalizations {
   @override
   String get the_product_been_added_the_cart =>
       'The product has been added to the cart.';
+
+  @override
+  String get general_notifications => 'General Notifications';
+
+  @override
+  String get sound => 'Sound';
+
+  @override
+  String get vibrate => 'Vibrate';
+
+  @override
+  String get go_to_checkout => 'Go To Checkout';
+
+  @override
+  String get onboarding => 'Define yourself in your unique way.';
+
+  @override
+  String get payment_method => 'Payment Method';
+
+  @override
+  String get saved_cards => 'Saved Cards';
+
+  @override
+  String get default_card => 'Default';
+
+  @override
+  String get add_new_card => 'Add New Card';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get new_card => 'New Card';
+
+  @override
+  String get add_debit_credit_card => 'Add Debit or Credit Card';
+
+  @override
+  String get card_number => 'Card number';
+
+  @override
+  String get expiry_date => 'Expiry Date';
+
+  @override
+  String get security_code => 'Security Code';
+
+  @override
+  String get enter_your_card_number => 'Enter your card number';
+
+  @override
+  String get add_card => 'Add Card';
 }

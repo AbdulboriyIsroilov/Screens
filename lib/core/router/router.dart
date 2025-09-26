@@ -11,12 +11,17 @@ import 'package:screens/features/login_sign_up/managers/sign_up_cubit.dart';
 import 'package:screens/features/login_sign_up/pages/login_page.dart';
 import 'package:screens/features/login_sign_up/pages/sign_up_page.dart';
 import 'package:screens/features/my_cart/pages/my_cart_page.dart';
+import 'package:screens/features/notifications/pages/notification_settings_page.dart';
 import 'package:screens/features/notifications/pages/notifications_page.dart';
 import 'package:screens/features/onboarding/pages/onboarding_page.dart';
+import 'package:screens/features/payment_method/managers/card_bloc.dart';
+import 'package:screens/features/payment_method/pages/card_page.dart';
+import 'package:screens/features/payment_method/pages/new_card_page.dart';
 import 'package:screens/features/product_dateil/managers/product_dateil_cubit.dart';
 import 'package:screens/features/product_dateil/pages/product_detail_page.dart';
 import 'package:screens/features/saved/managers/saved_bloc.dart';
 
+import '../../features/account/pages/help_center_page.dart';
 import '../../features/forgot_password/managers/forgot_password_cubit.dart';
 import '../../features/home/managers/home_cubit.dart';
 import '../../features/my_cart/managers/my_cart_bloc.dart';
@@ -99,9 +104,33 @@ final router = GoRouter(
       ),
     ),
 
+    ShellRoute(
+      builder: (context, state, child) => BlocProvider(
+        create: (context) => CardBloc(cardRepo: context.read()),
+        child: child,
+      ),
+      routes: [
+        GoRoute(
+          path: Routers.card,
+          builder: (context, state) => CardPage(),
+        ),
+        GoRoute(
+          path: Routers.newCard,
+          builder: (context, state) => NewCardPage(),
+        ),
+      ],
+    ),
     GoRoute(
       path: Routers.notifications,
       builder: (context, state) => NotificationsPage(index: (state.extra as Map)["index"]),
+    ),
+    GoRoute(
+      path: Routers.notificationSettings,
+      builder: (context, state) => NotificationSettingsPage(),
+    ),
+    GoRoute(
+      path: Routers.helpCenter,
+      builder: (context, state) => HelpCenterPage(),
     ),
     GoRoute(
       path: Routers.productDetail,

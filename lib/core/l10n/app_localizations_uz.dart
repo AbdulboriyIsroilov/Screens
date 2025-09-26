@@ -76,7 +76,7 @@ class MyLocalizationsUz extends MyLocalizations {
   String get join => 'Qo‘shilish';
 
   @override
-  String get discover => 'Kashf eting';
+  String get discover => 'Kashf qiling';
 
   @override
   String get search_for_clothes => 'Kiyimlarni qidiring...';
@@ -200,4 +200,55 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get the_product_been_added_the_cart => 'Mahsulot savatga qo‘shildi.';
+
+  @override
+  String get general_notifications => 'Umumiy bildirishnomalar';
+
+  @override
+  String get sound => 'Ovoz';
+
+  @override
+  String get vibrate => 'Vibratsiya';
+
+  @override
+  String get go_to_checkout => 'To‘lovga o‘tish';
+
+  @override
+  String get onboarding => 'O‘zingizni o‘ziga xos tarzda belgilang.';
+
+  @override
+  String get payment_method => 'To‘lov usuli';
+
+  @override
+  String get saved_cards => 'Saqlangan kartalar';
+
+  @override
+  String get default_card => 'Asosiy';
+
+  @override
+  String get add_new_card => 'Yangi karta qo‘shish';
+
+  @override
+  String get apply => 'Tasdiqlash';
+
+  @override
+  String get new_card => 'Yangi karta';
+
+  @override
+  String get add_debit_credit_card => 'Debit yoki kredit karta qo‘shish';
+
+  @override
+  String get card_number => 'Karta raqami';
+
+  @override
+  String get expiry_date => 'Amal qilish muddati';
+
+  @override
+  String get security_code => 'Xavfsizlik kodi';
+
+  @override
+  String get enter_your_card_number => 'Karta raqamingizni kiriting';
+
+  @override
+  String get add_card => 'Karta qo‘shish';
 }

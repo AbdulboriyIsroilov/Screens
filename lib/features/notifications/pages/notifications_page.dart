@@ -22,6 +22,7 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       extendBody: true,
       appBar: AppBarCommon(
         title: local.notifications,
@@ -46,7 +47,7 @@ class NotificationsPage extends StatelessWidget {
                 )
               : SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(24.w, 0, 25.w, 100.h),
+                    padding: EdgeInsets.fromLTRB(24.w, 20.h, 25.w, 100.h),
                     child: Column(
                       children: [
                         NotificationsDayWidgets(

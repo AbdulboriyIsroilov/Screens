@@ -25,6 +25,7 @@ class AppStyles {
     color: AppColors.white,
   );
   static const w600s20 = TextStyle(
+    decoration: TextDecoration.none,
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.black,

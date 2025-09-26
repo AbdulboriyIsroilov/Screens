@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:screens/core/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_colors.dart';
-import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
-class Diolog extends StatelessWidget {
-  const Diolog({
+import '../../../core/router/routers.dart';
+import '../../../core/utils/app_style.dart';
+import 'text_button_popular.dart';
+
+class ShowDiologModul extends StatelessWidget {
+  const ShowDiologModul({
     super.key,
-    required this.local,
+    required this.title1,
+    required this.title2,
+    required this.titleButton, this.onPressed = _defaultOnPressed,
   });
 
-  final MyLocalizations local;
+  final String title1, title2, titleButton;
+  final VoidCallback onPressed;
+  static void _defaultOnPressed() {}
+
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 250.w,
-        height: 200.h,
+        width: 341.w,
+        height: 292.h,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(20.r),
@@ -27,7 +35,7 @@ class Diolog extends StatelessWidget {
         padding: EdgeInsets.all(24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
               width: 78.5.w,
@@ -35,11 +43,20 @@ class Diolog extends StatelessWidget {
               child: SvgPicture.asset(AppSvgs.correct),
             ),
             Text(
-              local.the_product_been_added_the_cart,
+              title1,
               style: AppStyles.w600s20,
-              maxLines: 2,
+            ),
+            Text(
+              title2,
+              style: AppStyles.w400s14,
               textAlign: TextAlign.center,
-
+            ),
+            TextButtonPopular(
+              title: titleButton,
+              width: 293,
+              height: 54,
+              style: AppStyles.w500s16w,
+              onPressed: onPressed
             ),
           ],
         ),

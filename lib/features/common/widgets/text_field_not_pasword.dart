@@ -15,11 +15,12 @@ class TextFieldNotPasword extends StatelessWidget {
     this.maxLine = 1,
     required this.validator,
     this.succes = false,
+    this.maxwidth = 341,
   });
 
   final TextEditingController controller;
   final String title, hint;
-  final int maxLine;
+  final int maxLine, maxwidth;
   final String? Function(String?) validator;
   final bool succes;
 
@@ -43,8 +44,8 @@ class TextFieldNotPasword extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
             constraints: BoxConstraints(
-              minWidth: 341.w,
-              maxWidth: 341.w,
+              minWidth: 150.w,
+              maxWidth: maxwidth.w,
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
@@ -65,12 +66,8 @@ class TextFieldNotPasword extends StatelessWidget {
             hintText: hint,
             hintStyle: AppStyles.w400s16.copyWith(color: AppColors.black.withValues(alpha: 0.5)),
             suffixIcon: IconButton(
-              onPressed: () {
-                
-              },
-              icon: succes
-                  ? SvgPicture.asset(AppSvgs.correct)
-                  : SvgPicture.asset(AppSvgs.warningCircle),
+              onPressed: () {},
+              icon: succes ? SvgPicture.asset(AppSvgs.correct) : SvgPicture.asset(AppSvgs.warningCircle),
             ),
           ),
         ),

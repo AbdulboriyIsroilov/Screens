@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,15 +19,21 @@ import 'core/auth_interceptor.dart';
 import 'core/client.dart';
 import 'core/router/router.dart';
 import 'data/repositories/auth_repostories.dart';
+import 'data/repositories/card_repositories.dart';
 import 'data/repositories/categories_repositories.dart';
 import 'data/repositories/forgot_password_repositories.dart';
 import 'data/repositories/notifications_repositories.dart';
 import 'data/repositories/product_repositories.dart';
 import 'data/repositories/user_repositories.dart';
 import 'features/common/managers/app_theme_view_model.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final token = await FirebaseMessaging.instance.getToken();
+  await FirebaseMessaging.instance.requestPermission();
+  print(token);
   final prefs = SharedPreferencesAsync();
   final locale = await prefs.getString("locale") ?? "en";
   runApp(
@@ -65,6 +73,7 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => NotificationsRepositories(client: context.read())),
           RepositoryProvider(create: (context) => ReviewsRepositories(client: context.read())),
           RepositoryProvider(create: (context) => CartRepositories(client: context.read())),
+          RepositoryProvider(create: (context) => CardRepositories(client: context.read())),
           BlocProvider(create: (context) => LikeCubit(userRepo: context.read())),
           BlocProvider(create: (context) => MyCartBloc(cartRepo: context.read())),
         ],

@@ -30,6 +30,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
     bool toliq = kod.length == 4;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBarLeading(
         onPressed: () {
           context.pop();

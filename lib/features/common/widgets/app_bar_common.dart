@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/utils/app_colors.dart';
 
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';
@@ -50,6 +51,17 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
               SizedBox(width: 25.w),
             ]
           : [],
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(1),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Divider(
+            color: AppColors.grey,
+            height: 1,
+            thickness: 1,
+          ),
+        ),
+      ),
     );
   }
 

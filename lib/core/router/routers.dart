@@ -15,7 +15,12 @@ class Routers {
   static const cart = "/card";
   static const account = "/account";
 
+  static const card = "/payment-ethod";
+  static const newCard = "/new-card";
+
   static const notifications = "/notifications";
+  static const notificationSettings = "/notification-settings";
+  static const helpCenter = "/help-center";
   static const productDetail = "/product-detail/:id";
   static String productDetailsById({required int id}){
     return '/product-detail/$id';

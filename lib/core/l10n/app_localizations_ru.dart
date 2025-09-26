@@ -199,4 +199,55 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get the_product_been_added_the_cart => 'Товар был добавлен в корзину.';
+
+  @override
+  String get general_notifications => 'Общие уведомления';
+
+  @override
+  String get sound => 'Звук';
+
+  @override
+  String get vibrate => 'Вибрация';
+
+  @override
+  String get go_to_checkout => 'Перейти к оплате';
+
+  @override
+  String get onboarding => 'Определите себя по-своему.';
+
+  @override
+  String get payment_method => 'Способ оплаты';
+
+  @override
+  String get saved_cards => 'Сохраненные карты';
+
+  @override
+  String get default_card => 'Основная';
+
+  @override
+  String get add_new_card => 'Добавить новую карту';
+
+  @override
+  String get apply => 'Применить';
+
+  @override
+  String get new_card => 'Новая карта';
+
+  @override
+  String get add_debit_credit_card => 'Добавить дебетовую или кредитную карту';
+
+  @override
+  String get card_number => 'Номер карты';
+
+  @override
+  String get expiry_date => 'Срок действия';
+
+  @override
+  String get security_code => 'Код безопасности';
+
+  @override
+  String get enter_your_card_number => 'Введите номер вашей карты';
+
+  @override
+  String get add_card => 'Добавить карту';
 }

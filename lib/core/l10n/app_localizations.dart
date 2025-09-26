@@ -477,6 +477,108 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'The product has been added to the cart.'**
   String get the_product_been_added_the_cart;
+
+  /// Bu settings notif
+  ///
+  /// In en, this message translates to:
+  /// **'General Notifications'**
+  String get general_notifications;
+
+  /// Bu settings notif
+  ///
+  /// In en, this message translates to:
+  /// **'Sound'**
+  String get sound;
+
+  /// Bu settings notif
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrate'**
+  String get vibrate;
+
+  /// Bu my cart button
+  ///
+  /// In en, this message translates to:
+  /// **'Go To Checkout'**
+  String get go_to_checkout;
+
+  /// Bu onb title
+  ///
+  /// In en, this message translates to:
+  /// **'Define yourself in your unique way.'**
+  String get onboarding;
+
+  /// Bu card appbar
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get payment_method;
+
+  /// Bu card title
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Cards'**
+  String get saved_cards;
+
+  /// Bu card default
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get default_card;
+
+  /// Bu add card button
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Card'**
+  String get add_new_card;
+
+  /// Bu card succes
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// Bu new card appbar
+  ///
+  /// In en, this message translates to:
+  /// **'New Card'**
+  String get new_card;
+
+  /// Bu newc title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Debit or Credit Card'**
+  String get add_debit_credit_card;
+
+  /// Bu newc card numger
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get card_number;
+
+  /// Bu newc data
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry Date'**
+  String get expiry_date;
+
+  /// Bu newc cvc
+  ///
+  /// In en, this message translates to:
+  /// **'Security Code'**
+  String get security_code;
+
+  /// Bu newc hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your card number'**
+  String get enter_your_card_number;
+
+  /// Bu newc succes
+  ///
+  /// In en, this message translates to:
+  /// **'Add Card'**
+  String get add_card;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

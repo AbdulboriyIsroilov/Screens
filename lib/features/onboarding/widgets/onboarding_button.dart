@@ -7,10 +7,16 @@ import 'package:screens/core/utils/app_svg.dart';
 
 class OnboardingButton extends StatelessWidget {
   const OnboardingButton({
-    super.key, this.onPressed = _defaultOnPressed,
+    super.key,
+    this.onPressed = _defaultOnPressed,
+    required this.title,
   });
+
   final VoidCallback onPressed;
+  final String title;
+
   static void _defaultOnPressed() {}
+
   @override
   Widget build(BuildContext context) {
     return TextButton(

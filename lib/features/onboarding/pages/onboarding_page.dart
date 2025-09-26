@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/features/onboarding/widgets/onboarding_button.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/router/routers.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -11,6 +12,7 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: 59.h),
@@ -29,7 +31,7 @@ class OnboardingPage extends StatelessWidget {
                 width: 324.w,
                 height: 204.h,
                 child: Text(
-                  "Define yourself in your unique way.",
+                  local.onboarding,
                   style: AppStyles.w600s64,
                 ),
               ),
@@ -52,6 +54,7 @@ class OnboardingPage extends StatelessWidget {
           onPressed: () {
             context.go(Routers.signUp);
           },
+          title: 'Get Started',
         ),
       ),
     );

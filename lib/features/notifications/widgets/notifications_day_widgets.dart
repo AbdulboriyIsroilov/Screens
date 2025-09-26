@@ -26,7 +26,6 @@ class NotificationsDayWidgets extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 15.h,
             children: [
-              Divider(color: AppColors.grey),
               Text(
                 title,
                 style: AppStyles.w600s16,

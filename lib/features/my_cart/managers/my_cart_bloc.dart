@@ -11,7 +11,7 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
        super(MyCartState.initial()) {
     on<CartEvent>(_fetchMyCart);
     on<CartDeleteEvent>(_fetchCartDelete);
-    on<CartAddEvent>(_fetchCartAdd,transformer: (events,mapper)=>events.throttleTime(Duration(seconds: 5)).switchMap(mapper));
+    on<CartAddEvent>(_fetchCartAdd,transformer: (events,mapper)=>events.throttleTime(Duration(seconds: 2)).switchMap(mapper));
 
     add(CartEvent());
   }
