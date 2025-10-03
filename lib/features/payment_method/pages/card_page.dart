@@ -26,7 +26,7 @@ class CardPage extends StatelessWidget {
         title: local.payment_method,
         activ: 3,
         onPressed: () {
-          context.pop();
+          context.go(Routers.cart);
         },
       ),
       body: BlocBuilder<CardBloc, CardState>(

@@ -79,7 +79,16 @@
   "expiry_date": "Срок действия",
   "security_code": "Код безопасности",
   "enter_your_card_number": "Введите номер вашей карты",
-  "add_card": "Добавить карту"
+  "add_card": "Добавить карту",
+  "are_you_sure_you_want_logout": "Вы уверены, что хотите выйти?",
+  "yes_logout": "Да, выйти",
+  "no_cancel": "Нет, отмена",
+  "date_of_birth": "Дата рождения",
+  "select_date": "Выберите дату",
+  "gender": "Пол",
+  "select_gender": "Выберите пол",
+  "phone_number": "Номер телефона",
+  "submit": "Отправить"
 
 
 }

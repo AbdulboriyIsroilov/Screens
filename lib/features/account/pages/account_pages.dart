@@ -7,6 +7,7 @@ import 'package:screens/core/router/routers.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
+import 'package:screens/features/account/widgets/show_dialog_logout.dart';
 import 'package:screens/features/account/widgets/account_row.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
 
@@ -41,7 +42,13 @@ class AccountPages extends StatelessWidget {
             child: Column(
               spacing: 15.h,
               children: [
-                AccountRow(svg: AppSvgs.details, title: local.details),
+                AccountRow(
+                  svg: AppSvgs.details,
+                  title: local.my_details,
+                  onPressed: () {
+                    context.push(Routers.myDetail);
+                  },
+                ),
                 AccountRow(svg: AppSvgs.home, title: local.address_book),
                 AccountRow(svg: AppSvgs.card, title: local.payment_methods),
                 AccountRow(
@@ -63,7 +70,9 @@ class AccountPages extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20.r),
+                        ),
                       ),
                       builder: (context) {
                         return StatefulBuilder(
@@ -71,7 +80,12 @@ class AccountPages extends StatelessWidget {
                             return Container(
                               width: 390.w,
                               height: 350.h,
-                              padding: EdgeInsets.fromLTRB(24.5.w, 30.h, 24.5.w, 31.h),
+                              padding: EdgeInsets.fromLTRB(
+                                24.5.w,
+                                30.h,
+                                24.5.w,
+                                31.h,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 spacing: 15.h,
@@ -102,7 +116,10 @@ class AccountPages extends StatelessWidget {
                                         spacing: 10.w,
                                         children: [
                                           SvgPicture.asset(AppSvgs.uz),
-                                          Text("O`zbekcha", style: AppStyles.w600s16),
+                                          Text(
+                                            "O`zbekcha",
+                                            style: AppStyles.w600s16,
+                                          ),
                                         ],
                                       ),
                                       Radio<String>(
@@ -125,7 +142,10 @@ class AccountPages extends StatelessWidget {
                                         spacing: 10.w,
                                         children: [
                                           SvgPicture.asset(AppSvgs.en),
-                                          Text("English", style: AppStyles.w600s16),
+                                          Text(
+                                            "English",
+                                            style: AppStyles.w600s16,
+                                          ),
                                         ],
                                       ),
                                       Radio<String>(
@@ -148,7 +168,10 @@ class AccountPages extends StatelessWidget {
                                         spacing: 10.w,
                                         children: [
                                           SvgPicture.asset(AppSvgs.ru),
-                                          Text("Русский", style: AppStyles.w600s16),
+                                          Text(
+                                            "Русский",
+                                            style: AppStyles.w600s16,
+                                          ),
                                         ],
                                       ),
                                       Radio<String>(
@@ -199,13 +222,22 @@ class AccountPages extends StatelessWidget {
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () {
-                context.go(Routers.login);
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) {
+                    return ShowDialogLogout();
+                  },
+                );
               },
               child: Row(
                 spacing: 19.w,
                 children: [
                   SvgPicture.asset(AppSvgs.logout, width: 19.w, height: 19.h),
-                  Text(local.logout, style: AppStyles.w400s16.copyWith(color: Colors.red)),
+                  Text(
+                    local.logout,
+                    style: AppStyles.w400s16.copyWith(color: Colors.red),
+                  ),
                 ],
               ),
             ),

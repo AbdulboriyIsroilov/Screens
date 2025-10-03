@@ -252,4 +252,31 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get add_card => 'Add Card';
+
+  @override
+  String get are_you_sure_you_want_logout => 'Are you sure you want to logout?';
+
+  @override
+  String get yes_logout => 'Yes, Logout';
+
+  @override
+  String get no_cancel => 'No, Cancel';
+
+  @override
+  String get date_of_birth => 'Date of Birth';
+
+  @override
+  String get select_date => 'Select Date';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get select_gender => 'Select Gender';
+
+  @override
+  String get phone_number => 'Phone Number';
+
+  @override
+  String get submit => 'Submit';
 }

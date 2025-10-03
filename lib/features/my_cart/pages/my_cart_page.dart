@@ -25,7 +25,7 @@ class MyCartPage extends StatelessWidget {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      extendBody: true,
+      // extendBody: true,
       appBar: AppBarCommon(title: local.my_cart, activ: 3),
       body: BlocBuilder<MyCartBloc, MyCartState>(
         builder: (context, state) => state.loading
@@ -37,7 +37,7 @@ class MyCartPage extends StatelessWidget {
                 svg: AppSvgs.cartDuotone,
               )
             : Padding(
-              padding: EdgeInsets.fromLTRB(24.w, 15.h, 24.w, 100.h),
+              padding: EdgeInsets.fromLTRB(24.w, 15.h, 24.w, 20.h),
               child: Column(
                 spacing: 16.h,
                 children: [
@@ -90,7 +90,7 @@ class MyCartPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(color: AppColors.greyDark),
+                  const Divider(color: AppColors.greyDark),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

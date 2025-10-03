@@ -23,7 +23,7 @@ final repositoryProvider = [
   RepositoryProvider(create: (context) => AuthInterceptor(secureStorage: context.read())),
   RepositoryProvider(
     create: (context) =>
-    Dio(BaseOptions(baseUrl: "http://192.168.10.16:8888/api/v1", validateStatus: (status) => true))
+    Dio(BaseOptions(baseUrl: "http://192.168.10.15:8888/api/v1", validateStatus: (status) => true))
       ..interceptors.add(context.read<AuthInterceptor>()),
   ),
   RepositoryProvider(create: (context) => ApiClient(interceptor: context.read())),

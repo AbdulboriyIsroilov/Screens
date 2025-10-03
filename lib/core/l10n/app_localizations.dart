@@ -579,6 +579,60 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Add Card'**
   String get add_card;
+
+  /// Bu logout dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get are_you_sure_you_want_logout;
+
+  /// Bu logout dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, Logout'**
+  String get yes_logout;
+
+  /// Bu logout dialog
+  ///
+  /// In en, this message translates to:
+  /// **'No, Cancel'**
+  String get no_cancel;
+
+  /// Bu my detail data
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Birth'**
+  String get date_of_birth;
+
+  /// Bu my detail data hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get select_date;
+
+  /// Bu my detail Gender
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// Bu my detail Gender hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Select Gender'**
+  String get select_gender;
+
+  /// Bu my detail phone number
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phone_number;
+
+  /// Bu my detail submit
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

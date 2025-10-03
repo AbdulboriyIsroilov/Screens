@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routers.dart';
+import 'package:screens/features/account/managers/my_bloc.dart';
 import 'package:screens/features/account/pages/account_pages.dart';
+import 'package:screens/features/account/pages/my_details_page.dart';
 import 'package:screens/features/forgot_password/pages/enter_digit_code.dart';
 import 'package:screens/features/forgot_password/pages/forgot_password_page.dart';
 import 'package:screens/features/forgot_password/pages/reset_password_page.dart';
@@ -131,6 +133,13 @@ final router = GoRouter(
     GoRoute(
       path: Routers.helpCenter,
       builder: (context, state) => HelpCenterPage(),
+    ),
+    GoRoute(
+      path: Routers.myDetail,
+      builder: (context, state) => BlocProvider(
+        create: (context)=> MyBloc(myRepo: context.read()),
+        child: MyDetailsPage(),
+      ),
     ),
     GoRoute(
       path: Routers.productDetail,

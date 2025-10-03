@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:screens/core/formatter.dart';
 import 'package:screens/core/router/routers.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/data/models/card_models/add_catd_model.dart';
@@ -76,12 +77,13 @@ class _NewCardPageState extends State<NewCardPage> {
                 controller: numberController,
                 title: local.card_number,
                 hint: local.enter_your_card_number,
+                formatter: [cardNumberFormatter],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     _updateState(() => emailValid = false);
                     return "Card number should not be empty";
                   }
-                  if (value.length != 16) {
+                  if (value.length != 19) {
                     _updateState(() => emailValid = false);
                     return "Card number should be 16 digits.";
                   }
@@ -98,6 +100,7 @@ class _NewCardPageState extends State<NewCardPage> {
                     title: local.expiry_date,
                     hint: "MM/YY",
                     maxwidth: 165,
+                    formatter: [expiryDateFormatter],
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => expiryValid = false);

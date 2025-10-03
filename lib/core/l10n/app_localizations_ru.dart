@@ -250,4 +250,31 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get add_card => 'Добавить карту';
+
+  @override
+  String get are_you_sure_you_want_logout => 'Вы уверены, что хотите выйти?';
+
+  @override
+  String get yes_logout => 'Да, выйти';
+
+  @override
+  String get no_cancel => 'Нет, отмена';
+
+  @override
+  String get date_of_birth => 'Дата рождения';
+
+  @override
+  String get select_date => 'Выберите дату';
+
+  @override
+  String get gender => 'Пол';
+
+  @override
+  String get select_gender => 'Выберите пол';
+
+  @override
+  String get phone_number => 'Номер телефона';
+
+  @override
+  String get submit => 'Отправить';
 }

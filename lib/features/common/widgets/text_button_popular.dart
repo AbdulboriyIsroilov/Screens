@@ -14,6 +14,7 @@ class TextButtonPopular extends StatelessWidget {
     required this.title,
     this.color = AppColors.black,
     this.style = AppStyles.w500s16w,
+    this.border = true,
   });
 
   final VoidCallback? onPressed;
@@ -21,6 +22,7 @@ class TextButtonPopular extends StatelessWidget {
   final String title;
   final Color color;
   final TextStyle style;
+  final bool border;
 
   static void _defaultOnPressed() {}
 
@@ -31,7 +33,7 @@ class TextButtonPopular extends StatelessWidget {
         backgroundColor: color,
         disabledBackgroundColor: AppColors.grey,
         fixedSize: Size(width.w, height.h),
-        side: BorderSide(color: AppColors.black, width: 2),
+        side: BorderSide(color: AppColors.greyDark, width: border ? 2 : 0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),

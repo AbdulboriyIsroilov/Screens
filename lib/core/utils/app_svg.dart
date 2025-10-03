@@ -59,9 +59,11 @@ class AppSvgs {
   static const userDuotone = "assets/icons/User-duotone.svg";
   static const walletDuotone = "assets/icons/Wallet-duotone.svg";
   static const warningCircle = "assets/icons/WarningCircle.svg";
+  static const warning = "assets/icons/Warning.svg";
   static const web = "assets/icons/Web.svg";
   static const whatsapp = "assets/icons/Whatsapp.svg";
   static const language = "assets/icons/language.svg";
+  static const calendar = "assets/icons/Calendar.svg";
   static const uz = "assets/icons/flag-uz.svg";
   static const en = "assets/icons/flag-en.svg";
   static const ru = "assets/icons/flag-ru.svg";

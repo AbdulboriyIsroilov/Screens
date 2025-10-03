@@ -402,6 +402,51 @@
     "add_card": "Add Card",
     "@add_card":{
         "description":"Bu newc succes"
+    },
+
+    "are_you_sure_you_want_logout": "Are you sure you want to logout?",
+    "@are_you_sure_you_want_logout":{
+        "description":"Bu logout dialog"
+    },
+
+    "yes_logout": "Yes, Logout",
+    "@yes_logout":{
+        "description":"Bu logout dialog"
+    },
+
+    "no_cancel": "No, Cancel",
+    "@no_cancel":{
+        "description":"Bu logout dialog"
+    },
+
+    "date_of_birth": "Date of Birth",
+    "@date_of_birth":{
+        "description":"Bu my detail data"
+    },
+
+    "select_date": "Select Date",
+    "@select_date":{
+        "description":"Bu my detail data hitn"
+    },
+
+    "gender": "Gender",
+    "@gender":{
+        "description":"Bu my detail Gender"
+    },
+
+    "select_gender": "Select Gender",
+    "@select_gender":{
+        "description":"Bu my detail Gender hitn"
+    },
+
+    "phone_number": "Phone Number",
+    "@phone_number":{
+        "description":"Bu my detail phone number"
+    },
+
+    "submit": "Submit",
+    "@submit":{
+        "description":"Bu my detail submit"
     }
 
 

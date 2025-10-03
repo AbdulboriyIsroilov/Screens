@@ -251,4 +251,31 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get add_card => 'Karta qo‘shish';
+
+  @override
+  String get are_you_sure_you_want_logout => 'Chiqishni xohlaysizmi?';
+
+  @override
+  String get yes_logout => 'Ha, chiqish';
+
+  @override
+  String get no_cancel => 'Yo‘q, bekor qilish';
+
+  @override
+  String get date_of_birth => 'Tug‘ilgan sana';
+
+  @override
+  String get select_date => 'Sanani tanlang';
+
+  @override
+  String get gender => 'Jins';
+
+  @override
+  String get select_gender => 'Jinsni tanlang';
+
+  @override
+  String get phone_number => 'Telefon raqami';
+
+  @override
+  String get submit => 'Yuborish';
 }

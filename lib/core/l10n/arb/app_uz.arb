@@ -79,11 +79,16 @@
   "expiry_date": "Amal qilish muddati",
   "security_code": "Xavfsizlik kodi",
   "enter_your_card_number": "Karta raqamingizni kiriting",
-  "add_card": "Karta qo‘shish"
-
-
-
-
+  "add_card": "Karta qo‘shish",
+  "are_you_sure_you_want_logout": "Chiqishni xohlaysizmi?",
+  "yes_logout": "Ha, chiqish",
+  "no_cancel": "Yo‘q, bekor qilish",
+  "date_of_birth": "Tug‘ilgan sana",
+  "select_date": "Sanani tanlang",
+  "gender": "Jins",
+  "select_gender": "Jinsni tanlang",
+  "phone_number": "Telefon raqami",
+  "submit": "Yuborish"
 
 
 }

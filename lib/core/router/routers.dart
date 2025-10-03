@@ -21,6 +21,7 @@ class Routers {
   static const notifications = "/notifications";
   static const notificationSettings = "/notification-settings";
   static const helpCenter = "/help-center";
+  static const myDetail = "/me-detail";
   static const productDetail = "/product-detail/:id";
   static String productDetailsById({required int id}){
     return '/product-detail/$id';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,16 +14,18 @@ class TextFieldNotPasword extends StatelessWidget {
     required this.title,
     required this.hint,
     this.maxLine = 1,
-    required this.validator,
+    this.validator,
     this.succes = false,
     this.maxwidth = 341,
+    this.formatter = const [],
   });
 
   final TextEditingController controller;
   final String title, hint;
   final int maxLine, maxwidth;
-  final String? Function(String?) validator;
+  final String? Function(String?)? validator;
   final bool succes;
+  final List<TextInputFormatter> formatter;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class TextFieldNotPasword extends StatelessWidget {
         ),
         TextFormField(
           validator: validator,
+          inputFormatters: formatter,
           autovalidateMode: AutovalidateMode.always,
           controller: controller,
           style: AppStyles.w500s16,
