@@ -11,13 +11,16 @@ class SearchTextField extends StatelessWidget {
   const SearchTextField({
     super.key,
     required this.controller,
+    this.maxWidth = 281,
+    required this.search,
   });
 
   final TextEditingController controller;
+  final double maxWidth;
+  final String search;
 
   @override
   Widget build(BuildContext context) {
-    MyLocalizations local = MyLocalizations.of(context)!;
     return TextField(
       controller: controller,
       style: AppStyles.w500s16,
@@ -25,8 +28,8 @@ class SearchTextField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         constraints: BoxConstraints(
-          minWidth: 281.w,
-          maxWidth: 281.w,
+          minWidth: 280.w,
+          maxWidth: maxWidth.w,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
@@ -36,7 +39,7 @@ class SearchTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
           borderSide: BorderSide(color: AppColors.grey),
         ),
-        hintText: local.search_for_clothes,
+        hintText: search,
         hintStyle: AppStyles.w400s16.copyWith(
           color: AppColors.black.withValues(alpha: 0.5),
         ),

@@ -8,6 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/utils/themes.dart';
+import 'package:screens/data/repositories/address_repositories.dart';
 import 'package:screens/data/repositories/cart_repositories.dart';
 import 'package:screens/data/repositories/reviews_repositories.dart';
 import 'package:screens/features/common/managers/like_cubit.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => ReviewsRepositories(client: context.read())),
           RepositoryProvider(create: (context) => CartRepositories(client: context.read())),
           RepositoryProvider(create: (context) => CardRepositories(client: context.read())),
+          RepositoryProvider(create: (context) => AddressRepositories(client: context.read())),
           BlocProvider(create: (context) => LikeCubit(userRepo: context.read())),
           BlocProvider(create: (context) => MyCartBloc(cartRepo: context.read())),
         ],

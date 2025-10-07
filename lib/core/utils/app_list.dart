@@ -68,4 +68,27 @@ class AppList {
     "Dutch",
   ];
   static const List<String> contacts = ["Website", "Facebook", "Whatsapp", "Instagram"];
+  static const List<Map<String, String>> faqList = [
+    {
+      'savol': 'How do I make a purchase?',
+      'javob':
+      'When you find a product you want to purchase, tap on it to view details and add to cart. Follow the on-screen instructions to complete your purchase.',
+    },
+    {
+      'savol': 'What payment methods are accepted?',
+      'javob': 'We accept all major credit/debit cards, PayPal, and other secure payment options.',
+    },
+    {
+      'savol': 'How do I track my orders?',
+      'javob': 'You can track orders from the “My Orders” section in your account.',
+    },
+    {
+      'savol': 'Can I cancel or return an order?',
+      'javob': 'Yes, cancellations and returns are possible within the time period stated in our policy.',
+    },
+    {
+      'savol': 'How can I contact customer support?',
+      'javob': 'You can reach support via chat or email through our Help Center.',
+    },
+  ];
 }

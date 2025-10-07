@@ -155,7 +155,7 @@ class MyLocalizationsRu extends MyLocalizations {
   String get language => 'Язык';
 
   @override
-  String get f_a_qs => 'Вопросы и ответы';
+  String get f_a_qs => 'ЧЗВ';
 
   @override
   String get help_center => 'Центр помощи';
@@ -277,4 +277,121 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get submit => 'Отправить';
+
+  @override
+  String get forgot_password => 'Забыли пароль';
+
+  @override
+  String get forgot_password_title =>
+      'Введите вашу почту для процесса подтверждения. Мы отправим 4-значный код на вашу почту.';
+
+  @override
+  String get send_code => 'Отправить код';
+
+  @override
+  String get enter_digit_code => 'Введите 4-значный код';
+
+  @override
+  String get edc_title => 'Введите 4-значный код, который пришел на вашу почту';
+
+  @override
+  String get email_not_received => 'Письмо не пришло?';
+
+  @override
+  String get resend_code => 'Отправить повторно';
+
+  @override
+  String get continue_button => 'Продолжить';
+
+  @override
+  String get reset_password => 'Сброс пароля';
+
+  @override
+  String get reset_password_title =>
+      'Установите новый пароль для своего аккаунта, чтобы войти и получить доступ ко всем функциям.';
+
+  @override
+  String get confirm_password => 'Подтвердите пароль';
+
+  @override
+  String get new_password => 'Новый пароль';
+
+  @override
+  String get password_changed => 'Пароль изменен!';
+
+  @override
+  String get fp_diolog_title =>
+      'Теперь вы можете использовать новый пароль для входа в свой аккаунт.';
+
+  @override
+  String get forgot_email => 'Забыли почту';
+
+  @override
+  String get checkout => 'Оформление заказа';
+
+  @override
+  String get delivery_address => 'Адрес доставки';
+
+  @override
+  String get change => 'Изменить';
+
+  @override
+  String get order_summary => 'Сводка заказа';
+
+  @override
+  String get enter_promo_code => 'Введите промокод';
+
+  @override
+  String get add => 'Добавить';
+
+  @override
+  String get place_order => 'Разместить заказ';
+
+  @override
+  String get search_for_questions => 'Поиск по вопросам...';
+
+  @override
+  String get address => 'Адрес';
+
+  @override
+  String get saved_address => 'Сохраненные адреса';
+
+  @override
+  String get add_new_address => 'Добавить новый адрес';
+
+  @override
+  String get new_address => 'Новый адрес';
+
+  @override
+  String get address_nickname => 'Название адреса';
+
+  @override
+  String get give_name_the_address => 'Дайте название адресу';
+
+  @override
+  String get full_address => 'Полный адрес';
+
+  @override
+  String get enter_your_full_address => 'Введите ваш полный адрес...';
+
+  @override
+  String get make_this_default_address => 'Сделать этот адрес основным';
+
+  @override
+  String get congratulations => 'Поздравляем!';
+
+  @override
+  String get your_new_address_been_added => 'Ваш новый адрес добавлен.';
+
+  @override
+  String get your_new_card_been_added => 'Ваша новая карта добавлена.';
+
+  @override
+  String get your_order_been_placed => 'Ваш заказ оформлен.';
+
+  @override
+  String get thanks => 'Спасибо';
+
+  @override
+  String get track_your_order => 'Отслеживать заказ';
 }

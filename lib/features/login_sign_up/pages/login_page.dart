@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: EdgeInsets.fromLTRB(24.w, 59.h, 25.w, 31.h),
         child: Column(
@@ -74,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: loginController,
                     title: local.email,
                     hint: local.enter_your_email_address,
+                    keyboard: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => emailValid = false);

@@ -33,32 +33,34 @@ class ShowDiologModul extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.r),
         ),
         padding: EdgeInsets.all(24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              width: 78.5.w,
-              height: 78.5.h,
-              child: SvgPicture.asset(AppSvgs.correct),
-            ),
-            Text(
-              title1,
-              style: AppStyles.w600s20,
-            ),
-            Text(
-              title2,
-              style: AppStyles.w400s14,
-              textAlign: TextAlign.center,
-            ),
-            TextButtonPopular(
-              title: titleButton,
-              width: 293,
-              height: 54,
-              style: AppStyles.w500s16w,
-              onPressed: onPressed
-            ),
-          ],
+        child: Material(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 78.5.w,
+                height: 78.5.h,
+                child: SvgPicture.asset(AppSvgs.correct),
+              ),
+              Text(
+                title1,
+                style: AppStyles.w600s20,
+              ),
+              Text(
+                title2,
+                style: AppStyles.w400s16.copyWith(color: AppColors.textGrey),
+                textAlign: TextAlign.center,
+              ),
+              TextButtonPopular(
+                title: titleButton,
+                width: 293,
+                height: 54,
+                style: AppStyles.w500s16w,
+                onPressed: onPressed
+              ),
+            ],
+          ),
         ),
       ),
     );

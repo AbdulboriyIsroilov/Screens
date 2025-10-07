@@ -52,12 +52,12 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(24.w, 59.h, 25.w, 31.h),
+        padding: EdgeInsets.fromLTRB(24.w, 59.h, 25.w, 37.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 24.h,
+          spacing: 16.h,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: emailController,
                     title: local.email,
                     hint: local.enter_your_email_address,
+                    keyboard: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => emailValid = false);
@@ -185,17 +186,22 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ],
             ),
-            IconTextButtonPopular(
-              icon: AppSvgs.logosGoogleIcon,
-              color: Colors.transparent,
-              title: local.google,
-              fColor: AppColors.black,
-            ),
-            IconTextButtonPopular(
-              icon: AppSvgs.logosFacebook,
-              color: AppColors.blue,
-              fColor: AppColors.white,
-              title: local.facebook,
+            Column(
+              spacing: 16,
+              children: [
+                IconTextButtonPopular(
+                  icon: AppSvgs.logosGoogleIcon,
+                  color: Colors.transparent,
+                  title: local.google,
+                  fColor: AppColors.black,
+                ),
+                IconTextButtonPopular(
+                  icon: AppSvgs.logosFacebook,
+                  color: AppColors.blue,
+                  fColor: AppColors.white,
+                  title: local.facebook,
+                ),
+              ],
             ),
             Spacer(),
             Center(

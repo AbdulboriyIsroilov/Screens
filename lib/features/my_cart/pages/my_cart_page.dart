@@ -24,9 +24,9 @@ class MyCartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      // extendBody: true,
-      appBar: AppBarCommon(title: local.my_cart, activ: 3),
+      appBar: AppBarCommon(title: local.my_cart, activ: 3,onPressed: (){
+        context.go(Routers.home);
+        },),
       body: BlocBuilder<MyCartBloc, MyCartState>(
         builder: (context, state) => state.loading
             ? LoadingWidget()
@@ -63,7 +63,7 @@ class MyCartPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(local.sub_total, style: AppStyles.w400s16),
+                      Text(local.sub_total, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                       Text(
                         "\$ ${state.mycart.subTotal}",
                         style: AppStyles.w500s16,
@@ -73,7 +73,7 @@ class MyCartPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(local.v_a_t, style: AppStyles.w400s16),
+                      Text(local.v_a_t, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                       Text(
                         "\$ ${state.mycart.vat}",
                         style: AppStyles.w500s16,
@@ -83,7 +83,7 @@ class MyCartPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(local.shipping_fee, style: AppStyles.w400s16),
+                      Text(local.shipping_fee, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                       Text(
                         "\$ ${state.mycart.shippingFee}",
                         style: AppStyles.w500s16,
@@ -105,7 +105,7 @@ class MyCartPage extends StatelessWidget {
                   OnboardingButton(
                     title: local.go_to_checkout,
                     onPressed: () {
-                      context.push(Routers.card);
+                      context.go(Routers.checkout);
                     },
                   ),
                 ],

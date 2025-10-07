@@ -10,6 +10,8 @@ import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
 import 'package:screens/features/forgot_password/managers/forgot_password_cubit.dart';
 
+import '../../../core/l10n/app_localizations.dart';
+
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -31,6 +33,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBarLeading(
@@ -47,11 +50,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Forgot password",
+                  local.forgot_password,
                   style: AppStyles.w500s32,
                 ),
                 Text(
-                  "Enter your email for the verification process. We will send 4 digits code to your email.",
+                  local.forgot_password_title,
                   style: AppStyles.w400s16,
                   maxLines: 2,
                 ),
@@ -61,8 +64,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               key: formKey,
               child: TextFieldNotPasword(
                 controller: emailController,
-                title: "Email",
-                hint: "Forgot email",
+                title: local.email,
+                hint: local.forgot_email,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     _updateState(() => emailValid = false);
@@ -76,7 +79,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
             Spacer(),
             TextButtonPopular(
-              title: "Send Code",
+              title: local.send_code,
               onPressed: emailValid
                   ? () async {
                 await context.read<ForgotPasswordCubit>().fetchForgotEmail(

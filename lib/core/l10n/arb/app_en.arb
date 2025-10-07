@@ -96,7 +96,7 @@
 
     "reset_your_password": "Reset your password",
     "@reset_your_password":{
-        "description":"Bu logindan forgetga otish"
+        "description":"Bu logindan forgotga otish"
     },
 
     "login": "Login",
@@ -447,6 +447,201 @@
     "submit": "Submit",
     "@submit":{
         "description":"Bu my detail submit"
+    },
+
+    "forgot_password": "Forgot password",
+    "@forgot_password":{
+        "description":"Bu forgot password title1"
+    },
+
+    "forgot_password_title": "Enter your email for the verification process. We will send 4 digits code to your email.",
+    "@forgot_password_title":{
+        "description":"Bu forgot password title2"
+    },
+
+    "send_code": "Send Code",
+    "@send_code":{
+        "description":"Bu forgot password succes"
+    },
+
+    "enter_digit_code": "Enter 4 Digit Code",
+    "@enter_digit_code":{
+        "description":"Bu edc title1"
+    },
+
+    "edc_title": "Enter 4 digit code that your receive on your email ",
+    "@edc_title":{
+        "description":"Bu edc title2"
+    },
+
+    "email_not_received": "Email not received?",
+    "@email_not_received":{
+        "description":"Bu edc email not code"
+    },
+
+    "resend_code": "Resend code",
+    "@resend_code":{
+        "description":"Bu edc email not code"
+    },
+
+    "continue_button": "Continue",
+    "@continue_button":{
+        "description":"Bu edc succes"
+    },
+
+    "reset_password": "Reset Password",
+    "@reset_password":{
+        "description":"Bu reset password title1"
+    },
+
+    "reset_password_title": "Set the new password for your account so you can login and access all the features.",
+    "@reset_password_title":{
+        "description":"Bu reset password title2"
+    },
+
+    "confirm_password": "Confirm Password",
+    "@confirm_password":{
+        "description":"Bu reset password "
+    },
+
+    "new_password": "New Password",
+    "@new_password":{
+        "description":"Bu reset password "
+    },
+
+    "password_changed": "Password Changed!",
+    "@password_changed":{
+        "description":"Bu reset password diolog title1"
+    },
+
+    "fp_diolog_title": "Your can now use your new password to login to your account.",
+    "@fp_diolog_title":{
+        "description":"Bu reset password diolog title2"
+    },
+
+    "forgot_email": "Forgot Email",
+    "@forgot_email":{
+        "description":"Bu forgot passvord hitn"
+    },
+
+    "checkout": "Checkout",
+    "@checkout":{
+        "description":"Bu Checkout appbar title"
+    },
+
+    "delivery_address": "Delivery Address",
+    "@delivery_address":{
+        "description":"Bu Checkout title1"
+    },
+
+    "change": "Change",
+    "@change":{
+        "description":"Bu Checkout address go"
+    },
+
+    "payment_method": "Payment Method",
+    "@payment_method":{
+        "description":"Bu Checkout title2"
+    },
+
+    "order_summary": "Order Summary",
+    "@order_summary":{
+        "description":"Bu Checkout title3"
+    },
+
+    "enter_promo_code": "Enter promo code",
+    "@enter_promo_code":{
+        "description":"Bu Checkout promo code"
+    },
+
+    "add": "Add",
+    "@add":{
+        "description":"Bu Checkout promo code add"
+    },
+
+    "place_order": "Place Order",
+    "@place_order":{
+        "description":"Bu Checkout succes"
+    },
+
+    "search_for_questions": "Search for questions...",
+    "@search_for_questions":{
+        "description":"Bu FAQs search"
+    },
+
+    "address": "Address",
+    "@address":{
+        "description":"Bu address appbar title"
+    },
+
+    "saved_address": "Saved Address",
+    "@saved_address":{
+        "description":"Bu address title1"
+    },
+
+    "add_new_address": "Add New Address",
+    "@add_new_address":{
+        "description":"Bu address add"
+    },
+
+    "new_address": "New Address",
+    "@new_address":{
+        "description":"Bu new addres title"
+    },
+
+    "address_nickname": "Address Nickname",
+    "@address_nickname":{
+        "description":"Bu new addres nikname"
+    },
+
+    "give_name_the_address": "Give a name to the address",
+    "@give_name_the_address":{
+        "description":"Bu new addres name hitn"
+    },
+
+    "full_address": "Full Address",
+    "@full_address":{
+        "description":"Bu new addres full"
+    },
+
+    "enter_your_full_address": "Enter your full address...",
+    "@enter_your_full_address":{
+        "description":"Bu new addres full hitn"
+    },
+
+    "make_this_default_address": "Make this as a default address",
+    "@make_this_default_address":{
+        "description":"Bu new addres default title"
+    },
+
+    "congratulations": "Congratulations!",
+        "@congratulations":{
+            "description":"Bu diolog title"
+    },
+
+    "your_new_address_been_added": "Your new address has been added.",
+    "@your_new_address_been_added":{
+        "description":"Bu new addres diolog title"
+    },
+
+    "your_new_card_been_added": "Your new card has been added.",
+    "@your_new_card_been_added":{
+        "description":"Bu new card diolog title"
+    },
+
+    "your_order_been_placed": "Your order has been placed.",
+    "@your_order_been_placed":{
+        "description":"Bu checkout diolog title"
+    },
+
+    "thanks": "Thanks",
+        "@thanks":{
+            "description":"Bu diolog succes Thanks"
+    },
+
+    "track_your_order": "Track Your Order",
+        "@track_your_order":{
+        "description":"Bu new addres"
     }
 
 

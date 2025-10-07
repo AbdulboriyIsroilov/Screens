@@ -30,13 +30,15 @@ class AccountPages extends StatelessWidget {
           SizedBox(height: 15.h),
           Padding(
             padding: EdgeInsets.only(left: 24.w, right: 24.w),
-            child: AccountRow(svg: AppSvgs.box, title: local.my_orders),
+            child: AccountRow(
+              svg: AppSvgs.box,
+              title: local.my_orders,
+              onPressed: () {
+                context.push(Routers.myOrders);
+              },
+            ),
           ),
-          Container(
-            width: double.infinity,
-            height: 8.h,
-            color: AppColors.grey,
-          ),
+          Container(width: double.infinity, height: 8.h, color: AppColors.grey),
           Padding(
             padding: EdgeInsets.only(left: 24.w, right: 24.w),
             child: Column(
@@ -49,8 +51,20 @@ class AccountPages extends StatelessWidget {
                     context.push(Routers.myDetail);
                   },
                 ),
-                AccountRow(svg: AppSvgs.home, title: local.address_book),
-                AccountRow(svg: AppSvgs.card, title: local.payment_methods),
+                AccountRow(
+                  svg: AppSvgs.home,
+                  title: local.address_book,
+                  onPressed: () {
+                    context.push(Routers.address);
+                  },
+                ),
+                AccountRow(
+                  svg: AppSvgs.card,
+                  title: local.payment_methods,
+                  onPressed: () {
+                    context.push(Routers.card);
+                  },
+                ),
                 AccountRow(
                   svg: AppSvgs.bell,
                   title: local.notifications,
@@ -199,12 +213,14 @@ class AccountPages extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 8.h,
-            color: AppColors.grey,
+          Container(width: double.infinity, height: 8.h, color: AppColors.grey),
+          AccountRow(
+            svg: AppSvgs.question,
+            title: local.f_a_qs,
+            onPressed: () {
+              context.push(Routers.faq);
+            },
           ),
-          AccountRow(svg: AppSvgs.question, title: local.f_a_qs),
           AccountRow(
             svg: AppSvgs.headphones,
             title: local.help_center,
@@ -212,11 +228,7 @@ class AccountPages extends StatelessWidget {
               context.push(Routers.helpCenter);
             },
           ),
-          Container(
-            width: double.infinity,
-            height: 8.h,
-            color: AppColors.grey,
-          ),
+          Container(width: double.infinity, height: 8.h, color: AppColors.grey),
           Padding(
             padding: EdgeInsets.only(left: 34.w, right: 24.w),
             child: GestureDetector(

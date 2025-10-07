@@ -18,10 +18,16 @@ class Routers {
   static const card = "/payment-ethod";
   static const newCard = "/new-card";
 
+  static const address = "/address";
+  static const addNewAddress = "/add-new-address";
+
   static const notifications = "/notifications";
   static const notificationSettings = "/notification-settings";
+  static const myOrders = "/my-orders";
   static const helpCenter = "/help-center";
   static const myDetail = "/me-detail";
+  static const checkout = "/checkout";
+  static const faq = "/FAQs";
   static const productDetail = "/product-detail/:id";
   static String productDetailsById({required int id}){
     return '/product-detail/$id';

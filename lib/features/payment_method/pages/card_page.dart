@@ -26,7 +26,7 @@ class CardPage extends StatelessWidget {
         title: local.payment_method,
         activ: 3,
         onPressed: () {
-          context.go(Routers.cart);
+          context.go(Routers.checkout);
         },
       ),
       body: BlocBuilder<CardBloc, CardState>(
@@ -99,13 +99,16 @@ class CardPage extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar:Container(
+      bottomNavigationBar: Container(
         width: double.infinity,
         height: 86.h,
         color: AppColors.white,
         alignment: Alignment.center,
         child: TextButtonPopular(
           title: local.apply,
+          onPressed: () {
+            context.go(Routers.checkout);
+          },
         ),
       ),
     );

@@ -17,6 +17,7 @@ class AppSvgs {
   static const cart = "assets/icons/Cart.svg";
   static const card = "assets/icons/Card.svg";
   static const cartDuotone = "assets/icons/Cart-duotone.svg";
+  static const discount = "assets/icons/discount.svg";
   static const cash = "assets/icons/Cash.svg";
   static const check = "assets/icons/Check.svg";
   static const chevron = "assets/icons/Chevron.svg";
@@ -64,6 +65,9 @@ class AppSvgs {
   static const whatsapp = "assets/icons/Whatsapp.svg";
   static const language = "assets/icons/language.svg";
   static const calendar = "assets/icons/Calendar.svg";
+  static const apple = "assets/icons/apple.svg";
+  static const locationFilled = "assets/icons/Location-filled.svg";
+  static const locationTarget = "assets/icons/location-target.svg";
   static const uz = "assets/icons/flag-uz.svg";
   static const en = "assets/icons/flag-en.svg";
   static const ru = "assets/icons/flag-ru.svg";

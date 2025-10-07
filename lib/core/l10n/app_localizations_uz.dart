@@ -156,7 +156,7 @@ class MyLocalizationsUz extends MyLocalizations {
   String get language => 'Til';
 
   @override
-  String get f_a_qs => 'Savol-javoblar';
+  String get f_a_qs => 'FAQ';
 
   @override
   String get help_center => 'Yordam markazi';
@@ -278,4 +278,122 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get submit => 'Yuborish';
+
+  @override
+  String get forgot_password => 'Parolni unutdingiz';
+
+  @override
+  String get forgot_password_title =>
+      'Tasdiqlash jarayoni uchun emailingizni kiriting. Biz sizning emailingizga 4 xonali kod yuboramiz.';
+
+  @override
+  String get send_code => 'Kod yuborish';
+
+  @override
+  String get enter_digit_code => '4 xonali kodni kiriting';
+
+  @override
+  String get edc_title => 'Emailingizga kelgan 4 xonali kodni kiriting';
+
+  @override
+  String get email_not_received => 'Email kelmadimi?';
+
+  @override
+  String get resend_code => 'Qayta yuborish';
+
+  @override
+  String get continue_button => 'Davom etish';
+
+  @override
+  String get reset_password => 'Parolni tiklash';
+
+  @override
+  String get reset_password_title =>
+      'Akkauntingiz uchun yangi parol o‘rnating va tizimga kirib barcha funksiyalardan foydalaning.';
+
+  @override
+  String get confirm_password => 'Parolni tasdiqlang';
+
+  @override
+  String get new_password => 'Yangi parol';
+
+  @override
+  String get password_changed => 'Parol o‘zgartirildi!';
+
+  @override
+  String get fp_diolog_title =>
+      'Endi akkauntingizga yangi parol bilan kirishingiz mumkin.';
+
+  @override
+  String get forgot_email => 'Emailni unutdingiz';
+
+  @override
+  String get checkout => 'Buyurtmani rasmiylashtirish';
+
+  @override
+  String get delivery_address => 'Yetkazib berish manzili';
+
+  @override
+  String get change => 'O‘zgartirish';
+
+  @override
+  String get order_summary => 'Buyurtma tafsilotlari';
+
+  @override
+  String get enter_promo_code => 'Promo kodni kiriting';
+
+  @override
+  String get add => 'Qo‘shish';
+
+  @override
+  String get place_order => 'Buyurtmani joylashtirish';
+
+  @override
+  String get search_for_questions => 'Savollar bo‘yicha qidiring...';
+
+  @override
+  String get address => 'Manzil';
+
+  @override
+  String get saved_address => 'Saqlangan manzillar';
+
+  @override
+  String get add_new_address => 'Yangi manzil qo‘shish';
+
+  @override
+  String get new_address => 'Yangi manzil';
+
+  @override
+  String get address_nickname => 'Manzil nomi';
+
+  @override
+  String get give_name_the_address => 'Manzilga nom bering';
+
+  @override
+  String get full_address => 'To‘liq manzil';
+
+  @override
+  String get enter_your_full_address => 'To‘liq manzilingizni kiriting...';
+
+  @override
+  String get make_this_default_address =>
+      'Bu manzilni asosiy sifatida belgilash';
+
+  @override
+  String get congratulations => 'Tabriklaymiz!';
+
+  @override
+  String get your_new_address_been_added => 'Yangi manzilingiz qo‘shildi.';
+
+  @override
+  String get your_new_card_been_added => 'Yangi kartangiz qo‘shildi.';
+
+  @override
+  String get your_order_been_placed => 'Buyurtmangiz joylashtirildi.';
+
+  @override
+  String get thanks => 'Rahmat';
+
+  @override
+  String get track_your_order => 'Buyurtmani kuzatish';
 }

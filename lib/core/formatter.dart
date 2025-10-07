@@ -18,3 +18,24 @@ MaskTextInputFormatter phoneNumberFormatter = MaskTextInputFormatter(
   type: MaskAutoCompletionType.lazy,
 );
 
+String maskCardNumber(String cardNumber) {
+  // Faqat raqamlarni qoldiramiz
+  final raqamlar = cardNumber.replaceAll(RegExp(r'\D'), '');
+  if (raqamlar.isEmpty) return '';
+
+  // Oxirgi 4 ta raqamni olish
+  final oxirgiTort = raqamlar.substring(raqamlar.length - 4);
+
+  // Yashirin qismini * bilan to‘ldiramiz
+  final maskLength = raqamlar.length - 4;
+  final mask = List.generate(maskLength, (index) => '*').join();
+
+  // Har 4 belgidan keyin bo‘sh joy qo‘shamiz
+  final formatlangan = (mask + oxirgiTort)
+      .replaceAllMapped(RegExp(r'.{4}'), (match) => '${match.group(0)} ')
+      .trim();
+
+  return formatlangan;
+}
+
+

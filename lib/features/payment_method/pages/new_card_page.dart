@@ -58,7 +58,7 @@ class _NewCardPageState extends State<NewCardPage> {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBarCommon(
-        title: "New Card",
+        title: local.new_card,
         activ: 3,
         onPressed: () {
           context.pop();
@@ -70,6 +70,7 @@ class _NewCardPageState extends State<NewCardPage> {
           key: formKey,
           autovalidateMode: AutovalidateMode.always,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16.h,
             children: [
               Text(local.add_debit_credit_card, style: AppStyles.w600s16),
@@ -106,7 +107,7 @@ class _NewCardPageState extends State<NewCardPage> {
                         _updateState(() => expiryValid = false);
                         return "Expiry date should not be empty";
                       }
-                      final regex = RegExp(r'^(0[1-9]|1[0-2])\/\d{2}$');
+                      final regex = RegExp(r'^(0[1-9]|1[0-2])\d{2}$');
                       if (!regex.hasMatch(value)) {
                         _updateState(() => expiryValid = false);
                         return "Expiry date must be in MM/YY format";
@@ -147,9 +148,9 @@ class _NewCardPageState extends State<NewCardPage> {
                           barrierDismissible: true,
                           builder: (context) {
                             return ShowDiologModul(
-                              title1: 'Congratulations!',
-                              title2: 'Your new card has been added.',
-                              titleButton: 'Thanks',
+                              title1: local.congratulations,
+                              title2: local.your_new_card_been_added,
+                              titleButton: local.thanks,
                               onPressed: () {
                                 context.pop();
                                 context.go(Routers.card);

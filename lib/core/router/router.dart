@@ -3,7 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routers.dart';
 import 'package:screens/features/account/managers/my_bloc.dart';
 import 'package:screens/features/account/pages/account_pages.dart';
+import 'package:screens/features/account/pages/f_a_qs_page.dart';
 import 'package:screens/features/account/pages/my_details_page.dart';
+import 'package:screens/features/address_page/managers/address_bloc.dart';
+import 'package:screens/features/address_page/pages/add_new_address_page.dart';
+import 'package:screens/features/address_page/pages/address_page.dart';
 import 'package:screens/features/forgot_password/pages/enter_digit_code.dart';
 import 'package:screens/features/forgot_password/pages/forgot_password_page.dart';
 import 'package:screens/features/forgot_password/pages/reset_password_page.dart';
@@ -12,7 +16,9 @@ import 'package:screens/features/login_sign_up/managers/login_cubit.dart';
 import 'package:screens/features/login_sign_up/managers/sign_up_cubit.dart';
 import 'package:screens/features/login_sign_up/pages/login_page.dart';
 import 'package:screens/features/login_sign_up/pages/sign_up_page.dart';
+import 'package:screens/features/my_cart/pages/checkout_page.dart';
 import 'package:screens/features/my_cart/pages/my_cart_page.dart';
+import 'package:screens/features/my_orders/pages/my_orders_page.dart';
 import 'package:screens/features/notifications/pages/notification_settings_page.dart';
 import 'package:screens/features/notifications/pages/notifications_page.dart';
 import 'package:screens/features/onboarding/pages/onboarding_page.dart';
@@ -99,26 +105,54 @@ final router = GoRouter(
       builder: (context, state) => AccountPages(),
     ),
     GoRoute(
-      path: Routers.cart,
-      builder: (context, state) => BlocProvider(
-        create: (context) => MyCartBloc(cartRepo: context.read()),
-        child: MyCartPage(),
-      ),
+      path: Routers.myOrders,
+      builder: (context, state) => MyOrdersPage(),
     ),
-
     ShellRoute(
       builder: (context, state, child) => BlocProvider(
-        create: (context) => CardBloc(cardRepo: context.read()),
+        create: (context) => MyCartBloc(cartRepo: context.read()),
         child: child,
       ),
       routes: [
         GoRoute(
-          path: Routers.card,
-          builder: (context, state) => CardPage(),
+          path: Routers.cart,
+          builder: (context, state) => MyCartPage(),
         ),
-        GoRoute(
-          path: Routers.newCard,
-          builder: (context, state) => NewCardPage(),
+        ShellRoute(
+          builder: (context, state, child) => BlocProvider(
+            create: (context) => CardBloc(cardRepo: context.read()),
+            child: child,
+          ),
+          routes: [
+            GoRoute(
+              path: Routers.card,
+              builder: (context, state) => CardPage(),
+            ),
+            GoRoute(
+              path: Routers.newCard,
+              builder: (context, state) => NewCardPage(),
+            ),
+            ShellRoute(
+              builder: (context, state, child) => BlocProvider(
+                create: (context) => AddressBloc(addressRepo: context.read()),
+                child: child,
+              ),
+              routes: [
+                GoRoute(
+                  path: Routers.address,
+                  builder: (context, state) => AddressPage(),
+                ),
+                GoRoute(
+                  path: Routers.addNewAddress,
+                  builder: (context, state) => AddNewAddressPage(),
+                ),
+                GoRoute(
+                  path: Routers.checkout,
+                  builder: (context, state) => CheckoutPage(),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),
@@ -135,9 +169,13 @@ final router = GoRouter(
       builder: (context, state) => HelpCenterPage(),
     ),
     GoRoute(
+      path: Routers.faq,
+      builder: (context, state) => FAQsPage(),
+    ),
+    GoRoute(
       path: Routers.myDetail,
       builder: (context, state) => BlocProvider(
-        create: (context)=> MyBloc(myRepo: context.read()),
+        create: (context) => MyBloc(myRepo: context.read()),
         child: MyDetailsPage(),
       ),
     ),

@@ -1,25 +1,8 @@
-// class CardModel {
-//   final int id;
-//   final String cardNumber;
-//
-//   CardModel({
-//     required this.id,
-//     required this.cardNumber,
-//   });
-//
-//   factory CardModel.fromJson(Map<String, dynamic> json) {
-//     return CardModel(
-//       id: json["id"],
-//       cardNumber: json["cardNumber"],
-//     );
-//   }
-// }
-
 class CardModel {
   final int id;
   final String cardNumber;
-  final String cardType;   // faqat front-end logika uchun
-  final bool isDefault;    // dastur ichida boshqariladi
+  final String cardType;
+  final bool isDefault;
 
   CardModel({
     required this.id,
@@ -32,7 +15,7 @@ class CardModel {
     return CardModel(
       id: json["id"],
       cardNumber: json["cardNumber"],
-      cardType: _detectType(json["cardNumber"]), // kartadan aniqlash
+      cardType: _detectType(json["cardNumber"]),
     );
   }
 

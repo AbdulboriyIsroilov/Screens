@@ -208,7 +208,7 @@ abstract class MyLocalizations {
   /// **'Forgot your password? '**
   String get forgot_your_password;
 
-  /// Bu logindan forgetga otish
+  /// Bu logindan forgotga otish
   ///
   /// In en, this message translates to:
   /// **'Reset your password'**
@@ -508,7 +508,7 @@ abstract class MyLocalizations {
   /// **'Define yourself in your unique way.'**
   String get onboarding;
 
-  /// Bu card appbar
+  /// Bu Checkout title2
   ///
   /// In en, this message translates to:
   /// **'Payment Method'**
@@ -633,6 +633,234 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Submit'**
   String get submit;
+
+  /// Bu forgot password title1
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password'**
+  String get forgot_password;
+
+  /// Bu forgot password title2
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email for the verification process. We will send 4 digits code to your email.'**
+  String get forgot_password_title;
+
+  /// Bu forgot password succes
+  ///
+  /// In en, this message translates to:
+  /// **'Send Code'**
+  String get send_code;
+
+  /// Bu edc title1
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 4 Digit Code'**
+  String get enter_digit_code;
+
+  /// Bu edc title2
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 4 digit code that your receive on your email '**
+  String get edc_title;
+
+  /// Bu edc email not code
+  ///
+  /// In en, this message translates to:
+  /// **'Email not received?'**
+  String get email_not_received;
+
+  /// Bu edc email not code
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resend_code;
+
+  /// Bu edc succes
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continue_button;
+
+  /// Bu reset password title1
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password;
+
+  /// Bu reset password title2
+  ///
+  /// In en, this message translates to:
+  /// **'Set the new password for your account so you can login and access all the features.'**
+  String get reset_password_title;
+
+  /// Bu reset password
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// Bu reset password
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// Bu reset password diolog title1
+  ///
+  /// In en, this message translates to:
+  /// **'Password Changed!'**
+  String get password_changed;
+
+  /// Bu reset password diolog title2
+  ///
+  /// In en, this message translates to:
+  /// **'Your can now use your new password to login to your account.'**
+  String get fp_diolog_title;
+
+  /// Bu forgot passvord hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Email'**
+  String get forgot_email;
+
+  /// Bu Checkout appbar title
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// Bu Checkout title1
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Address'**
+  String get delivery_address;
+
+  /// Bu Checkout address go
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// Bu Checkout title3
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get order_summary;
+
+  /// Bu Checkout promo code
+  ///
+  /// In en, this message translates to:
+  /// **'Enter promo code'**
+  String get enter_promo_code;
+
+  /// Bu Checkout promo code add
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// Bu Checkout succes
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get place_order;
+
+  /// Bu FAQs search
+  ///
+  /// In en, this message translates to:
+  /// **'Search for questions...'**
+  String get search_for_questions;
+
+  /// Bu address appbar title
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// Bu address title1
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Address'**
+  String get saved_address;
+
+  /// Bu address add
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Address'**
+  String get add_new_address;
+
+  /// Bu new addres title
+  ///
+  /// In en, this message translates to:
+  /// **'New Address'**
+  String get new_address;
+
+  /// Bu new addres nikname
+  ///
+  /// In en, this message translates to:
+  /// **'Address Nickname'**
+  String get address_nickname;
+
+  /// Bu new addres name hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Give a name to the address'**
+  String get give_name_the_address;
+
+  /// Bu new addres full
+  ///
+  /// In en, this message translates to:
+  /// **'Full Address'**
+  String get full_address;
+
+  /// Bu new addres full hitn
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your full address...'**
+  String get enter_your_full_address;
+
+  /// Bu new addres default title
+  ///
+  /// In en, this message translates to:
+  /// **'Make this as a default address'**
+  String get make_this_default_address;
+
+  /// Bu diolog title
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations!'**
+  String get congratulations;
+
+  /// Bu new addres diolog title
+  ///
+  /// In en, this message translates to:
+  /// **'Your new address has been added.'**
+  String get your_new_address_been_added;
+
+  /// Bu new card diolog title
+  ///
+  /// In en, this message translates to:
+  /// **'Your new card has been added.'**
+  String get your_new_card_been_added;
+
+  /// Bu checkout diolog title
+  ///
+  /// In en, this message translates to:
+  /// **'Your order has been placed.'**
+  String get your_order_been_placed;
+
+  /// Bu diolog succes Thanks
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks'**
+  String get thanks;
+
+  /// Bu new addres
+  ///
+  /// In en, this message translates to:
+  /// **'Track Your Order'**
+  String get track_your_order;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

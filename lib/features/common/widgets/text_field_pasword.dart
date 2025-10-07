@@ -14,12 +14,14 @@ class TextFieldPasword extends StatefulWidget {
     required this.hint,
     required this.validator,
     this.succes = false,
+    this.keyboard = TextInputType.text,
   });
 
   final TextEditingController controller;
   final String title, hint;
   final String? Function(String?) validator;
   final bool succes;
+  final TextInputType keyboard;
 
   @override
   State<TextFieldPasword> createState() => _TextFieldPaswordState();
@@ -44,7 +46,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
           obscureText: passw,
           style: AppStyles.w500s16,
           controller: widget.controller,
-          // keyboardType: TextInputType.phone,
+          keyboardType: widget.keyboard,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
             constraints: BoxConstraints(

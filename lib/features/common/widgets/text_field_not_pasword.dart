@@ -18,19 +18,22 @@ class TextFieldNotPasword extends StatelessWidget {
     this.succes = false,
     this.maxwidth = 341,
     this.formatter = const [],
+    this.keyboard = TextInputType.text,
+    this.suffixicon = false,
   });
 
   final TextEditingController controller;
   final String title, hint;
   final int maxLine, maxwidth;
   final String? Function(String?)? validator;
-  final bool succes;
+  final bool succes, suffixicon;
   final List<TextInputFormatter> formatter;
+  final TextInputType keyboard;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 10,
+      spacing: 10.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -41,6 +44,7 @@ class TextFieldNotPasword extends StatelessWidget {
           validator: validator,
           inputFormatters: formatter,
           autovalidateMode: AutovalidateMode.always,
+          keyboardType: keyboard,
           controller: controller,
           style: AppStyles.w500s16,
           maxLines: maxLine,
@@ -69,10 +73,12 @@ class TextFieldNotPasword extends StatelessWidget {
             ),
             hintText: hint,
             hintStyle: AppStyles.w400s16.copyWith(color: AppColors.black.withValues(alpha: 0.5)),
-            suffixIcon: IconButton(
-              onPressed: () {},
-              icon: succes ? SvgPicture.asset(AppSvgs.correct) : SvgPicture.asset(AppSvgs.warningCircle),
-            ),
+            suffixIcon: suffixicon
+                ? null
+                : IconButton(
+                    onPressed: () {},
+                    icon: succes ? SvgPicture.asset(AppSvgs.correct) : SvgPicture.asset(AppSvgs.warningCircle),
+                  ),
           ),
         ),
       ],

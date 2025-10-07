@@ -7,6 +7,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_verify.dart';
 import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
@@ -28,9 +29,9 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
   @override
   Widget build(BuildContext context) {
     bool toliq = kod.length == 4;
-
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBarLeading(
         onPressed: () {
           context.pop();
@@ -45,11 +46,11 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Enter 4 Digit Code",
+                  local.enter_digit_code,
                   style: AppStyles.w500s32,
                 ),
                 Text(
-                  "Enter 4 digit code that your receive on your email (${context.read<ForgotPasswordCubit>().state.email}).",
+                  "${local.edc_title} (${context.read<ForgotPasswordCubit>().state.email}).",
                   style: AppStyles.w400s16,
                   maxLines: 2,
                 ),
@@ -86,11 +87,11 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                     style: AppStyles.w400s14,
                     children: [
                       TextSpan(
-                        text: "Email not received? ",
+                        text: local.email_not_received,
                         style: AppStyles.w400s14,
                       ),
                       TextSpan(
-                        text: "Resend code",
+                        text: local.resend_code,
                         style: AppStyles.w500s14,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
@@ -107,7 +108,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
             Spacer(),
             BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
               builder: (context, state) => TextButtonPopular(
-                title: "Send Code",
+                title: local.continue_button,
                 onPressed: toliq
                     ? () async {
                         await context.read<ForgotPasswordCubit>().fetchForgotVerify(

@@ -38,7 +38,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SearchTextField(controller: searchController),
+                SearchTextField(controller: searchController,search: local.search_for_clothes,),
                 Ink(
                   decoration: ShapeDecoration(
                     color: AppColors.black,

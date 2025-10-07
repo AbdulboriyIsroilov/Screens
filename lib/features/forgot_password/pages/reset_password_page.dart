@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_reset.dart';
+import 'package:screens/features/common/widgets/show_diolog_modul.dart';
 import 'package:screens/features/common/widgets/text_field_pasword.dart';
 import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
-import 'package:screens/features/common/widgets/show_diolog_modul.dart';
 
+import '../../../core/l10n/app_localizations.dart';
 import '../../../core/router/routers.dart';
 import '../../../core/utils/app_style.dart';
 import '../../common/widgets/app_bar_leading.dart';
@@ -36,8 +37,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBarLeading(
         onPressed: () {
           context.pop();
@@ -52,11 +54,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Reset Password",
+                  local.reset_password,
                   style: AppStyles.w500s32,
                 ),
                 Text(
-                  "Set the new password for your account so you can login and access all the features.",
+                  local.reset_password_title,
                   style: AppStyles.w400s16,
                   maxLines: 2,
                 ),
@@ -69,8 +71,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 children: [
                   TextFieldPasword(
                     controller: passwordController,
-                    title: "Password",
-                    hint: "New password",
+                    title: local.password,
+                    hint: local.new_password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => passwordValid = false);
@@ -87,8 +89,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   ),
                   TextFieldPasword(
                     controller: confirmPasswordController,
-                    title: "Confirm Password",
-                    hint: "Confirm password",
+                    title: local.confirm_password,
+                    hint: local.confirm_password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         _updateState(() => confirmPasswordValid = false);
@@ -109,7 +111,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             Spacer(),
             BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
               builder: (context, state) => TextButtonPopular(
-                title: "Send Code",
+                title: local.continue_button,
                 onPressed: passwordValid && confirmPasswordValid
                     ? () async {
                         if (confirmPasswordController.text == passwordController.text) {
@@ -125,9 +127,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             barrierDismissible: true,
                             builder: (context) {
                               return ShowDiologModul(
-                                title1: 'Password Changed!',
-                                title2: 'Your can now use your new password to login to your account.',
-                                titleButton: 'Login ',
+                                title1: local.password_changed,
+                                title2: local.fp_diolog_title,
+                                titleButton: local.login,
                                 onPressed: () {
                                   context.go(Routers.login);
                                 },

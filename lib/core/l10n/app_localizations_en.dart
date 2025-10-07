@@ -279,4 +279,121 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get submit => 'Submit';
+
+  @override
+  String get forgot_password => 'Forgot password';
+
+  @override
+  String get forgot_password_title =>
+      'Enter your email for the verification process. We will send 4 digits code to your email.';
+
+  @override
+  String get send_code => 'Send Code';
+
+  @override
+  String get enter_digit_code => 'Enter 4 Digit Code';
+
+  @override
+  String get edc_title => 'Enter 4 digit code that your receive on your email ';
+
+  @override
+  String get email_not_received => 'Email not received?';
+
+  @override
+  String get resend_code => 'Resend code';
+
+  @override
+  String get continue_button => 'Continue';
+
+  @override
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get reset_password_title =>
+      'Set the new password for your account so you can login and access all the features.';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get password_changed => 'Password Changed!';
+
+  @override
+  String get fp_diolog_title =>
+      'Your can now use your new password to login to your account.';
+
+  @override
+  String get forgot_email => 'Forgot Email';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get delivery_address => 'Delivery Address';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get order_summary => 'Order Summary';
+
+  @override
+  String get enter_promo_code => 'Enter promo code';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get place_order => 'Place Order';
+
+  @override
+  String get search_for_questions => 'Search for questions...';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get saved_address => 'Saved Address';
+
+  @override
+  String get add_new_address => 'Add New Address';
+
+  @override
+  String get new_address => 'New Address';
+
+  @override
+  String get address_nickname => 'Address Nickname';
+
+  @override
+  String get give_name_the_address => 'Give a name to the address';
+
+  @override
+  String get full_address => 'Full Address';
+
+  @override
+  String get enter_your_full_address => 'Enter your full address...';
+
+  @override
+  String get make_this_default_address => 'Make this as a default address';
+
+  @override
+  String get congratulations => 'Congratulations!';
+
+  @override
+  String get your_new_address_been_added => 'Your new address has been added.';
+
+  @override
+  String get your_new_card_been_added => 'Your new card has been added.';
+
+  @override
+  String get your_order_been_placed => 'Your order has been placed.';
+
+  @override
+  String get thanks => 'Thanks';
+
+  @override
+  String get track_your_order => 'Track Your Order';
 }
