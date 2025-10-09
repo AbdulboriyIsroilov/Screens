@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
-
-import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_colors.dart';
+import '../managers/home_bloc.dart';
+import '../managers/home_event.dart';
 
-class SearchTextField extends StatelessWidget {
+class SearchTextField extends StatefulWidget {
   const SearchTextField({
     super.key,
     required this.controller,
@@ -20,16 +21,44 @@ class SearchTextField extends StatelessWidget {
   final String search;
 
   @override
+  State<SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<SearchTextField> {
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_onSearchChanged);
+  }
+
+  void _onSearchChanged() {
+    final query = widget.controller.text.trim();
+    context.read<HomeBloc>().add(
+      FetchProductsEvent(title: query.isEmpty ? null : query),
+    );
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_onSearchChanged);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      controller: widget.controller,
       style: AppStyles.w500s16,
       cursorColor: AppColors.black,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         constraints: BoxConstraints(
           minWidth: 280.w,
-          maxWidth: maxWidth.w,
+          maxWidth: widget.maxWidth.w,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(color: AppColors.greyDark, width: 1.5),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
@@ -39,16 +68,19 @@ class SearchTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
           borderSide: BorderSide(color: AppColors.grey),
         ),
-        hintText: search,
+        hintText: widget.search,
         hintStyle: AppStyles.w400s16.copyWith(
           color: AppColors.black.withValues(alpha: 0.5),
         ),
         prefixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {}, // ixtiyoriy
           icon: SvgPicture.asset(AppSvgs.search),
         ),
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            widget.controller.clear();
+            context.read<HomeBloc>().add(const FetchProductsEvent(title: ""));
+          },
           icon: SvgPicture.asset(AppSvgs.mic),
         ),
       ),

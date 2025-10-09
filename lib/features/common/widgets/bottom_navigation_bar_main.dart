@@ -25,7 +25,7 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
 
   final List<String> _routes = [
     Routers.home,
-    Routers.home,
+    Routers.search,
     Routers.saved,
     Routers.cart,
     Routers.account,

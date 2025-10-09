@@ -2,6 +2,7 @@
 class AppSvgs {
   static const address = "assets/icons/Address.svg";
   static const arrow = "assets/icons/Arrow.svg";
+  static const arrowTop = "assets/icons/Arrow_top.svg";
   static const arrowRight = "assets/icons/arrow-right.svg";
   static const arrowRightChevron = "assets/icons/arrow_right_chevron.svg";
   static const backArrow = "assets/icons/back_arrow.svg";

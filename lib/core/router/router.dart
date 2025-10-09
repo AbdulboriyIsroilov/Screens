@@ -12,6 +12,7 @@ import 'package:screens/features/forgot_password/pages/enter_digit_code.dart';
 import 'package:screens/features/forgot_password/pages/forgot_password_page.dart';
 import 'package:screens/features/forgot_password/pages/reset_password_page.dart';
 import 'package:screens/features/home/pages/home_page.dart';
+import 'package:screens/features/home/pages/search_page.dart';
 import 'package:screens/features/login_sign_up/managers/login_cubit.dart';
 import 'package:screens/features/login_sign_up/managers/sign_up_cubit.dart';
 import 'package:screens/features/login_sign_up/pages/login_page.dart';
@@ -31,7 +32,8 @@ import 'package:screens/features/saved/managers/saved_bloc.dart';
 
 import '../../features/account/pages/help_center_page.dart';
 import '../../features/forgot_password/managers/forgot_password_cubit.dart';
-import '../../features/home/managers/home_cubit.dart';
+import '../../features/home/managers/home_bloc.dart';
+import '../../features/home/managers/home_event.dart';
 import '../../features/my_cart/managers/my_cart_bloc.dart';
 import '../../features/onboarding/pages/splash_page.dart';
 import '../../features/saved/pages/saved_page.dart';
@@ -88,11 +90,25 @@ final router = GoRouter(
         final extra = state.extra as Map<String, dynamic>?;
         final categoryId = extra?["categoryId"] ?? -1;
         return BlocProvider(
-          create: (context) => HomeCubit(categoriesRep: context.read(), productRepo: context.read()),
+          create: (context) => HomeBloc(
+            categoriesRepo: context.read(),
+            productRepo: context.read(),
+          )..add(FetchProductsEvent(categoryId: categoryId)),
           child: HomePage(categoryId: categoryId),
         );
       },
     ),
+    GoRoute(
+      path: Routers.search,
+      builder: (context, state) => BlocProvider(
+        create: (conetext) => HomeBloc(
+          categoriesRepo: context.read(),
+          productRepo: context.read(),
+        ),
+        child: SearchPage(),
+      ),
+    ),
+
     GoRoute(
       path: Routers.saved,
       builder: (context, state) => BlocProvider(

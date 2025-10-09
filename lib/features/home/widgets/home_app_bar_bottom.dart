@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:screens/features/home/managers/home_bloc.dart';
 import 'package:screens/features/home/widgets/search_text_field.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
-import '../managers/home_cubit.dart';
 import '../managers/home_state.dart';
 import 'bottom_item.dart';
+import 'filter_sheet.dart';
 
 final controller = ScrollController();
 
@@ -29,7 +30,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => Column(
         spacing: 10.h,
         children: [
@@ -38,7 +39,10 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SearchTextField(controller: searchController,search: local.search_for_clothes,),
+                SearchTextField(
+                  controller: searchController,
+                  search: local.search_for_clothes,
+                ),
                 Ink(
                   decoration: ShapeDecoration(
                     color: AppColors.black,
@@ -50,7 +54,19 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
                     style: IconButton.styleFrom(
                       fixedSize: Size(52.w, 52.h),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isDismissible: false,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                        ),
+                        builder: (_) => BlocProvider.value(
+                          value: context.read<HomeBloc>(),
+                          child: const FilterSheet(),
+                        ),
+                      );
+                    },
                     icon: SvgPicture.asset(AppSvgs.filter),
                   ),
                 ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:screens/core/utils/app_style.dart';
-import 'package:screens/features/home/managers/home_cubit.dart';
+import 'package:screens/features/home/managers/home_bloc.dart';
+import 'package:screens/features/home/managers/home_event.dart';
 
 import '../../../core/utils/app_colors.dart';
 
@@ -22,7 +23,7 @@ class BottomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<HomeCubit>().fetchProducts(categoryId: id);
+        context.read<HomeBloc>().add(FetchProductsEvent(categoryId: id));
       },
       child: Container(
         height: 36.h,

@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
-import 'package:screens/features/home/managers/home_cubit.dart';
+import 'package:screens/features/home/managers/home_bloc.dart';
 import 'package:screens/features/home/managers/home_state.dart';
 import 'package:screens/features/home/widgets/product_card_big.dart';
 
@@ -37,9 +37,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         extendBody: true,
         appBar: AppBar(
           surfaceTintColor: Colors.transparent,

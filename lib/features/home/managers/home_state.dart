@@ -21,18 +21,17 @@ class HomeState extends Equatable {
     required this.product,
   });
 
-  factory HomeState.initial() =>
-      HomeState(
-        errorMessage: null,
-        errorProduct: null,
-        errorSave: null,
-        errorUnsave: null,
-        loading: true,
-        loadingProduct: true,
-        isSellect: -1,
-        categories: [],
-        product: [],
-      );
+  factory HomeState.initial() => HomeState(
+    errorMessage: null,
+    errorProduct: null,
+    errorSave: null,
+    errorUnsave: null,
+    loading: true,
+    loadingProduct: true,
+    isSellect: -1,
+    categories: [],
+    product: [],
+  );
 
   HomeState copyWith({
     String? errorMessage,
@@ -58,16 +57,15 @@ class HomeState extends Equatable {
       );
 
   @override
-  List<Object?> get props =>
-      [
-        errorMessage,
-        errorProduct,
-        errorSave,
-        errorUnsave,
-        loading,
-        loadingProduct,
-        isSellect,
-        categories,
-        product,
-      ];
+  List<Object?> get props => [
+    errorMessage,
+    errorProduct,
+    errorSave,
+    errorUnsave,
+    loading,
+    loadingProduct,
+    isSellect,
+    categories,
+    product,
+  ];
 }
