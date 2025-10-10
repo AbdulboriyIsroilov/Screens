@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
-import 'package:screens/core/utils/app_svg.dart';
 
 class TextButtonPopular extends StatelessWidget {
   const TextButtonPopular({
@@ -33,7 +31,9 @@ class TextButtonPopular extends StatelessWidget {
         backgroundColor: color,
         disabledBackgroundColor: AppColors.grey,
         fixedSize: Size(width.w, height.h),
-        side: BorderSide(color: AppColors.greyDark, width: border ? 2 : 0),
+        side: border
+            ? const BorderSide(color: AppColors.greyDark, width: 2)
+            : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),

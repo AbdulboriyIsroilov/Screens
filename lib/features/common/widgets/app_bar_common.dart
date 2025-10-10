@@ -14,14 +14,14 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     this.onPressed,
     this.action = true,
     required this.activ,
-    this.bottom, // 🔹 yangi parametr
+    this.bottom,
   });
 
   final String title;
   final VoidCallback? onPressed;
   final bool action;
   final int activ;
-  final PreferredSizeWidget? bottom; // 🔹 optional bottom
+  final PreferredSizeWidget? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 75,
       leading: Center(
         child: IconButton(
-          onPressed: onPressed ?? () => Navigator.of(context).pop(),
+          onPressed: onPressed,
           icon: SvgPicture.asset(AppSvgs.backArrow),
         ),
       ),

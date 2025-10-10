@@ -6,7 +6,7 @@ class AddressState extends Equatable {
   final String? errorMessage;
   final List<AddressModel> address;
   final EnumState addressEnum, newAddress;
-  final int? selectedIndex; // ✅ tanlangan manzil index
+  final int? selectedIndex;
 
   const AddressState({
     required this.errorMessage,

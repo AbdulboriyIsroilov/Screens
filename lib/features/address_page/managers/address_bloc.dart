@@ -7,7 +7,10 @@ import 'package:screens/features/address_page/managers/address_state.dart';
 class AddressBloc extends Bloc<AddressEvent, AddressState> {
   final AddressRepositories _addressRepo;
 
-  AddressBloc({required AddressRepositories addressRepo}) : _addressRepo = addressRepo, super(AddressState.initial()) {
+  AddressBloc({
+    required AddressRepositories addressRepo,
+  }) : _addressRepo = addressRepo,
+       super(AddressState.initial()) {
     on<AddressListEvent>(_fetchAddressList);
     on<SelectAddressEvent>(_selectAddress);
     on<AddNewAddressEvent>(_fetchNewAddress);

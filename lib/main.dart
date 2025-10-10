@@ -10,6 +10,7 @@ import 'package:screens/core/l10n/app_localizations.dart';
 import 'package:screens/core/utils/themes.dart';
 import 'package:screens/data/repositories/address_repositories.dart';
 import 'package:screens/data/repositories/cart_repositories.dart';
+import 'package:screens/data/repositories/order_repositories.dart';
 import 'package:screens/data/repositories/reviews_repositories.dart';
 import 'package:screens/features/common/managers/like_cubit.dart';
 import 'package:screens/features/common/managers/localizatoin_cubit.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => AuthInterceptor(secureStorage: context.read())),
           RepositoryProvider(
             create: (context) =>
-                Dio(BaseOptions(baseUrl: "http://192.168.8.185:8888/api/v1", validateStatus: (status) => true))
+                Dio(BaseOptions(baseUrl: "http://192.168.9.209:8888/api/v1", validateStatus: (status) => true))
                   ..interceptors.add(context.read<AuthInterceptor>()),
           ),
           RepositoryProvider(create: (context) => ApiClient(interceptor: context.read())),
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => CartRepositories(client: context.read())),
           RepositoryProvider(create: (context) => CardRepositories(client: context.read())),
           RepositoryProvider(create: (context) => AddressRepositories(client: context.read())),
+          RepositoryProvider(create: (context) => OrderRepositories(client: context.read())),
           BlocProvider(create: (context) => LikeCubit(userRepo: context.read())),
           BlocProvider(create: (context) => MyCartBloc(cartRepo: context.read())),
         ],

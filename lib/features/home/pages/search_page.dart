@@ -43,6 +43,7 @@ class _SearchPageState extends State<SearchPage> {
         appBar: AppBarCommon(
           title: local.search,
           activ: 1,
+          onPressed: (){context.go(Routers.home);},
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(55.h),
             child: SearchTextField(

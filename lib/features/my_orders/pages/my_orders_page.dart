@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
+import 'package:screens/features/my_orders/managers/order_state.dart';
+
 import '../../../core/l10n/app_localizations.dart';
+import '../../common/widgets/bottom_navigation_bar_main.dart';
+import '../managers/order_bloc.dart';
 
 class MyOrdersPage extends StatefulWidget {
   const MyOrdersPage({super.key});
@@ -40,7 +45,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
         },
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(24.w, 12.h, 25.w, 56.h),
+        padding: EdgeInsets.fromLTRB(24.w, 12.h, 25.w, 0),
         child: Column(
           children: [
             Container(
@@ -82,8 +87,101 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children: const [
-                  Center(child: Text("Ongoing orders here")),
+                children: [
+                  BlocBuilder<OrderBloc, OrderState>(
+                    builder: (context, state) => ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      padding: EdgeInsets.only(top: 5.h, bottom: 100.h),
+                      itemCount: state.orders.length,
+                      separatorBuilder: (context, index) => SizedBox(height: 20.h),
+                      itemBuilder: (context, index) {
+                        final order = state.orders[index];
+                        return Container(
+                          width: 342.w,
+                          height: 107.h,
+                          decoration: BoxDecoration(
+                            border: BoxBorder.all(color: AppColors.grey),
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
+                          child: Row(
+                            spacing: 16.w,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(4.r),
+                                child: Image.network(order.image, width: 83.w, height: 79.h, fit: BoxFit.cover),
+                              ),
+                              SizedBox(
+                                width: 208.w,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(order.title, style: AppStyles.w600s14),
+                                            Text("Size ${order.size}", style: AppStyles.w400s12),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 60.w,
+                                          height: 20.h,
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                              padding: EdgeInsets.zero,
+                                              backgroundColor: AppColors.grey,
+                                              disabledBackgroundColor: AppColors.grey,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(6.r),
+                                              ),
+                                            ),
+                                            onPressed: () {},
+                                            child: Text(
+                                              "In Transit",
+                                              style: AppStyles.w500s12.copyWith(fontSize: 10),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Text("\$ ${order.price}", style: AppStyles.w600s14),
+                                        SizedBox(
+                                          width: 90.w,
+                                          height: 30.h,
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                              backgroundColor: AppColors.black,
+                                              disabledBackgroundColor: AppColors.grey,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(6.r),
+                                              ),
+                                            ),
+                                            onPressed: () {},
+                                            child: Text(
+                                              "Track Order",
+                                              style: AppStyles.w500s12.copyWith(fontSize: 10, color: AppColors.white),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                   Center(child: Text("Completed orders here")),
                 ],
               ),
@@ -91,6 +189,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBarMain(isActive: 4),
     );
   }
 }

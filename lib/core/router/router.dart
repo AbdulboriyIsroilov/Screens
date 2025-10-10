@@ -19,6 +19,7 @@ import 'package:screens/features/login_sign_up/pages/login_page.dart';
 import 'package:screens/features/login_sign_up/pages/sign_up_page.dart';
 import 'package:screens/features/my_cart/pages/checkout_page.dart';
 import 'package:screens/features/my_cart/pages/my_cart_page.dart';
+import 'package:screens/features/my_orders/managers/order_bloc.dart';
 import 'package:screens/features/my_orders/pages/my_orders_page.dart';
 import 'package:screens/features/notifications/pages/notification_settings_page.dart';
 import 'package:screens/features/notifications/pages/notifications_page.dart';
@@ -122,7 +123,10 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routers.myOrders,
-      builder: (context, state) => MyOrdersPage(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => OrderBloc(orderRepo: context.read()),
+        child: MyOrdersPage(),
+      ),
     ),
     ShellRoute(
       builder: (context, state, child) => BlocProvider(
