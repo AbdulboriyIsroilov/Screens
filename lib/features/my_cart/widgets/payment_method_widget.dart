@@ -14,7 +14,13 @@ import '../../../core/formatter.dart';
 
 class PaymentMethodCard extends StatefulWidget {
   final String title;
-  const PaymentMethodCard({super.key, required this.title});
+  final ValueChanged<int>? onCardSelected; // 🔧 int ga o‘zgardi
+
+  const PaymentMethodCard({
+    super.key,
+    required this.title,
+    this.onCardSelected,
+  });
 
   @override
   State<PaymentMethodCard> createState() => _PaymentMethodCardState();
@@ -50,10 +56,7 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                 width: 109.w,
                 height: 36.h,
                 duration: const Duration(milliseconds: 200),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 6.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.black : AppColors.white,
                   borderRadius: BorderRadius.circular(10.r),
@@ -75,8 +78,7 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                     Text(
                       item["title"],
                       style: TextStyle(
-                        color:
-                        isSelected ? AppColors.white : AppColors.black,
+                        color: isSelected ? AppColors.white : AppColors.black,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -93,24 +95,17 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
             borderRadius: BorderRadius.circular(10.r),
             border: Border.all(color: AppColors.grey),
           ),
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
-            vertical: 15.h,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           child: BlocBuilder<CardBloc, CardState>(
             builder: (context, state) {
-              if (state.loading) {
-                return const LoadingWidget();
-              }
+              if (state.loading) return const LoadingWidget();
+
               if (state.card.isEmpty) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "No cards found",
-                      style: AppStyles.w500s16.copyWith(color: Colors.grey),
-                    ),
-                    const SizedBox(width: 8),
+                    Text("No cards found",
+                        style: AppStyles.w500s16.copyWith(color: Colors.grey)),
                     GestureDetector(
                       onTap: () => context.push(Routers.card),
                       child: SvgPicture.asset(AppSvgs.edit),
@@ -118,15 +113,19 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                   ],
                 );
               }
+
               final karta = state.card.first;
+
+              // 🔥 id ni int sifatida yuborish
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                widget.onCardSelected?.call(karta.id);
+              });
+
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    maskCardNumber(karta.cardNumber),
-                    style: AppStyles.w500s16,
-                  ),
-                  const SizedBox(width: 8),
+                  Text(maskCardNumber(karta.cardNumber),
+                      style: AppStyles.w500s16),
                   GestureDetector(
                     onTap: () => context.go(Routers.card),
                     child: SvgPicture.asset(AppSvgs.edit),

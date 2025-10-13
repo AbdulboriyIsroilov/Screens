@@ -23,7 +23,13 @@ class AccountPages extends StatelessWidget {
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBarCommon(title: local.account, activ: 4),
+      appBar: AppBarCommon(
+        title: local.account,
+        activ: 4,
+        onPressed: () {
+          context.go(Routers.home);
+        },
+      ),
       body: Column(
         spacing: 7.h,
         children: [

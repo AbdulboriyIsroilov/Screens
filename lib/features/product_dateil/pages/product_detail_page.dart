@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,8 +68,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10.r),
-                              child: Image.network(
-                                state.detail.productImages.first.image,
+                              child: CachedNetworkImage(
+                                imageUrl: state.detail.productImages.first.image,
                                 width: 341.w,
                                 height: 368.5.h,
                                 fit: BoxFit.cover,

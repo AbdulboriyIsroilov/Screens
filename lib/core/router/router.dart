@@ -121,13 +121,6 @@ final router = GoRouter(
       path: Routers.account,
       builder: (context, state) => AccountPages(),
     ),
-    GoRoute(
-      path: Routers.myOrders,
-      builder: (context, state) => BlocProvider(
-        create: (context) => OrderBloc(orderRepo: context.read()),
-        child: MyOrdersPage(),
-      ),
-    ),
     ShellRoute(
       builder: (context, state, child) => BlocProvider(
         create: (context) => MyCartBloc(cartRepo: context.read()),
@@ -166,9 +159,21 @@ final router = GoRouter(
                   path: Routers.addNewAddress,
                   builder: (context, state) => AddNewAddressPage(),
                 ),
-                GoRoute(
-                  path: Routers.checkout,
-                  builder: (context, state) => CheckoutPage(),
+                ShellRoute(
+                  builder: (context, state, child) => BlocProvider(
+                    create: (context) => OrderBloc(orderRepo: context.read()),
+                    child: child,
+                  ),
+                  routes: [
+                    GoRoute(
+                      path: Routers.checkout,
+                      builder: (context, state) => CheckoutPage(),
+                    ),
+                    GoRoute(
+                      path: Routers.myOrders,
+                      builder: (context, state) => MyOrdersPage(),
+                    ),
+                  ],
                 ),
               ],
             ),

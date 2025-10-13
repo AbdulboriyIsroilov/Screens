@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +44,9 @@ class _SearchPageState extends State<SearchPage> {
         appBar: AppBarCommon(
           title: local.search,
           activ: 1,
-          onPressed: (){context.go(Routers.home);},
+          onPressed: () {
+            context.go(Routers.home);
+          },
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(55.h),
             child: SearchTextField(
@@ -86,8 +89,8 @@ class _SearchPageState extends State<SearchPage> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(6.r),
-                                    child: Image.network(
-                                      mahsulot.image,
+                                    child: CachedNetworkImage(
+                                      imageUrl: mahsulot.image,
                                       width: 56.w,
                                       height: 53.3.h,
                                       fit: BoxFit.cover,
@@ -110,9 +113,7 @@ class _SearchPageState extends State<SearchPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  context.push(
-                                      Routers.productDetailsById(id: state.product[index].id)
-                                  );
+                                  context.push(Routers.productDetailsById(id: state.product[index].id));
                                 },
                                 child: SvgPicture.asset(AppSvgs.arrowTop),
                               ),

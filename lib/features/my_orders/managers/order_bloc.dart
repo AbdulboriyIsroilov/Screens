@@ -11,6 +11,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }) : _orderRepo = orderRepo,
        super(OrderState.initial()){
     on<MyOrderListEvent>(_fetchOrderList);
+    on<MyOrderCreateEvent>(_fetchOrderCreate);
     add(MyOrderListEvent());
   }
 
@@ -26,6 +27,17 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       ),
       (success) {
         emit(state.copyWith(address: success, orderEnum: EnumState.success));
+      },
+    );
+  }
+
+  Future<void> _fetchOrderCreate(MyOrderCreateEvent event, Emitter<OrderState> emit) async {
+    emit(state.copyWith(errorMessage: null));
+    var result = await _orderRepo.postOrderCreate(event.data);
+    result.fold(
+          (error) => emit(state.copyWith(errorMessage: error.toString())),
+          (success) {
+        add(MyOrderListEvent());
       },
     );
   }

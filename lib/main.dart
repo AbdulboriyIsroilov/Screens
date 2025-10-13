@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           RepositoryProvider(create: (context) => AuthInterceptor(secureStorage: context.read())),
           RepositoryProvider(
             create: (context) =>
-                Dio(BaseOptions(baseUrl: "http://192.168.9.209:8888/api/v1", validateStatus: (status) => true))
+                Dio(BaseOptions(baseUrl: "http://192.168.10.206:8888/api/v1", validateStatus: (status) => true))
                   ..interceptors.add(context.read<AuthInterceptor>()),
           ),
           RepositoryProvider(create: (context) => ApiClient(interceptor: context.read())),

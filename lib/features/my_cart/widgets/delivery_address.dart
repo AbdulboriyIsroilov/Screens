@@ -9,16 +9,18 @@ import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/address_page/managers/address_bloc.dart';
 import 'package:screens/features/address_page/managers/address_state.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
-
 import '../../../core/utils/enum_state.dart';
 
 class DeliveryAddressWidget extends StatefulWidget {
   final String title;
   final String changeTitle;
+  final ValueChanged<int>? onAddressSelected; // 🔧 int ga o‘zgardi
+
   const DeliveryAddressWidget({
     super.key,
     required this.title,
     required this.changeTitle,
+    this.onAddressSelected,
   });
 
   @override
@@ -36,9 +38,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
           children: [
             Text(widget.title, style: AppStyles.w600s16),
             GestureDetector(
-              onTap: () {
-                context.go(Routers.address);
-              },
+              onTap: () => context.go(Routers.address),
               child: Text(
                 widget.changeTitle,
                 style: AppStyles.w500s14.copyWith(
@@ -55,13 +55,15 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
             }
 
             if (state.address.isEmpty) {
-              return Text(
-                "No address found",
-                style: AppStyles.w500s14,
-              );
+              return Text("No address found", style: AppStyles.w500s14);
             }
 
             final address = state.address.last;
+
+            // 🔥 id ni int sifatida yuborish
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              widget.onAddressSelected?.call(address.id);
+            });
 
             return Row(
               spacing: 8.w,

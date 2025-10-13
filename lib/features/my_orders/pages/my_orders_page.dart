@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -109,7 +110,12 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(4.r),
-                                child: Image.network(order.image, width: 83.w, height: 79.h, fit: BoxFit.cover),
+                                child: CachedNetworkImage(
+                                  imageUrl: order.image,
+                                  width: 83.w,
+                                  height: 79.h,
+                                  fit: BoxFit.cover,
+                                  ),
                               ),
                               SizedBox(
                                 width: 208.w,
