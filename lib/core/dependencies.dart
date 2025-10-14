@@ -10,12 +10,12 @@ import '../data/repositories/notifications_repositories.dart';
 import '../data/repositories/product_repositories.dart';
 import '../data/repositories/reviews_repositories.dart';
 import '../data/repositories/user_repositories.dart';
-import '../features/common/managers/app_theme_view_model.dart';
+import '../features/common/managers/app_theme_cubit.dart';
 import 'auth_interceptor.dart';
 import 'client.dart';
 
 final dependencies = [
-  ChangeNotifierProvider(create: (context) => AppThemeViewModel()),
+  // ChangeNotifierProvider(create: (context) => AppThemeViewModel()),
 ];
 
 final repositoryProvider = [

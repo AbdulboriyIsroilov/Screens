@@ -7,7 +7,6 @@ import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
-
 import '../managers/home_bloc.dart';
 import '../managers/home_event.dart';
 
@@ -35,6 +34,7 @@ class _FilterSheetState extends State<FilterSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.fromLTRB(24.5.w, 10.h, 24.5.w, 31.h),
       child: Column(
@@ -56,19 +56,24 @@ class _FilterSheetState extends State<FilterSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Filters", style: AppStyles.w600s20),
+                  Text("Filters", style: theme.textTheme.labelLarge),
                   GestureDetector(
                     onTap: () => context.pop(),
-                    child: SvgPicture.asset(AppSvgs.cancel),
+                    child: SvgPicture.asset(
+                      AppSvgs.cancel,
+                      colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+                    ),
                   ),
                 ],
               ),
-              Divider(color: AppColors.grey),
+              Divider(color: theme.colorScheme.inversePrimary),
+
+              // Sort By
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 12.h,
                 children: [
-                  Text("Sort By", style: AppStyles.w600s16),
+                  Text("Sort By", style: theme.textTheme.bodyMedium),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -85,14 +90,17 @@ class _FilterSheetState extends State<FilterSheet> {
               ),
             ],
           ),
-          Divider(color: AppColors.grey),
+
+          Divider(color: theme.colorScheme.inversePrimary),
+
+          // Price filter
           Column(
             spacing: 5.h,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Price", style: AppStyles.w600s16),
+                  Text("Price", style: theme.textTheme.bodyMedium),
                   Text(
                     "\$${_minPrice.toInt()} - \$${_maxPrice.toInt()}",
                     style: AppStyles.w400s14.copyWith(color: AppColors.textGrey),
@@ -114,14 +122,17 @@ class _FilterSheetState extends State<FilterSheet> {
               ),
             ],
           ),
-          Divider(color: AppColors.grey),
+
+          Divider(color: theme.colorScheme.inversePrimary),
+
+          // Size + Apply
           Column(
             spacing: 7.h,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Size", style: AppStyles.w600s16),
+                  Text("Size", style: theme.textTheme.bodyMedium),
                   DropdownButton<String>(
                     value: _selectedSize,
                     items: sizeMap.keys.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
@@ -136,8 +147,23 @@ class _FilterSheetState extends State<FilterSheet> {
               TextButtonPopular(
                 title: "Apply Filters",
                 border: false,
+                color: theme.colorScheme.onInverseSurface,
                 onPressed: () {
                   final sizeId = _selectedSize != null ? sizeMap[_selectedSize]! : null;
+
+                  String orderBy;
+                  switch (_selectedSort) {
+                    case "Price: Low - High":
+                      orderBy = "price";
+                      break;
+                    case "Price: High - Low":
+                      orderBy = "minusprice";
+                      break;
+                    case "Relevance":
+                    default:
+                      orderBy = "date";
+                      break;
+                  }
 
                   if (sizeId != null) {
                     context.read<HomeBloc>().add(
@@ -145,6 +171,7 @@ class _FilterSheetState extends State<FilterSheet> {
                         sizeId: sizeId,
                         minPrice: _minPrice.toInt(),
                         maxPrice: _maxPrice.toInt(),
+                        orderBy: orderBy,
                       ),
                     );
                   } else {
@@ -152,14 +179,15 @@ class _FilterSheetState extends State<FilterSheet> {
                       FetchProductsEvent(
                         minPrice: _minPrice.toInt(),
                         maxPrice: _maxPrice.toInt(),
+                        orderBy: orderBy,
                       ),
                     );
                   }
 
                   context.pop();
                 },
-              ),
 
+              ),
             ],
           ),
         ],
@@ -168,19 +196,22 @@ class _FilterSheetState extends State<FilterSheet> {
   }
 
   Widget _buildSortButton(String text) {
+    final theme = Theme.of(context);
     final bool isSelected = _selectedSort == text;
     return GestureDetector(
       onTap: () => setState(() => _selectedSort = text),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 7.h, horizontal: 20.w),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.black : Colors.transparent,
+          color: isSelected ? theme.colorScheme.onInverseSurface : Colors.transparent,
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: AppColors.grey),
+          border: Border.all(color: theme.colorScheme.inversePrimary),
         ),
         child: Text(
           text,
-          style: AppStyles.w500s16.copyWith(color: isSelected ? AppColors.white : AppColors.black),
+          style: AppStyles.w500s16.copyWith(
+            color: isSelected ? AppColors.white : theme.colorScheme.onPrimaryFixed,
+          ),
         ),
       ),
     );

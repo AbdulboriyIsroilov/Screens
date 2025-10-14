@@ -6,7 +6,6 @@ class AppStyles {
   static const w600s64 = TextStyle(
     fontSize: 64,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
     height: 0.8,
   );
   static const w600s25w = TextStyle(
@@ -40,25 +39,13 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
-  static const w600s15w = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w600,
-    color: AppColors.white,
-  );
   static const w600s15 = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
-  );
-  static const w600s14w = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
   static const w600s14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
   static const w500s32w = TextStyle(
@@ -91,15 +78,9 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.black,
   );
-  static const w500s14w = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: AppColors.white,
-  );
   static const w500s14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: AppColors.black,
   );
 
   static const w500s14t = TextStyle(
@@ -135,32 +116,9 @@ class AppStyles {
   static const w400s14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-  static const w400s12w = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: AppColors.white,
   );
   static const w400s12 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  static const w300s15w = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w300,
-    color: AppColors.white,
-  );
-  static const w300s11w = TextStyle(
-    fontSize: 11,
-    fontWeight: FontWeight.w300,
-    color: AppColors.white,
-  );
-  static const w300s11 = TextStyle(
-    fontSize: 11,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
   );
 }

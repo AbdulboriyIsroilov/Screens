@@ -13,10 +13,7 @@ class RichTextSignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: TextStyle(
-          fontSize: 14,
-          color: Colors.black,
-        ),
+        style: TextStyle(fontSize: 14),
         children: [
           TextSpan(
             text: MyLocalizations.of(context)!.signup_text,

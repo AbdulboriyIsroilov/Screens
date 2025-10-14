@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/data/models/notifications_models/notifications_model.dart';
 
@@ -20,6 +19,7 @@ class NotificationsDayWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return state.isEmpty
         ? SizedBox()
         : Column(
@@ -28,7 +28,7 @@ class NotificationsDayWidgets extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppStyles.w600s16,
+                style: theme.textTheme.bodyMedium,
               ),
               ...List.generate(state.length, (index) {
                 return Row(
@@ -39,6 +39,7 @@ class NotificationsDayWidgets extends StatelessWidget {
                       state[index].icon,
                       width: 20.w,
                       height: 20.h,
+                      colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
                     ),
                     Column(
                       spacing: 2,
@@ -76,8 +77,8 @@ class NotificationsDayWidgets extends StatelessWidget {
                             ? SizedBox()
                             : Container(
                                 width: 304.w,
-                                height: 1,
-                                color: AppColors.grey,
+                                height: 1.5,
+                                color: theme.colorScheme.inversePrimary,
                               ),
                       ],
                     ),

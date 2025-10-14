@@ -43,7 +43,10 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     var result = await _addressRepo.postNewAddress(event.data);
     result.fold(
       (error) => emit(state.copyWith(errorMessage: error.toString(), newAddress: EnumState.error)),
-      (success) => emit(state.copyWith(newAddress: EnumState.success)),
+      (success) {
+        emit(state.copyWith(newAddress: EnumState.success));
+        add(AddressListEvent());
+      },
     );
   }
 }

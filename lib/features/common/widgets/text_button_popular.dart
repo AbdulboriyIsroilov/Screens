@@ -10,8 +10,11 @@ class TextButtonPopular extends StatelessWidget {
     this.width = 341,
     this.height = 54,
     required this.title,
-    this.color = AppColors.black,
-    this.style = AppStyles.w500s16w,
+    required this.color, // = AppColors.black
+    this.style = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
     this.border = true,
   });
 
@@ -29,11 +32,11 @@ class TextButtonPopular extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: color,
+        foregroundColor: AppColors.white,
         disabledBackgroundColor: AppColors.grey,
+        disabledForegroundColor: AppColors.textGrey,
         fixedSize: Size(width.w, height.h),
-        side: border
-            ? const BorderSide(color: AppColors.greyDark, width: 2)
-            : null,
+        side: border ? const BorderSide(color: AppColors.greyDark, width: 2) : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),

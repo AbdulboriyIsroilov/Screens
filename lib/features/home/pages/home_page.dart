@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
 import 'package:screens/features/home/managers/home_bloc.dart';
@@ -37,6 +36,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => Scaffold(
         resizeToAvoidBottomInset: false,
@@ -45,13 +45,17 @@ class _HomePageState extends State<HomePage> {
           surfaceTintColor: Colors.transparent,
           title: Text(
             local.discover,
-            style: AppStyles.w500s32,
+            style: theme.textTheme.displayMedium,
           ),
           actions: [
             IconButton(
               onPressed: () {
-                context.push(Routers.notifications, extra: {"index": 0});                },
-              icon: SvgPicture.asset(AppSvgs.bell),
+                context.push(Routers.notifications, extra: {"index": 0});
+              },
+              icon: SvgPicture.asset(
+                AppSvgs.bell,
+                colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+              ),
             ),
             SizedBox(width: 25.w),
           ],

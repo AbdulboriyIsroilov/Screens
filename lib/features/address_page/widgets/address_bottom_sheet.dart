@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_colors.dart';
-import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/address_models/add_new_address_model.dart';
 import 'package:screens/features/address_page/managers/address_bloc.dart';
@@ -41,7 +40,7 @@ class AddressBottomSheet extends StatefulWidget {
 }
 
 class _AddressBottomSheetState extends State<AddressBottomSheet> {
-  late bool isDefaultLocal;
+  bool isDefaultLocal = false;
 
   @override
   void initState() {
@@ -51,6 +50,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.fromLTRB(24.5.w, 14.h, 24.5.w, 20.h),
@@ -65,10 +65,13 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(local.address, style: AppStyles.w600s20),
+                  Text(local.address, style: theme.textTheme.labelLarge),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: SvgPicture.asset(AppSvgs.cancel),
+                    child: SvgPicture.asset(
+                      AppSvgs.cancel,
+                      colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+                    ),
                   ),
                 ],
               ),
@@ -101,7 +104,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
                       widget.onDefaultChanged(isDefaultLocal);
                     },
                   ),
-                  const Text("Make this as a default address"),
+                  Text(local.make_this_default_address),
                 ],
               ),
             ],
@@ -109,6 +112,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
           TextButtonPopular(
             title: local.add,
             border: false,
+            color: theme.colorScheme.onInverseSurface,
             onPressed: () {
               context.read<AddressBloc>().add(
                 AddNewAddressEvent(

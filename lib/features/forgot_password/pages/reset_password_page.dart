@@ -37,6 +37,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -55,11 +56,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               children: [
                 Text(
                   local.reset_password,
-                  style: AppStyles.w500s32,
+                  style: theme.textTheme.displayMedium,
                 ),
                 Text(
                   local.reset_password_title,
-                  style: AppStyles.w400s16,
+                  style: theme.textTheme.bodySmall,
                   maxLines: 2,
                 ),
               ],
@@ -112,6 +113,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
               builder: (context, state) => TextButtonPopular(
                 title: local.continue_button,
+                color: theme.colorScheme.onInverseSurface,
                 onPressed: passwordValid && confirmPasswordValid
                     ? () async {
                         if (confirmPasswordController.text == passwordController.text) {

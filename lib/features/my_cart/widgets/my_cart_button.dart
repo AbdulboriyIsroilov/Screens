@@ -18,6 +18,7 @@ class MyCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -25,10 +26,13 @@ class MyCartButton extends StatelessWidget {
         height: 23.5.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3.r),
-          border: BoxBorder.all(color: AppColors.grey),
+          border: BoxBorder.all(color: theme.colorScheme.inversePrimary),
         ),
         padding: EdgeInsets.all(3),
-        child: SvgPicture.asset(svg),
+        child: SvgPicture.asset(
+          svg,
+          colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+        ),
       ),
     );
   }

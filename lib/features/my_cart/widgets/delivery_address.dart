@@ -30,13 +30,14 @@ class DeliveryAddressWidget extends StatefulWidget {
 class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       spacing: 16.h,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(widget.title, style: AppStyles.w600s16),
+            Text(widget.title, style: theme.textTheme.bodyMedium),
             GestureDetector(
               onTap: () => context.go(Routers.address),
               child: Text(
@@ -60,7 +61,6 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
 
             final address = state.address.last;
 
-            // 🔥 id ni int sifatida yuborish
             WidgetsBinding.instance.addPostFrameCallback((_) {
               widget.onAddressSelected?.call(address.id);
             });
@@ -74,7 +74,15 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(address.title, style: AppStyles.w600s14),
-                    Text(address.fullAddress, style: AppStyles.w400s14),
+                    SizedBox(
+                      width: 263,
+                      child: Text(
+                        address.fullAddress,
+                        style: AppStyles.w400s14,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               ],

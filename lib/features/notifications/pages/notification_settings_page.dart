@@ -22,6 +22,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBarCommon(
@@ -34,7 +35,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
       body: ListView(
         children: [
           SwitchListTile(
-            title: Text(local.general_notifications, style: AppStyles.w500s16),
+            title: Text(local.general_notifications, style: theme.textTheme.bodyLarge),
             value: generalNotifications,
             onChanged: (val) {
               setState(() {
@@ -42,9 +43,9 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
               });
             },
           ),
-          Divider(color: AppColors.grey),
+          Divider(color: theme.colorScheme.inversePrimary),
           SwitchListTile(
-            title: Text(local.sound, style: AppStyles.w500s16),
+            title: Text(local.sound, style: theme.textTheme.bodyLarge),
             value: sound,
             onChanged: (val) {
               setState(() {
@@ -52,9 +53,9 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
               });
             },
           ),
-          Divider(color: AppColors.grey),
+          Divider(color: theme.colorScheme.inversePrimary),
           SwitchListTile(
-            title: Text(local.vibrate, style: AppStyles.w500s16),
+            title: Text(local.vibrate, style: theme.textTheme.bodyLarge),
             value: vibrate,
             onChanged: (val) {
               setState(() {

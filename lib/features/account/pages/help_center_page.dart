@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/account/widgets/help_center_button.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';

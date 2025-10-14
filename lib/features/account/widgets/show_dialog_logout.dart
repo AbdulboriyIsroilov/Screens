@@ -18,13 +18,14 @@ class ShowDialogLogout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return Center(
       child: Container(
         width: 341.w,
         height: 336.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-          color: AppColors.white,
+          color: theme.colorScheme.primaryFixed,
         ),
         padding: EdgeInsets.all(24),
         child: Material(
@@ -40,10 +41,10 @@ class ShowDialogLogout extends StatelessWidget {
                     width: 78.5.w,
                     height: 78.5.h,
                   ),
-                  Text("${local.logout}?", style: AppStyles.w600s20),
+                  Text("${local.logout}?", style: theme.textTheme.labelLarge),
                   Text(
                     local.are_you_sure_you_want_logout,
-                    style: AppStyles.w400s16,
+                    style: theme.textTheme.bodySmall,
                   ),
                 ],
               ),

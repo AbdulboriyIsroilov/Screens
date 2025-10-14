@@ -50,6 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -63,8 +64,8 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.h,
               children: [
-                Text(local.create_an_account, style: AppStyles.w500s32),
-                Text(local.lets_create_your_account, style: AppStyles.w400s16),
+                Text(local.create_an_account, style: theme.textTheme.displayMedium),
+                Text(local.lets_create_your_account, style: theme.textTheme.bodySmall),
               ],
             ),
             Form(
@@ -82,10 +83,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       if (value == null || value.isEmpty) {
                         _updateState(() => fullNameValid = false);
                         return "Full name should not be empty";
-                      }
-                      if (value.length <= 10) {
-                        _updateState(() => fullNameValid = false);
-                        return "Must be at least 10 characters long";
                       }
                       if (!value.trim().contains(" ")) {
                         _updateState(() => fullNameValid = false);
@@ -107,9 +104,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         _updateState(() => emailValid = false);
                         return "Email should not be empty";
                       }
-                      if (!value.endsWith("@gmail.com")) {
+                      if (!value.endsWith(".com")) {
                         _updateState(() => emailValid = false);
-                        return "should end with @gmail.com";
+                        return "should end with .com";
                       }
                       _updateState(() => emailValid = true);
                       return null;
@@ -141,6 +138,8 @@ class _SignUpPageState extends State<SignUpPage> {
             RichTextSignUp(),
             TextButtonPopular(
               title: local.create_an_account,
+              color: theme.colorScheme.onInverseSurface,
+              border: false,
               onPressed: fullNameValid && emailValid && passwordValid
                   ? () {
                 context.read<SignUpCubit>().fetchSignUp(
@@ -168,7 +167,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Expanded(
                   child: Divider(
                     thickness: 2,
-                    color: AppColors.grey,
+                    color: theme.colorScheme.inversePrimary,
                   ),
                 ),
                 Padding(
@@ -181,7 +180,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Expanded(
                   child: Divider(
                     thickness: 2,
-                    color: AppColors.grey,
+                    color: theme.colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -193,12 +192,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: AppSvgs.logosGoogleIcon,
                   color: Colors.transparent,
                   title: local.google,
-                  fColor: AppColors.black,
+                  svgColor: false,
+                  fColor: theme.colorScheme.onPrimaryFixed,
                 ),
                 IconTextButtonPopular(
                   icon: AppSvgs.logosFacebook,
                   color: AppColors.blue,
                   fColor: AppColors.white,
+                  svgColor: false,
                   title: local.facebook,
                 ),
               ],

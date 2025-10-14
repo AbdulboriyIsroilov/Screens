@@ -14,23 +14,26 @@ class IconTextButtonPopular extends StatelessWidget {
     required this.title,
     this.color = AppColors.black,
     this.fColor = AppColors.white,
+    this.svgColor = true,
   });
 
   final VoidCallback? onPressed;
   final int width, height;
   final String icon, title;
   final Color color, fColor;
+  final bool svgColor;
 
   static void _defaultOnPressed() {}
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return IconButton(
       style: TextButton.styleFrom(
         backgroundColor: color,
         disabledBackgroundColor: AppColors.grey,
         fixedSize: Size(width.w, height.h),
-        side: BorderSide(color: AppColors.grey, width: 2),
+        side: BorderSide(color: theme.colorScheme.inversePrimary, width: 2),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),
@@ -40,7 +43,15 @@ class IconTextButtonPopular extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 10.w,
         children: [
-          SvgPicture.asset(icon,width: 24.w,height: 24.h,),
+          SvgPicture.asset(
+            icon,
+            width: 24.w,
+            height: 24.h,
+            colorFilter: svgColor
+                ? ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn)
+                : null,
+          ),
+
           Text(
             title,
             style: AppStyles.w500s16.copyWith(color: fColor),

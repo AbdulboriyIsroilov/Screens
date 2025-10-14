@@ -19,9 +19,10 @@ class OnboardingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: AppColors.black,
+        backgroundColor: theme.colorScheme.onInverseSurface,
         fixedSize: Size(341.w, 54.h),
         side: BorderSide.none,
         shape: RoundedRectangleBorder(

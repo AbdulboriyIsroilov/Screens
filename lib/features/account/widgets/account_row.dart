@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:screens/core/utils/app_colors.dart';
-import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
 class AccountRow extends StatelessWidget {
@@ -20,6 +18,7 @@ class AccountRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -27,7 +26,7 @@ class AccountRow extends StatelessWidget {
         height: 52.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          border: BoxBorder.all(color: AppColors.grey),
+          border: BoxBorder.all(color: theme.colorScheme.inversePrimary, width: 1.5),
         ),
         padding: EdgeInsets.symmetric(horizontal: 8.w),
         child: Row(
@@ -40,9 +39,9 @@ class AccountRow extends StatelessWidget {
                   svg,
                   width: 24.w,
                   height: 24.h,
-                  colorFilter: ColorFilter.mode(AppColors.black, BlendMode.modulate),
+                  colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
                 ),
-                Text(title, style: AppStyles.w400s16),
+                Text(title, style: theme.textTheme.bodySmall),
               ],
             ),
             SvgPicture.asset(AppSvgs.arrowRightChevron, width: 24.w, height: 24.h),

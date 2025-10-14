@@ -37,6 +37,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBarCommon(
         title: local.my_orders,
@@ -53,17 +54,17 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
               height: 54.h,
               width: 341.w,
               decoration: BoxDecoration(
-                color: AppColors.grey,
+                color: theme.colorScheme.inversePrimary,
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: TabBar(
                 controller: _tabController,
                 indicator: BoxDecoration(
-                  color: Colors.white,
+                  color: theme.colorScheme.primaryFixed,
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 padding: EdgeInsets.all(9.w),
-                labelColor: AppColors.black,
+                labelColor: theme.colorScheme.onPrimaryFixed,
                 unselectedLabelColor: AppColors.greyBlack,
                 dividerColor: Colors.transparent,
                 tabs: [
@@ -101,7 +102,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
                           width: 342.w,
                           height: 107.h,
                           decoration: BoxDecoration(
-                            border: BoxBorder.all(color: AppColors.grey),
+                            border: BoxBorder.all(color: theme.colorScheme.inversePrimary,width: 1.5),
                             borderRadius: BorderRadius.circular(10.r),
                           ),
                           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
@@ -164,7 +165,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
                                           height: 30.h,
                                           child: TextButton(
                                             style: TextButton.styleFrom(
-                                              backgroundColor: AppColors.black,
+                                              backgroundColor: theme.colorScheme.onInverseSurface,
                                               disabledBackgroundColor: AppColors.grey,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(6.r),

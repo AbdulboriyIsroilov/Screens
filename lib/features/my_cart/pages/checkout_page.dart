@@ -31,7 +31,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
-
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBarCommon(
         title: local.checkout,
@@ -48,16 +48,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
               changeTitle: local.change,
               onAddressSelected: (id) => setState(() => addressId = id),
             ),
-            const Divider(color: AppColors.grey),
+            Divider(color: theme.colorScheme.inversePrimary),
             PaymentMethodCard(
               title: local.payment_method,
               onCardSelected: (id) => setState(() => cardId = id),
             ),
-            const Divider(color: AppColors.grey),
+            Divider(color: theme.colorScheme.inversePrimary),
             OrderSummery(local: local, promoCodeController: promoCodeController),
             const Spacer(),
             TextButtonPopular(
               title: local.place_order,
+              color: theme.colorScheme.onInverseSurface,
               onPressed: () {
                 if (addressId == null || cardId == null) {
                   ScaffoldMessenger.of(context).showSnackBar(

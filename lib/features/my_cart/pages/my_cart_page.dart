@@ -23,6 +23,7 @@ class MyCartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBarCommon(
         title: local.my_cart,
@@ -70,7 +71,7 @@ class MyCartPage extends StatelessWidget {
                         Text(local.sub_total, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                         Text(
                           "\$ ${state.mycart.subTotal}",
-                          style: AppStyles.w500s16,
+                          style: theme.textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -80,7 +81,7 @@ class MyCartPage extends StatelessWidget {
                         Text(local.v_a_t, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                         Text(
                           "\$ ${state.mycart.vat}",
-                          style: AppStyles.w500s16,
+                          style: theme.textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -90,18 +91,18 @@ class MyCartPage extends StatelessWidget {
                         Text(local.shipping_fee, style: AppStyles.w400s16.copyWith(color: AppColors.textGrey)),
                         Text(
                           "\$ ${state.mycart.shippingFee}",
-                          style: AppStyles.w500s16,
+                          style: theme.textTheme.bodyLarge,
                         ),
                       ],
                     ),
-                    const Divider(color: AppColors.greyDark),
+                    Divider(color: theme.colorScheme.inversePrimary),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(local.total, style: AppStyles.w400s16),
+                        Text(local.total, style: theme.textTheme.bodySmall),
                         Text(
                           "\$ ${state.mycart.total}",
-                          style: AppStyles.w500s16,
+                          style: theme.textTheme.bodyLarge,
                         ),
                       ],
                     ),

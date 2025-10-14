@@ -21,6 +21,7 @@ class BottomItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         context.read<HomeBloc>().add(FetchProductsEvent(categoryId: id));
@@ -30,14 +31,14 @@ class BottomItem extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.black : Colors.transparent,
+          color: isSelected ? theme.colorScheme.onInverseSurface : Colors.transparent,
           borderRadius: BorderRadius.circular(10.r),
-          border: BoxBorder.all(color: isSelected ? AppColors.black : AppColors.grey),
+          border: BoxBorder.all(color: isSelected ? AppColors.black : theme.colorScheme.inversePrimary,width: 1.5),
         ),
         child: Text(
           title,
           style: AppStyles.w500s16.copyWith(
-            color: isSelected ? AppColors.white : AppColors.black,
+            color: isSelected ? AppColors.white : theme.colorScheme.onPrimaryFixed,
           ),
         ),
       ),

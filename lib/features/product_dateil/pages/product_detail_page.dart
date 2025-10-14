@@ -41,6 +41,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return BlocBuilder<ProductDateilCubit, ProductDetailState>(
       builder: (context, state) => Scaffold(
@@ -86,24 +87,24 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           ],
                         ),
                       ),
-                      Text(state.detail.title, style: AppStyles.w600s25),
+                      Text(state.detail.title, style: theme.textTheme.labelMedium),
                       Row(
                         children: [
                           SvgPicture.asset(AppSvgs.star),
                           SizedBox(width: 4.w),
                           Text(
                             "${state.detail.rating.toStringAsFixed(1)}/5",
-                            style: AppStyles.w500s16,
+                            style: theme.textTheme.bodyLarge,
                           ),
                           SizedBox(width: 6.w),
                           Text(
                             "(${state.detail.reviewsCount} ${local.reviews})",
-                            style: AppStyles.w400s16,
+                            style: theme.textTheme.bodySmall,
                           ),
                         ],
                       ),
-                      Text(state.detail.description, style: AppStyles.w400s16),
-                      Text("Choose size", style: AppStyles.w600s20),
+                      Text(state.detail.description, style: theme.textTheme.bodySmall),
+                      Text("Choose size", style: theme.textTheme.labelLarge),
                       Row(
                         children: List.generate(
                           state.detail.productSizes.length,
@@ -124,7 +125,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   borderRadius: BorderRadius.circular(10.r),
                                   border: Border.all(
                                     color: isSelected ? AppColors.succes : AppColors.grey,
-                                    width: isSelected ? 2 : 1,
+                                    width: isSelected ? 2 : 1.5,
                                   ),
                                   color: isSelected ? AppColors.succes.withOpacity(0.1) : null,
                                 ),
@@ -132,7 +133,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 child: Text(
                                   size.title,
                                   style: AppStyles.w500s20.copyWith(
-                                    color: isSelected ? AppColors.succes : AppColors.black,
+                                    color: isSelected ? AppColors.succes : theme.colorScheme.onPrimaryFixed,
                                   ),
                                 ),
                               ),
@@ -144,7 +145,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         children: [
                           Text(
                             state.detail.rating.toStringAsFixed(1),
-                            style: AppStyles.w600s64,
+                            style: AppStyles.w600s64
                           ),
                           SizedBox(width: 18.w),
                           Column(
@@ -166,7 +167,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               ),
                               Text(
                                 "${state.detail.reviewsCount} ${local.ratings}",
-                                style: AppStyles.w400s16,
+                                style: theme.textTheme.bodySmall,
                               ),
                             ],
                           ),
@@ -177,13 +178,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         children: [
                           Text(
                             "${state.reviews.length} ${local.reviews}",
-                            style: AppStyles.w600s16,
+                            style: theme.textTheme.bodyMedium,
                           ),
                           DropdownButton<String>(
                             value: _selectedFilter,
                             underline: const SizedBox(),
                             icon: SvgPicture.asset(AppSvgs.chevron),
-                            style: AppStyles.w500s12,
+                            style: theme.textTheme.displaySmall,
                             items: _filters.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -214,8 +215,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           width: double.infinity,
           height: 105.h,
           decoration: BoxDecoration(
-            color: AppColors.white,
-            border: Border(top: BorderSide(color: AppColors.grey)),
+            color: theme.colorScheme.primaryFixed,
+            border: Border(top: BorderSide(color: theme.colorScheme.inversePrimary)),
           ),
           padding: EdgeInsets.fromLTRB(24.w, 20.h, 25.w, 31.h),
           child: Row(
@@ -224,8 +225,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(local.price, style: AppStyles.w400s16),
-                  Text("\$ ${state.detail.price}", style: AppStyles.w600s25),
+                  Text(local.price, style: theme.textTheme.bodySmall),
+                  Text("\$ ${state.detail.price}", style: theme.textTheme.labelMedium),
                 ],
               ),
               IconTextButtonPopular(
@@ -233,6 +234,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 title: local.add_to_cart,
                 width: 240,
                 height: 54,
+                color: theme.colorScheme.onInverseSurface,
                 onPressed: () {
                   if (_selectedSizeId == null) {
                     ScaffoldMessenger.of(context).showSnackBar(

@@ -14,9 +14,10 @@ class FetchProductsEvent extends HomeEvent {
   final int? categoryId;
   final int? sizeId;
   final int? minPrice, maxPrice;
+  final String? orderBy;
 
-  const FetchProductsEvent({this.title,this.categoryId, this.sizeId, this.minPrice, this.maxPrice});
+  const FetchProductsEvent({this.title,this.categoryId, this.sizeId, this.minPrice, this.maxPrice,this.orderBy});
 
   @override
-  List<Object?> get props => [title,categoryId, sizeId, minPrice, maxPrice];
+  List<Object?> get props => [title,categoryId, sizeId, minPrice, maxPrice,orderBy];
 }

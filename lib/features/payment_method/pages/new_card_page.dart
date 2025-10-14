@@ -55,6 +55,7 @@ class _NewCardPageState extends State<NewCardPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBarCommon(
@@ -73,7 +74,7 @@ class _NewCardPageState extends State<NewCardPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16.h,
             children: [
-              Text(local.add_debit_credit_card, style: AppStyles.w600s16),
+              Text(local.add_debit_credit_card, style: theme.textTheme.bodyMedium),
               TextFieldNotPasword(
                 controller: numberController,
                 title: local.card_number,
@@ -107,7 +108,7 @@ class _NewCardPageState extends State<NewCardPage> {
                         _updateState(() => expiryValid = false);
                         return "Expiry date should not be empty";
                       }
-                      final regex = RegExp(r'^(0[1-9]|1[0-2])\d{2}$');
+                      final regex = RegExp(r'^(0[1-9]|1[0-2])\/\d{2}$');
                       if (!regex.hasMatch(value)) {
                         _updateState(() => expiryValid = false);
                         return "Expiry date must be in MM/YY format";
@@ -141,6 +142,8 @@ class _NewCardPageState extends State<NewCardPage> {
               Spacer(),
               TextButtonPopular(
                 title: local.add_card,
+                color: theme.colorScheme.onInverseSurface,
+                border: false,
                 onPressed: emailValid && expiryValid && cvcValid
                     ? () {
                         showDialog(

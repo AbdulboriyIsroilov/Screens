@@ -19,6 +19,7 @@ class ProductCardSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         context.push(
@@ -61,7 +62,7 @@ class ProductCardSmall extends StatelessWidget {
             ),
             Text(
               state.title,
-              style: AppStyles.w600s16,
+              style: theme.textTheme.bodyMedium,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

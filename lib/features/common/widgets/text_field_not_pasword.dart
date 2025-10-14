@@ -32,13 +32,14 @@ class TextFieldNotPasword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       spacing: 10.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: AppStyles.w500s16.copyWith(height: 0.3),
+          style: theme.textTheme.bodyLarge,
         ),
         TextFormField(
           validator: validator,
@@ -46,9 +47,9 @@ class TextFieldNotPasword extends StatelessWidget {
           autovalidateMode: AutovalidateMode.always,
           keyboardType: keyboard,
           controller: controller,
-          style: AppStyles.w500s16,
+          style: theme.textTheme.bodyLarge,
           maxLines: maxLine,
-          cursorColor: AppColors.black,
+          cursorColor: theme.colorScheme.onPrimaryFixed,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
             constraints: BoxConstraints(
@@ -57,22 +58,22 @@ class TextFieldNotPasword extends StatelessWidget {
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error),
+              borderSide: BorderSide(color: AppColors.error,width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.grey),
+              borderSide: BorderSide(color: AppColors.grey,width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error),
+              borderSide: BorderSide(color: AppColors.error,width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: succes ? AppColors.succes : AppColors.black),
+              borderSide: BorderSide(color: succes ? AppColors.succes : theme.colorScheme.onPrimaryFixed,width: 1.5),
             ),
             hintText: hint,
-            hintStyle: AppStyles.w400s16.copyWith(color: AppColors.black.withValues(alpha: 0.5)),
+            hintStyle: AppStyles.w400s16.copyWith(color: AppColors.grey),
             suffixIcon: suffixicon
                 ? null
                 : IconButton(

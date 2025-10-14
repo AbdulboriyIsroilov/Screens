@@ -31,20 +31,21 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
   bool passw = false;
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.title,
-          style: AppStyles.w500s16.copyWith(height: 0.3),
+          style: theme.textTheme.bodyLarge,
         ),
         TextFormField(
           validator: widget.validator,
           autovalidateMode: AutovalidateMode.always,
           obscureText: passw,
-          style: AppStyles.w500s16,
+          style: theme.textTheme.bodyLarge,
           controller: widget.controller,
           keyboardType: widget.keyboard,
           decoration: InputDecoration(
@@ -55,22 +56,22 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error),
+              borderSide: BorderSide(color: AppColors.error,width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.grey),
+              borderSide: BorderSide(color: AppColors.grey,width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error),
+              borderSide: BorderSide(color: AppColors.error,width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: widget.succes ? AppColors.succes : AppColors.black),
+              borderSide: BorderSide(color: widget.succes ? AppColors.succes : AppColors.black,width: 1.5),
             ),
             hintText: widget.hint,
-            hintStyle: AppStyles.w400s16.copyWith(color: AppColors.black.withValues(alpha: 0.5)),
+            hintStyle: AppStyles.w400s16.copyWith(color: AppColors.grey),
             suffixIcon: IconButton(
               onPressed: () {
                 passw = !passw;

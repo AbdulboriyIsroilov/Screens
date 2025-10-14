@@ -6,7 +6,6 @@ import 'package:screens/features/home/managers/home_bloc.dart';
 import 'package:screens/features/home/widgets/search_text_field.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
 import '../managers/home_state.dart';
 import 'bottom_item.dart';
@@ -30,6 +29,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) => Column(
         spacing: 10.h,
@@ -45,7 +45,7 @@ class HomeAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Ink(
                   decoration: ShapeDecoration(
-                    color: AppColors.black,
+                    color: theme.colorScheme.onInverseSurface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.r),
                     ),

@@ -19,6 +19,7 @@ class CardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       extendBody: true,
@@ -38,7 +39,7 @@ class CardPage extends StatelessWidget {
                 spacing: 15.h,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(local.saved_cards, style: AppStyles.w600s16),
+                  Text(local.saved_cards, style: theme.textTheme.bodyMedium),
                   Column(
                     spacing: 12.h,
                     children: List.generate(state.card.length, (index) {
@@ -47,7 +48,7 @@ class CardPage extends StatelessWidget {
                         width: 341.w,
                         height: 52.h,
                         decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.grey),
+                          border: Border.all(color: theme.colorScheme.inversePrimary, width: 1.5),
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
@@ -88,7 +89,7 @@ class CardPage extends StatelessWidget {
                     icon: AppSvgs.plus,
                     title: local.add_new_card,
                     color: Colors.transparent,
-                    fColor: AppColors.black,
+                    fColor: theme.colorScheme.onPrimaryFixed,
                     onPressed: () {
                       context.push(Routers.newCard);
                     },
@@ -102,10 +103,12 @@ class CardPage extends StatelessWidget {
       bottomNavigationBar: Container(
         width: double.infinity,
         height: 86.h,
-        color: AppColors.white,
+        color: theme.colorScheme.primaryFixed,
         alignment: Alignment.center,
         child: TextButtonPopular(
           title: local.apply,
+          color: theme.colorScheme.onInverseSurface,
+          border: false,
           onPressed: () {
             context.go(Routers.checkout);
           },

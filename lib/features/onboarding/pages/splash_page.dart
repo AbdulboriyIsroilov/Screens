@@ -4,7 +4,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routers.dart';
-import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
 class SplashPage extends StatefulWidget {
@@ -54,8 +53,8 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.black,
       body: Stack(
         children: [
           Align(
@@ -78,6 +77,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                   AppSvgs.splash,
                   width: tween.evaluate(controller).w,
                   height: tween.evaluate(controller).h,
+                  colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
                 ),
               ),
             ),

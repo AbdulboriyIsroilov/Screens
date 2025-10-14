@@ -14,6 +14,7 @@ class EmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Center(
       child: SizedBox(
         width: 242.w,
@@ -28,7 +29,7 @@ class EmptyWidget extends StatelessWidget {
             ),
             Text(
               title1,
-              style: AppStyles.w600s20,
+              style: theme.textTheme.labelLarge,
               textAlign: TextAlign.center,
 
             ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/reviews_models/reviews_model.dart';
@@ -17,6 +16,7 @@ class ReviewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       spacing: 6.h,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,8 +56,8 @@ class ReviewsWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Divider(
-          color: AppColors.grey,
+        Divider(
+          color: theme.colorScheme.inversePrimary,
         ),
       ],
     );

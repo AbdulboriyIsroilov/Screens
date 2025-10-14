@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/formatter.dart';
-import 'package:screens/core/utils/app_colors.dart';
-import 'package:screens/core/utils/app_style.dart';
-import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/user_models/my_update_model.dart';
 import 'package:screens/features/account/managers/my_bloc.dart';
 import 'package:screens/features/account/managers/my_event.dart';
@@ -18,6 +14,8 @@ import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
+import '../widgets/birth_date_picker_widget.dart';
+import '../widgets/gender_dropdown_widget.dart';
 
 class MyDetailsPage extends StatefulWidget {
   const MyDetailsPage({super.key});
@@ -58,6 +56,7 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBarCommon(
@@ -82,116 +81,63 @@ class _MyDetailsPageState extends State<MyDetailsPage> {
               child: state.loading
                   ? const LoadingWidget()
                   : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16.h,
-                children: [
-                  TextFieldNotPasword(
-                    controller: fullNameController,
-                    title: local.full_name,
-                    hint: local.enter_your_full_name,
-                    succes: true,
-                  ),
-                  TextFieldNotPasword(
-                    controller: emailController,
-                    title: local.email,
-                    hint: local.enter_your_email_address,
-                    succes: true,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(local.date_of_birth, style: AppStyles.w500s16),
-                      GestureDetector(
-                        onTap: () => _selectDate(context),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.grey),
-                            borderRadius: BorderRadius.circular(10.r),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                tugilganSana == null
-                                    ? local.select_date
-                                    : "${tugilganSana!.day.toString().padLeft(2, '0')}/"
-                                    "${tugilganSana!.month.toString().padLeft(2, '0')}/"
-                                    "${tugilganSana!.year}",
-                                style: AppStyles.w500s16,
-                              ),
-                              SvgPicture.asset(AppSvgs.calendar),
-                            ],
-                          ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 16.h,
+                      children: [
+                        TextFieldNotPasword(
+                          controller: fullNameController,
+                          title: local.full_name,
+                          hint: local.enter_your_full_name,
+                          succes: true,
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(local.gender, style: AppStyles.w500s16),
-                      DropdownButtonFormField<String>(
-                        value: gender,
-                        hint: Text(local.select_gender),
-                        items: ["Male", "Female"].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value, style: TextStyle(fontSize: 14.sp)),
-                          );
-                        }).toList(),
-                        onChanged: (newValue) {
-                          setState(() {
-                            gender = newValue;
-                          });
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.r),
-                            borderSide: BorderSide(color: AppColors.grey),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.r),
-                            borderSide: BorderSide(color: AppColors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.r),
-                            borderSide: BorderSide(color: AppColors.grey),
-                          ),
+                        TextFieldNotPasword(
+                          controller: emailController,
+                          title: local.email,
+                          hint: local.enter_your_email_address,
+                          succes: true,
                         ),
-                      ),
-                    ],
-                  ),
-                  TextFieldNotPasword(
-                    controller: phoneController,
-                    title: local.phone_number,
-                    hint: "+ 998 ## ### ## ##",
-                    formatter: [phoneNumberFormatter],
-                    succes: true,
-                  ),
-                  const Spacer(),
-                  TextButtonPopular(
-                    title: local.submit,
-                    border: false,
-                    onPressed: () {
-                      if (tugilganSana != null && gender != null) {
-                        context.read<MyBloc>().add(
-                          MyUpdateEvent(
-                            MyUpdateModel(
-                              gender: gender!,
-                              fullName: fullNameController.text,
-                              email: emailController.text,
-                              phoneNumber: phoneController.text,
-                              birthDate: tugilganSana!.toIso8601String(),
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ],
-              ),
+                        BirthDatePickerWidget(
+                          tugilganSana: tugilganSana,
+                          onSelectDate: () => _selectDate(context),
+                        ),
+                        GenderDropdownWidget(
+                          gender: gender,
+                          onChanged: (newValue) {
+                            setState(() {
+                              gender = newValue;
+                            });
+                          },
+                        ),
+                        TextFieldNotPasword(
+                          controller: phoneController,
+                          title: local.phone_number,
+                          hint: "+ 998 ## ### ## ##",
+                          formatter: [phoneNumberFormatter],
+                          succes: true,
+                        ),
+                        const Spacer(),
+                        TextButtonPopular(
+                          title: local.submit,
+                          border: false,
+                          color: theme.colorScheme.onInverseSurface,
+                          onPressed: () {
+                            if (tugilganSana != null && gender != null) {
+                              context.read<MyBloc>().add(
+                                MyUpdateEvent(
+                                  MyUpdateModel(
+                                    gender: gender!,
+                                    fullName: fullNameController.text,
+                                    email: emailController.text,
+                                    phoneNumber: phoneController.text,
+                                    birthDate: tugilganSana!.toIso8601String(),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
             );
           },
         ),

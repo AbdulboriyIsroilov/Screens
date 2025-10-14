@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:screens/core/router/routers.dart';
-import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_email.dart';
 import 'package:screens/features/common/widgets/app_bar_leading.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
@@ -33,6 +32,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -49,13 +49,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  local.forgot_password,
-                  style: AppStyles.w500s32,
-                ),
+                Text(local.forgot_password, style: theme.textTheme.displayMedium),
                 Text(
                   local.forgot_password_title,
-                  style: AppStyles.w400s16,
+                  style: theme.textTheme.bodySmall,
                   maxLines: 2,
                 ),
               ],
@@ -80,13 +77,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Spacer(),
             TextButtonPopular(
               title: local.send_code,
+              color: theme.colorScheme.onInverseSurface,
+              border: false,
               onPressed: emailValid
                   ? () async {
-                await context.read<ForgotPasswordCubit>().fetchForgotEmail(
-                  passwordModel: ResetPasswordEmail(email: emailController.text),
-                );
-                context.push(Routers.enterDigitCode);
-              }
+                      await context.read<ForgotPasswordCubit>().fetchForgotEmail(
+                        passwordModel: ResetPasswordEmail(email: emailController.text),
+                      );
+                      context.push(Routers.enterDigitCode);
+                    }
                   : null,
             ),
           ],

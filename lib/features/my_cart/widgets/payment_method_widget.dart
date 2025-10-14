@@ -37,11 +37,12 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 16.h,
       children: [
-        Text(widget.title, style: AppStyles.w600s16),
+        Text(widget.title, style: theme.textTheme.bodyMedium),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: payments.map((item) {
@@ -58,7 +59,7 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                 duration: const Duration(milliseconds: 200),
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.black : AppColors.white,
+                  color: isSelected ? theme.colorScheme.onInverseSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(10.r),
                   border: Border.all(
                     color: isSelected ? AppColors.black : AppColors.grey,
@@ -93,7 +94,7 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
           height: 52.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(color: AppColors.grey),
+            border: Border.all(color: theme.colorScheme.inversePrimary,width: 1.5),
           ),
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           child: BlocBuilder<CardBloc, CardState>(
@@ -116,7 +117,6 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
 
               final karta = state.card.first;
 
-              // 🔥 id ni int sifatida yuborish
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 widget.onCardSelected?.call(karta.id);
               });
@@ -125,10 +125,12 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(maskCardNumber(karta.cardNumber),
-                      style: AppStyles.w500s16),
+                      style: theme.textTheme.bodyLarge),
                   GestureDetector(
                     onTap: () => context.go(Routers.card),
-                    child: SvgPicture.asset(AppSvgs.edit),
+                    child: SvgPicture.asset(AppSvgs.edit,
+                      colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+                    ),
                   ),
                 ],
               );

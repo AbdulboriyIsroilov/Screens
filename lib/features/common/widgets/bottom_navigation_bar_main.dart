@@ -39,13 +39,14 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: theme.colorScheme.primaryFixed,
         border: Border(
           top: BorderSide(
-            color: AppColors.grey,
+            color: theme.colorScheme.inversePrimary,
             width: 1,
           ),
         ),
@@ -57,8 +58,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
           context.go(_routes[index]);
         },
         type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.white,
-        selectedItemColor: AppColors.black,
+        backgroundColor: Theme.of(context).colorScheme.primaryFixed,
+        selectedItemColor: Theme.of(context).colorScheme.onPrimaryFixed,
         unselectedItemColor: AppColors.greyDark,
         selectedLabelStyle: AppStyles.w500s12,
         unselectedLabelStyle: AppStyles.w500s12,
@@ -67,8 +68,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
             icon: SvgPicture.asset(
               AppSvgs.home,
               colorFilter: ColorFilter.mode(
-                _currentIndex == 0 ? AppColors.black : AppColors.grey,
-                BlendMode.modulate,
+                _currentIndex == 0 ? Theme.of(context).colorScheme.onPrimaryFixed : AppColors.greyDark,
+                BlendMode.srcIn,
               ),
             ),
             label: local.home,
@@ -77,8 +78,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
             icon: SvgPicture.asset(
               AppSvgs.search,
               colorFilter: ColorFilter.mode(
-                _currentIndex == 1 ? AppColors.black : AppColors.grey,
-                BlendMode.modulate,
+                _currentIndex == 1 ? Theme.of(context).colorScheme.onPrimaryFixed : AppColors.greyDark,
+                BlendMode.srcIn,
               ),
             ),
             label: local.search,
@@ -87,8 +88,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
             icon: SvgPicture.asset(
               AppSvgs.heart,
               colorFilter: ColorFilter.mode(
-                _currentIndex == 2 ? AppColors.black : AppColors.grey,
-                BlendMode.modulate,
+                _currentIndex == 2 ? Theme.of(context).colorScheme.onPrimaryFixed : AppColors.greyDark,
+                BlendMode.srcIn,
               ),
             ),
             label: local.saved,
@@ -97,8 +98,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
             icon: SvgPicture.asset(
               AppSvgs.cart,
               colorFilter: ColorFilter.mode(
-                _currentIndex == 3 ? AppColors.black : AppColors.grey,
-                BlendMode.modulate,
+                _currentIndex == 3 ? Theme.of(context).colorScheme.onPrimaryFixed : AppColors.greyDark,
+                BlendMode.srcIn,
               ),
             ),
             label: local.cart,
@@ -107,8 +108,8 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
             icon: SvgPicture.asset(
               AppSvgs.user,
               colorFilter: ColorFilter.mode(
-                _currentIndex == 4 ? AppColors.black : AppColors.grey,
-                BlendMode.modulate,
+                _currentIndex == 4 ? Theme.of(context).colorScheme.onPrimaryFixed : AppColors.greyDark,
+                BlendMode.srcIn,
               ),
             ),
             label: local.account,

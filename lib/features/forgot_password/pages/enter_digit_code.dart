@@ -28,6 +28,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     bool toliq = kod.length == 4;
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
@@ -47,11 +48,11 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
               children: [
                 Text(
                   local.enter_digit_code,
-                  style: AppStyles.w500s32,
+                  style: theme.textTheme.displayMedium,
                 ),
                 Text(
                   "${local.edc_title} (${context.read<ForgotPasswordCubit>().state.email}).",
-                  style: AppStyles.w400s16,
+                  style: theme.textTheme.bodySmall,
                   maxLines: 2,
                 ),
               ],
@@ -70,14 +71,14 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                   borderRadius: BorderRadius.circular(10.r),
                   fieldHeight: 50.h,
                   fieldWidth: 54.w,
-                  activeColor: AppColors.grey,
-                  selectedColor: AppColors.black,
-                  inactiveColor: AppColors.grey,
+                  activeColor: AppColors.succes,
+                  selectedColor: theme.colorScheme.onPrimaryFixed,
+                  inactiveColor: theme.colorScheme.inversePrimary,
                   activeFillColor: Colors.transparent,
                   selectedFillColor: Colors.transparent,
                   inactiveFillColor: Colors.transparent,
                 ),
-                textStyle: AppStyles.w500s32,
+                textStyle: theme.textTheme.displayMedium,
               ),
             ),
             BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
@@ -109,6 +110,8 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
             BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
               builder: (context, state) => TextButtonPopular(
                 title: local.continue_button,
+                color: theme.colorScheme.onInverseSurface,
+                border: false,
                 onPressed: toliq
                     ? () async {
                         await context.read<ForgotPasswordCubit>().fetchForgotVerify(

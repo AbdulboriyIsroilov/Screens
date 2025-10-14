@@ -25,12 +25,13 @@ class MyCartDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Container(
       width: 342.w,
       height: 107.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        border: BoxBorder.all(color: AppColors.grey),
+        border: BoxBorder.all(color: theme.colorScheme.inversePrimary,width: 1.5),
       ),
       padding: EdgeInsets.symmetric(
         horizontal: 15.w,
@@ -91,7 +92,7 @@ class MyCartDetail extends StatelessWidget {
                         MyCartButton(svg: AppSvgs.minus),
                         Text(
                           "${items.quantity}",
-                          style: AppStyles.w500s12,
+                          style: theme.textTheme.displaySmall,
                         ),
                         MyCartButton(
                           svg: AppSvgs.plus,

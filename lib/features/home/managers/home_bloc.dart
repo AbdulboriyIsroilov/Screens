@@ -44,6 +44,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               "SizeId": event.sizeId,
               "MinPrice": event.minPrice,
               "MaxPrice": event.maxPrice,
+              "OrderBy": event.orderBy,
             }
           : {
               "Title": event.title,
@@ -51,6 +52,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               "SizeId": event.sizeId,
               "MinPrice": event.minPrice,
               "MaxPrice": event.maxPrice,
+              "OrderBy": event.orderBy,
             },
     );
 

@@ -46,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -59,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.h,
               children: [
-                Text(local.login_to_your_account, style: AppStyles.w500s32),
-                Text(local.its_great_to_see_you_again, style: AppStyles.w400s16),
+                Text(local.login_to_your_account, style: theme.textTheme.displayMedium),
+                Text(local.its_great_to_see_you_again, style: theme.textTheme.bodySmall),
               ],
             ),
             Form(
@@ -112,30 +113,30 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  style: AppStyles.w400s14,
-                  children: [
-                    TextSpan(
-                      text: "${local.forgot_your_password} ",
-                      style: AppStyles.w400s14,
-                    ),
-                    TextSpan(
-                      text: local.reset_your_password,
-                      style: AppStyles.w500s14,
+            RichText(
+              text: TextSpan(
+                style: AppStyles.w400s14,
+                children: [
+                  TextSpan(
+                    text: "${local.forgot_your_password} ",
+                    style: AppStyles.w400s14,
+                  ),
+                  TextSpan(
+                    text: local.reset_your_password,
+                    style: AppStyles.w500s14,
 
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          context.push(Routers.forgotPassword);
-                        },
-                    ),
-                  ],
-                ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.push(Routers.forgotPassword);
+                      },
+                  ),
+                ],
               ),
             ),
             TextButtonPopular(
               title: local.login,
+              color: theme.colorScheme.onInverseSurface,
+              border: false,
               onPressed: emailValid && passwordValid
                   ? () {
                 context.read<LoginCubit>().fetchLogin(
@@ -157,20 +158,20 @@ class _LoginPageState extends State<LoginPage> {
                 Expanded(
                   child: Divider(
                     thickness: 2,
-                    color: AppColors.grey,
+                    color: theme.colorScheme.inversePrimary,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
                     local.or,
-                    style: AppStyles.w400s14,
+                    style: AppStyles.w400s14.copyWith(color: AppColors.greyDark),
                   ),
                 ),
                 Expanded(
                   child: Divider(
                     thickness: 2,
-                    color: AppColors.grey,
+                    color: theme.colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -179,12 +180,14 @@ class _LoginPageState extends State<LoginPage> {
               icon: AppSvgs.logosGoogleIcon,
               color: Colors.transparent,
               title: local.google,
-              fColor: AppColors.black,
+              svgColor: false,
+              fColor: theme.colorScheme.onPrimaryFixed,
             ),
             IconTextButtonPopular(
               icon: AppSvgs.logosFacebook,
               color: AppColors.blue,
               fColor: AppColors.white,
+              svgColor: false,
               title: local.facebook,
             ),
             Spacer(),

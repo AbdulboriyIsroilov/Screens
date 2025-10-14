@@ -23,6 +23,7 @@ class AddressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     MyLocalizations local = MyLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBarCommon(
@@ -38,16 +39,38 @@ class AddressPage extends StatelessWidget {
           spacing: 14.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(local.saved_address, style: AppStyles.w600s16),
+            Text(local.saved_address, style: theme.textTheme.bodyMedium),
             Expanded(
               child: BlocBuilder<AddressBloc, AddressState>(
                 builder: (context, state) {
                   return state.addressEnum == EnumState.loading
                       ? LoadingWidget()
-                      : ListView(
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            ...List.generate(state.address.length, (index) {
+                      : RefreshIndicator(
+                          onRefresh: () async {
+                            Future.delayed(Duration(milliseconds: 500));
+                            context.read<AddressBloc>().add(AddressListEvent());
+                          },
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            padding: EdgeInsets.only(bottom: 40.h),
+                            itemCount: state.address.length + 1,
+                            itemBuilder: (context, index) {
+                              if (index == state.address.length) {
+                                return Column(
+                                  children: [
+                                    SizedBox(height: 15.h),
+                                    IconTextButtonPopular(
+                                      icon: AppSvgs.plus,
+                                      title: local.add_new_address,
+                                      color: Colors.transparent,
+                                      fColor: theme.colorScheme.onPrimaryFixed,
+                                      onPressed: () {
+                                        context.push(Routers.addNewAddress);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              }
                               final address = state.address[index];
                               return Container(
                                 margin: EdgeInsets.only(bottom: 12.h),
@@ -55,8 +78,8 @@ class AddressPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.r),
                                   border: Border.all(
-                                    color: AppColors.grey,
-                                    width: state.selectedIndex == index ? 1.5 : 1,
+                                    color: theme.colorScheme.inversePrimary,
+                                    width: state.selectedIndex == index ? 2 : 1.5,
                                   ),
                                 ),
                                 child: Row(
@@ -99,7 +122,7 @@ class AddressPage extends StatelessWidget {
                                     Radio<int>(
                                       value: index,
                                       groupValue: state.selectedIndex,
-                                      activeColor: AppColors.black,
+                                      activeColor: AppColors.succes,
                                       onChanged: (val) {
                                         context.read<AddressBloc>().add(SelectAddressEvent(val!));
                                       },
@@ -107,20 +130,10 @@ class AddressPage extends StatelessWidget {
                                   ],
                                 ),
                               );
-                            }),
-                            SizedBox(height: 15.h),
-                            IconTextButtonPopular(
-                              icon: AppSvgs.plus,
-                              title: local.add_new_address,
-                              color: Colors.transparent,
-                              fColor: AppColors.black,
-                              onPressed: () {
-                                context.push(Routers.addNewAddress);
-                              },
-                            ),
-                            SizedBox(height: 40.h),
-                          ],
-                        );
+                            },
+                          )
+
+                  );
                 },
               ),
             ),
@@ -130,7 +143,11 @@ class AddressPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.fromLTRB(24.w, 10.h, 24.w, 15.h),
         child: SafeArea(
-          child: TextButtonPopular(title: local.apply),
+          child: TextButtonPopular(
+            title: local.apply,
+            border: false,
+            color: theme.colorScheme.onInverseSurface,
+          ),
         ),
       ),
     );

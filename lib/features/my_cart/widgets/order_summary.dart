@@ -24,6 +24,7 @@ class OrderSummery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return BlocBuilder<MyCartBloc, MyCartState>(
       builder: (context, state) => state.loading
           ? LoadingWidget()
@@ -31,7 +32,7 @@ class OrderSummery extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 16.h,
               children: [
-                Text(local.order_summary, style: AppStyles.w600s16),
+                Text(local.order_summary, style: theme.textTheme.bodyMedium),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +44,7 @@ class OrderSummery extends StatelessWidget {
                     ),
                     Text(
                       "\$ ${state.mycart.subTotal}",
-                      style: AppStyles.w500s16,
+                      style: theme.textTheme.bodyLarge,
                     ),
                   ],
                 ),
@@ -58,7 +59,7 @@ class OrderSummery extends StatelessWidget {
                     ),
                     Text(
                       "\$ ${state.mycart.vat}",
-                      style: AppStyles.w500s16,
+                      style: theme.textTheme.bodyLarge,
                     ),
                   ],
                 ),
@@ -73,18 +74,18 @@ class OrderSummery extends StatelessWidget {
                     ),
                     Text(
                       "\$ ${state.mycart.shippingFee}",
-                      style: AppStyles.w500s16,
+                      style: theme.textTheme.bodyLarge,
                     ),
                   ],
                 ),
-                const Divider(color: AppColors.greyDark),
+                Divider(color: theme.colorScheme.inversePrimary),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(local.total, style: AppStyles.w400s16),
+                    Text(local.total, style: theme.textTheme.bodySmall ),
                     Text(
                       "\$ ${state.mycart.total}",
-                      style: AppStyles.w500s16,
+                      style: theme.textTheme.bodyLarge,
                     ),
                   ],
                 ),
@@ -93,8 +94,8 @@ class OrderSummery extends StatelessWidget {
                   children: [
                     TextField(
                       controller: promoCodeController,
-                      style: AppStyles.w500s16,
-                      cursorColor: AppColors.black,
+                      style: theme.textTheme.bodyLarge,
+                      cursorColor: theme.colorScheme.onInverseSurface,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 20.w,
@@ -121,21 +122,22 @@ class OrderSummery extends StatelessWidget {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: AppColors.grey),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: AppColors.grey),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: AppColors.greyDark),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
                         ),
                       ),
                     ),
                     TextButtonPopular(
                       title: local.add,
                       width: 83,
+                      color: theme.colorScheme.onInverseSurface,
                       height: 51,
                       border: false,
                     ),

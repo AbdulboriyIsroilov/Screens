@@ -31,6 +31,7 @@ class _FAQsPageState extends State<FAQsPage> {
         .where((faq) => faq['savol']!.toLowerCase().contains(qidiruv.toLowerCase()))
         .toList();
     MyLocalizations local = MyLocalizations.of(context)!;
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       extendBody: true,
       appBar: AppBarCommon(
@@ -60,14 +61,14 @@ class _FAQsPageState extends State<FAQsPage> {
                       height: 36.h,
                       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h),
                       decoration: BoxDecoration(
-                        color: aktiv ? AppColors.black : AppColors.white,
+                        color: aktiv ? theme.colorScheme.onInverseSurface : Colors.transparent,
                         borderRadius: BorderRadius.circular(10.r),
-                        border: BoxBorder.all(color: AppColors.grey),
+                        border: BoxBorder.all(color: theme.colorScheme.inversePrimary,width: 1.5),
                       ),
                       alignment: Alignment.center,
                       child: Text(
                         filterlar[index],
-                        style: AppStyles.w500s16.copyWith(color: aktiv ? Colors.white : Colors.black),
+                        style: AppStyles.w500s16.copyWith(color: aktiv ? AppColors.white : theme.colorScheme.onPrimaryFixed),
                       ),
                     ),
                   );
@@ -83,8 +84,8 @@ class _FAQsPageState extends State<FAQsPage> {
                   final faq = filterFaq[index];
                   return Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade300),
+                      color: Colors.transparent,
+                      border: Border.all(color: theme.colorScheme.inversePrimary),
                       borderRadius: BorderRadius.circular(12.r),
                       boxShadow: [
                         BoxShadow(
@@ -98,10 +99,10 @@ class _FAQsPageState extends State<FAQsPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
-                      title: Text(faq['savol']!, style: AppStyles.w500s16),
+                      title: Text(faq['savol']!, style: theme.textTheme.bodyLarge),
                       childrenPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                       children: [
-                        Text(faq['javob']!, style: AppStyles.w400s12),
+                        Text(faq['javob']!, style: theme.textTheme.bodySmall),
                       ],
                     ),
                   );
