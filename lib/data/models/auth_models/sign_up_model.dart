@@ -1,11 +1,10 @@
 class SignUpModel {
-  final String fullName, email,password;
+  final String fullName, email, password;
 
   SignUpModel({
     required this.fullName,
     required this.email,
     required this.password,
-
   });
 
   Map<String, dynamic> toJson() {

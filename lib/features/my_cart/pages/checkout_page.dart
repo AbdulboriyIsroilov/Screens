@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/data/models/my_order_models/my_orders_create_model.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
@@ -36,7 +36,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       appBar: AppBarCommon(
         title: local.checkout,
         activ: 3,
-        onPressed: () => context.go(Routers.cart),
+        onPressed: () => context.go(Routes.cart),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(24.w, 20.h, 25.w, 31.h),
@@ -85,7 +85,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     title2: local.your_order_been_placed,
                     titleButton: local.track_your_order,
                     onPressed: () {
-                      context.go(Routers.account);
+                      context.go(Routes.account);
                     },
                   ),
                 );

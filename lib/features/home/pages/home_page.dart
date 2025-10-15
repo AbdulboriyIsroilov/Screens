@@ -10,7 +10,7 @@ import 'package:screens/features/home/managers/home_state.dart';
 import 'package:screens/features/home/widgets/product_card_big.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../widgets/home_app_bar_bottom.dart';
 
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () {
-                context.push(Routers.notifications, extra: {"index": 0});
+                context.push(Routes.notifications, extra: {"index": 0});
               },
               icon: SvgPicture.asset(
                 AppSvgs.bell,

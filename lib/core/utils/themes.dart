@@ -18,6 +18,7 @@ class AppThemes {
       primaryFixed: AppColors.white,
       onPrimaryFixed: AppColors.black,
       inversePrimary: AppColors.grey,
+      inverseSurface: AppColors.black,
       onInverseSurface: AppColors.black,
     ),
 
@@ -29,6 +30,8 @@ class AppThemes {
       bodyMedium: AppStyles.w600s16,
       bodyLarge: AppStyles.w500s16,
       bodySmall: AppStyles.w400s16,
+      titleLarge: AppStyles.w500s14,
+      titleSmall: AppStyles.w400s14,
     ),
 
     appBarTheme: AppBarTheme(
@@ -40,12 +43,18 @@ class AppThemes {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: AppColors.white,           // fon rangi
-      selectedItemColor: AppColors.black,          // tanlangan icon yoki text rangi
-      unselectedItemColor: AppColors.grey,         // tanlanmagan icon yoki text rangi
-      showUnselectedLabels: true,                  // pastdagi label ko‘rinsin
-      type: BottomNavigationBarType.fixed,         // bar elementlari harakatlanmasin
-      elevation: 8,                                // soyasi
+      backgroundColor: AppColors.white,
+      // fon rangi
+      selectedItemColor: AppColors.black,
+      // tanlangan icon yoki text rangi
+      unselectedItemColor: AppColors.grey,
+      // tanlanmagan icon yoki text rangi
+      showUnselectedLabels: true,
+      // pastdagi label ko‘rinsin
+      type: BottomNavigationBarType.fixed,
+      // bar elementlari harakatlanmasin
+      elevation: 8,
+      // soyasi
       selectedLabelStyle: AppStyles.w600s16,
       unselectedLabelStyle: AppStyles.w400s16,
     ),
@@ -65,6 +74,7 @@ class AppThemes {
       primaryFixed: AppColors.dark,
       onPrimaryFixed: AppColors.white,
       inversePrimary: AppColors.darkBorder,
+      inverseSurface: AppColors.darkBorder,
       onInverseSurface: AppColors.darkBorder,
     ),
 
@@ -76,6 +86,8 @@ class AppThemes {
       bodyMedium: AppStyles.w600s16w,
       bodyLarge: AppStyles.w500s16w,
       bodySmall: AppStyles.w400s16w,
+      titleLarge: AppStyles.w500s14w,
+      titleSmall: AppStyles.w400s14w,
     ),
 
     appBarTheme: AppBarTheme(
@@ -88,12 +100,18 @@ class AppThemes {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: AppColors.dark,           // fon rangi
-      selectedItemColor: AppColors.black,          // tanlangan icon yoki text rangi
-      unselectedItemColor: AppColors.darkBorder,   // tanlanmagan icon yoki text rangi
-      showUnselectedLabels: true,                  // pastdagi label ko‘rinsin
-      type: BottomNavigationBarType.fixed,         // bar elementlari harakatlanmasin
-      elevation: 8,                                // soyasi
+      backgroundColor: AppColors.dark,
+      // fon rangi
+      selectedItemColor: AppColors.black,
+      // tanlangan icon yoki text rangi
+      unselectedItemColor: AppColors.darkBorder,
+      // tanlanmagan icon yoki text rangi
+      showUnselectedLabels: true,
+      // pastdagi label ko‘rinsin
+      type: BottomNavigationBarType.fixed,
+      // bar elementlari harakatlanmasin
+      elevation: 8,
+      // soyasi
       selectedLabelStyle: AppStyles.w600s16w,
       unselectedLabelStyle: AppStyles.w400s16w,
     ),

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
@@ -94,7 +94,7 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
           height: 52.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(color: theme.colorScheme.inversePrimary,width: 1.5),
+            border: Border.all(color: theme.colorScheme.inversePrimary, width: 1.5),
           ),
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           child: BlocBuilder<CardBloc, CardState>(
@@ -105,11 +105,13 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("No cards found",
-                        style: AppStyles.w500s16.copyWith(color: Colors.grey)),
+                    Text("No cards found", style: AppStyles.w500s16.copyWith(color: Colors.grey)),
                     GestureDetector(
-                      onTap: () => context.push(Routers.card),
-                      child: SvgPicture.asset(AppSvgs.edit),
+                      onTap: () => context.push(Routes.card),
+                      child: SvgPicture.asset(
+                        AppSvgs.edit,
+                        colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
+                      ),
                     ),
                   ],
                 );
@@ -124,11 +126,11 @@ class _PaymentMethodCardState extends State<PaymentMethodCard> {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(maskCardNumber(karta.cardNumber),
-                      style: theme.textTheme.bodyLarge),
+                  Text(maskCardNumber(karta.cardNumber), style: theme.textTheme.bodyLarge),
                   GestureDetector(
-                    onTap: () => context.go(Routers.card),
-                    child: SvgPicture.asset(AppSvgs.edit,
+                    onTap: () => context.go(Routes.card),
+                    child: SvgPicture.asset(
+                      AppSvgs.edit,
                       colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
                     ),
                   ),

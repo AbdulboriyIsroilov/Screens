@@ -9,7 +9,7 @@ class AppThemeCubit extends Cubit<ThemeMode> {
 
   Future<void> _loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    final savedTheme = prefs.getString('themeMode') ?? 'light';
+    final savedTheme = prefs.getString('themeMode') ?? 'dark';
     emit(savedTheme == 'dark' ? ThemeMode.dark : ThemeMode.light);
   }
 

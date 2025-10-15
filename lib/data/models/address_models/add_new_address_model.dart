@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 class AddNewAddressModel {
-  final String title, fullAddress;
+  final String nickname, fullAddress;
   final double lat, lng;
   final bool isDefault;
 
   AddNewAddressModel({
-    required this.title,
+    required this.nickname,
     required this.fullAddress,
     required this.lat,
     required this.lng,
@@ -15,7 +13,7 @@ class AddNewAddressModel {
 
   Map<String, dynamic> toJson() {
     return {
-      "title": title,
+      "nickname": nickname,
       "fullAddress": fullAddress,
       "lat": lat,
       "lng": lat,

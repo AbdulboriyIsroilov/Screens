@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 
 import '../../../core/utils/app_svg.dart';
 
@@ -14,9 +14,10 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     this.action = true,
     required this.activ,
     this.bottom,
+    this.actionSvg = AppSvgs.bell,
   });
 
-  final String title;
+  final String title, actionSvg;
   final VoidCallback? onPressed;
   final bool action;
   final int activ;
@@ -43,10 +44,10 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
           ? [
               IconButton(
                 onPressed: () {
-                  context.push(Routers.notifications, extra: {"index": activ});
+                  context.push(Routes.notifications, extra: {"index": activ});
                 },
                 icon: SvgPicture.asset(
-                  AppSvgs.bell,
+                  actionSvg,
                   colorFilter: ColorFilter.mode(theme.colorScheme.onPrimaryFixed, BlendMode.srcIn),
                 ),
               ),

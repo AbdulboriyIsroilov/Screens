@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/auth_models/login_model.dart';
@@ -115,19 +115,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
             RichText(
               text: TextSpan(
-                style: AppStyles.w400s14,
+                style: theme.textTheme.titleSmall,
                 children: [
                   TextSpan(
                     text: "${local.forgot_your_password} ",
-                    style: AppStyles.w400s14,
+                    style: theme.textTheme.titleSmall,
                   ),
                   TextSpan(
                     text: local.reset_your_password,
-                    style: AppStyles.w500s14,
-
+                    style: theme.textTheme.titleLarge,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        context.push(Routers.forgotPassword);
+                        context.push(Routes.forgotPassword);
                       },
                   ),
                 ],
@@ -147,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                     ).showSnackBar(SnackBar(content: Text("Error")));
                   },
                   onSuccess: () {
-                    context.go(Routers.home);
+                    context.go(Routes.home);
                   },
                 );
               }
@@ -194,18 +193,18 @@ class _LoginPageState extends State<LoginPage> {
             Center(
               child: RichText(
                 text: TextSpan(
-                  style: AppStyles.w400s14,
+                  style: theme.textTheme.titleSmall,
                   children: [
                     TextSpan(
                       text: "${local.dont_have_an_account} ",
-                      style: AppStyles.w400s14,
+                      style: theme.textTheme.titleSmall,
                     ),
                     TextSpan(
                       text: local.join,
-                      style: AppStyles.w500s14,
+                      style: theme.textTheme.titleLarge,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          context.go(Routers.signUp);
+                          context.go(Routes.signUp);
                         },
                     ),
                   ],

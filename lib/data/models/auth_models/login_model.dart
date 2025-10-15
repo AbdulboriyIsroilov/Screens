@@ -5,11 +5,11 @@ class LoginModel {
     required this.login,
     required this.password,
   });
-  Map<String,dynamic> toJson(){
+
+  Map<String, dynamic> toJson() {
     return {
-      "login":login,
-      "password":password
+      "login": login,
+      "password": password,
     };
   }
-
 }

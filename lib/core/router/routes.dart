@@ -1,4 +1,4 @@
-class Routers {
+class Routes {
   static const splash = "/splash";
   static const onboarding = "/onboarding";
 
@@ -15,8 +15,9 @@ class Routers {
   static const cart = "/card";
   static const account = "/account";
 
-  static const card = "/payment-ethod";
+  static const card = "/payment-method";
   static const newCard = "/new-card";
+  static const chat = "/chat";
 
   static const address = "/address";
   static const addNewAddress = "/add-new-address";

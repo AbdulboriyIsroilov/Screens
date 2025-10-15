@@ -11,15 +11,15 @@ class CartRepositories {
   final ApiClient _client;
 
   Future<Result<MyCartModel>> getMyCart() async {
-    var response = await _client.get("/my-cart/my-cart-items");
+    var response = await _client.get("/cart-items");
     return response.fold(
       (error) => Result.error(error),
       (val) => Result.ok(MyCartModel.fromJson(val as Map<String, dynamic>)),
     );
   }
 
-  Future<Result<void>> deleteMyCartDelate({required int id}) async {
-    var response = await _client.delete("/my-cart/delete/$id");
+  Future<Result<void>> deleteMyCartDelete({required int id}) async {
+    var response = await _client.delete("/cart-items/$id");
     return response.fold(
       (error) => Result.error(error),
       (val) => Result.ok(null),
@@ -27,10 +27,18 @@ class CartRepositories {
   }
 
   Future<Result<void>> postCartAdd(MyCartAddModel data) async {
-    var response = await _client.post("/my-cart/add-item", data: data.toJson());
+    var response = await _client.post("/cart-items", data: data.toJson());
     return response.fold(
       (error) => Result.error(error),
       (success) => Result.ok(null),
+    );
+  }
+
+  Future<Result> patchMyCart({required int id,required int quantity}) async {
+    var response = await _client.patch("/cart-items/$id", data: {"quantity":quantity});
+    return response.fold(
+          (error) => Result.error(error),
+          (val) => Result.ok(val),
     );
   }
 }

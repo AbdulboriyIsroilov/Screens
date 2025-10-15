@@ -13,3 +13,9 @@ final class CartAddEvent extends MyCartEvent {
   final MyCartAddModel data;
   CartAddEvent(this.data);
 }
+
+final class CartUpdateEvent extends MyCartEvent {
+  final int id,quantity;
+
+  CartUpdateEvent(this.id,this.quantity);
+}

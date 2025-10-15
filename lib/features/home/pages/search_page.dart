@@ -10,7 +10,7 @@ import 'package:screens/features/home/widgets/search_product_item.dart';
 import 'package:screens/features/home/widgets/search_text_field.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../managers/home_bloc.dart';
 import '../managers/home_state.dart';
@@ -42,7 +42,7 @@ class _SearchPageState extends State<SearchPage> {
         appBar: AppBarCommon(
           title: local.search,
           activ: 1,
-          onPressed: () => context.go(Routers.home),
+          onPressed: () => context.go(Routes.home),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(55.h),
             child: SearchTextField(

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/data/models/product_models/product_model.dart';
 import 'package:screens/features/common/widgets/icon_button_popular.dart';
@@ -22,7 +22,7 @@ class ProductCardBig extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        context.push(Routers.productDetailsById(id: state.id));
+        context.push(Routes.productDetailsById(id: state.id));
       },
       child: SizedBox(
         width: 161.w,

@@ -78,9 +78,15 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.black,
   );
+  static const w500s14w = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
   static const w500s14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
+    color: AppColors.black,
   );
 
   static const w500s14t = TextStyle(
@@ -116,6 +122,7 @@ class AppStyles {
   static const w400s14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
+    color: AppColors.black,
   );
   static const w400s12 = TextStyle(
     fontSize: 12,

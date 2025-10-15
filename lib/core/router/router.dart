@@ -1,13 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/features/account/managers/my_bloc.dart';
 import 'package:screens/features/account/pages/account_pages.dart';
-import 'package:screens/features/account/pages/f_a_qs_page.dart';
+import 'package:screens/features/question/managers/question_bloc.dart';
+import 'package:screens/features/question/pages/f_a_qs_page.dart';
 import 'package:screens/features/account/pages/my_details_page.dart';
 import 'package:screens/features/address_page/managers/address_bloc.dart';
 import 'package:screens/features/address_page/pages/add_new_address_page.dart';
 import 'package:screens/features/address_page/pages/address_page.dart';
+import 'package:screens/features/chat/pages/chat_page.dart';
 import 'package:screens/features/forgot_password/pages/enter_digit_code.dart';
 import 'package:screens/features/forgot_password/pages/forgot_password_page.dart';
 import 'package:screens/features/forgot_password/pages/reset_password_page.dart';
@@ -32,6 +34,7 @@ import 'package:screens/features/product_dateil/pages/product_detail_page.dart';
 import 'package:screens/features/saved/managers/saved_bloc.dart';
 
 import '../../features/account/pages/help_center_page.dart';
+import '../../features/chat/managers/chat_bloc.dart';
 import '../../features/forgot_password/managers/forgot_password_cubit.dart';
 import '../../features/home/managers/home_bloc.dart';
 import '../../features/home/managers/home_event.dart';
@@ -40,26 +43,26 @@ import '../../features/onboarding/pages/splash_page.dart';
 import '../../features/saved/pages/saved_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.splash,
+  initialLocation: Routes.splash,
 
   routes: <RouteBase>[
     GoRoute(
-      path: Routers.splash,
+      path: Routes.splash,
       builder: (context, state) => SplashPage(),
     ),
     GoRoute(
-      path: Routers.onboarding,
+      path: Routes.onboarding,
       builder: (context, state) => OnboardingPage(),
     ),
     GoRoute(
-      path: Routers.signUp,
+      path: Routes.signUp,
       builder: (context, state) => BlocProvider(
         create: (context) => SignUpCubit(signRepo: context.read()),
         child: SignUpPage(),
       ),
     ),
     GoRoute(
-      path: Routers.login,
+      path: Routes.login,
       builder: (context, state) => BlocProvider(
         create: (context) => LoginCubit(loginRepo: context.read()),
         child: LoginPage(),
@@ -72,21 +75,21 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: Routers.forgotPassword,
+          path: Routes.forgotPassword,
           builder: (context, state) => ForgotPasswordPage(),
         ),
         GoRoute(
-          path: Routers.enterDigitCode,
+          path: Routes.enterDigitCode,
           builder: (context, state) => EnterDigitCode(),
         ),
         GoRoute(
-          path: Routers.resetPassword,
+          path: Routes.resetPassword,
           builder: (context, state) => ResetPasswordPage(),
         ),
       ],
     ),
     GoRoute(
-      path: Routers.home,
+      path: Routes.home,
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>?;
         final categoryId = extra?["categoryId"] ?? -1;
@@ -100,7 +103,7 @@ final router = GoRouter(
       },
     ),
     GoRoute(
-      path: Routers.search,
+      path: Routes.search,
       builder: (context, state) => BlocProvider(
         create: (conetext) => HomeBloc(
           categoriesRepo: context.read(),
@@ -111,14 +114,14 @@ final router = GoRouter(
     ),
 
     GoRoute(
-      path: Routers.saved,
+      path: Routes.saved,
       builder: (context, state) => BlocProvider(
         create: (context) => SavedBloc(savedProductRepo: context.read()),
         child: SavedPage(),
       ),
     ),
     GoRoute(
-      path: Routers.account,
+      path: Routes.account,
       builder: (context, state) => AccountPages(),
     ),
     ShellRoute(
@@ -128,7 +131,7 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: Routers.cart,
+          path: Routes.cart,
           builder: (context, state) => MyCartPage(),
         ),
         ShellRoute(
@@ -138,11 +141,11 @@ final router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: Routers.card,
+              path: Routes.card,
               builder: (context, state) => CardPage(),
             ),
             GoRoute(
-              path: Routers.newCard,
+              path: Routes.newCard,
               builder: (context, state) => NewCardPage(),
             ),
             ShellRoute(
@@ -152,11 +155,11 @@ final router = GoRouter(
               ),
               routes: [
                 GoRoute(
-                  path: Routers.address,
+                  path: Routes.address,
                   builder: (context, state) => AddressPage(),
                 ),
                 GoRoute(
-                  path: Routers.addNewAddress,
+                  path: Routes.addNewAddress,
                   builder: (context, state) => AddNewAddressPage(),
                 ),
                 ShellRoute(
@@ -166,11 +169,11 @@ final router = GoRouter(
                   ),
                   routes: [
                     GoRoute(
-                      path: Routers.checkout,
+                      path: Routes.checkout,
                       builder: (context, state) => CheckoutPage(),
                     ),
                     GoRoute(
-                      path: Routers.myOrders,
+                      path: Routes.myOrders,
                       builder: (context, state) => MyOrdersPage(),
                     ),
                   ],
@@ -182,30 +185,40 @@ final router = GoRouter(
       ],
     ),
     GoRoute(
-      path: Routers.notifications,
+      path: Routes.notifications,
       builder: (context, state) => NotificationsPage(index: (state.extra as Map)["index"]),
     ),
     GoRoute(
-      path: Routers.notificationSettings,
+      path: Routes.notificationSettings,
       builder: (context, state) => NotificationSettingsPage(),
     ),
     GoRoute(
-      path: Routers.helpCenter,
+      path: Routes.helpCenter,
       builder: (context, state) => HelpCenterPage(),
     ),
     GoRoute(
-      path: Routers.faq,
-      builder: (context, state) => FAQsPage(),
+      path: Routes.chat,
+      builder: (context, state) => BlocProvider(
+        create: (context) => ChatBloc(),
+        child: ChatPage(),
+      ),
     ),
     GoRoute(
-      path: Routers.myDetail,
+      path: Routes.faq,
+      builder: (context, state) => BlocProvider(
+        create: (context) => QuestionBloc(questionRepo: context.read()),
+        child: FAQsPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.myDetail,
       builder: (context, state) => BlocProvider(
         create: (context) => MyBloc(myRepo: context.read()),
         child: MyDetailsPage(),
       ),
     ),
     GoRoute(
-      path: Routers.productDetail,
+      path: Routes.productDetail,
       builder: (context, state) {
         final id = int.parse(state.pathParameters['id']!);
         return BlocProvider(

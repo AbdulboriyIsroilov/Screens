@@ -11,7 +11,11 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
        super(MyCartState.initial()) {
     on<CartEvent>(_fetchMyCart);
     on<CartDeleteEvent>(_fetchCartDelete);
-    on<CartAddEvent>(_fetchCartAdd,transformer: (events,mapper)=>events.throttleTime(Duration(seconds: 2)).switchMap(mapper));
+    on<CartUpdateEvent>(_updateCart);
+    on<CartAddEvent>(
+      _fetchCartAdd,
+      transformer: (events, mapper) => events.throttleTime(Duration(seconds: 2)).switchMap(mapper),
+    );
 
     add(CartEvent());
   }
@@ -29,7 +33,7 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
 
   Future<void> _fetchCartDelete(CartDeleteEvent event, Emitter<MyCartState> emit) async {
     emit(state.copyWith(loading: true, errorMessage: null));
-    var result = await _cartRepo.deleteMyCartDelate(id: event.id);
+    var result = await _cartRepo.deleteMyCartDelete(id: event.id);
     result.fold(
       (error) => emit(state.copyWith(errorMessage: error.toString(), loading: false)),
       (success) {
@@ -39,11 +43,22 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
   }
 
   Future<void> _fetchCartAdd(CartAddEvent event, Emitter<MyCartState> emit) async {
-    emit(state.copyWith(loading: true, errorMessage: null));
+    emit(state.copyWith(errorMessage: null));
     var result = await _cartRepo.postCartAdd(event.data);
     result.fold(
-          (error) => emit(state.copyWith(errorMessage: error.toString(), loading: false)),
-          (success) {
+      (error) => emit(state.copyWith(errorMessage: error.toString())),
+      (success) {
+        add(CartEvent());
+      },
+    );
+  }
+
+  Future<void> _updateCart(CartUpdateEvent event, Emitter<MyCartState> emit) async {
+    emit(state.copyWith(errorMessage: null));
+    var result = await _cartRepo.patchMyCart(id: event.id, quantity: event.quantity);
+    result.fold(
+      (error) => emit(state.copyWith(errorMessage: error.toString())),
+      (success) {
         add(CartEvent());
       },
     );

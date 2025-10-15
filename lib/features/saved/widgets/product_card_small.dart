@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/data/models/product_models/product_model.dart';
 
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../common/widgets/icon_button_popular.dart';
@@ -23,7 +23,7 @@ class ProductCardSmall extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-            Routers.productDetailsById(id: state.id)
+            Routes.productDetailsById(id: state.id)
         );
       },
       child: SizedBox(

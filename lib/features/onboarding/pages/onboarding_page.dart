@@ -5,7 +5,7 @@ import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/features/onboarding/widgets/onboarding_button.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -52,7 +52,7 @@ class OnboardingPage extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(24.w, 22.h, 25.w, 31.h),
         child: OnboardingButton(
           onPressed: () {
-            context.go(Routers.signUp);
+            context.go(Routes.signUp);
           },
           title: 'Get Started',
         ),

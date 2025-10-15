@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:screens/core/l10n/app_localizations.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/data/models/auth_models/sign_up_model.dart';
@@ -208,18 +208,18 @@ class _SignUpPageState extends State<SignUpPage> {
             Center(
               child: RichText(
                 text: TextSpan(
-                  style: AppStyles.w400s14,
+                  style: theme.textTheme.titleSmall,
                   children: [
                     TextSpan(
                       text: "${local.already_have_an_account} ",
-                      style: AppStyles.w400s14,
+                      style: theme.textTheme.titleSmall,
                     ),
                     TextSpan(
                       text: local.log_in,
-                      style: AppStyles.w500s14,
+                      style: theme.textTheme.titleLarge,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          context.go(Routers.login);
+                          context.go(Routes.login);
                         },
                     ),
                   ],

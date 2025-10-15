@@ -396,4 +396,31 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get track_your_order => 'Buyurtmani kuzatish';
+
+  @override
+  String get customer_service => 'Mijozlarga xizmat ko‘rsatish';
+
+  @override
+  String get write_your_message => 'Xabaringizni yozing...';
+
+  @override
+  String get filters => 'Filtrlar';
+
+  @override
+  String get sort_by => 'Saralash bo‘yicha';
+
+  @override
+  String get relevance => 'Moslik';
+
+  @override
+  String get price_low_high => 'Narx: arzonidan qimmatigacha';
+
+  @override
+  String get price_high_low => 'Narx: qimmatidan arzongacha';
+
+  @override
+  String get apply_filters => 'Filtrlarni qo‘llash';
+
+  @override
+  String get delete => 'O‘chirish';
 }

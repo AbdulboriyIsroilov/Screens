@@ -15,3 +15,9 @@ final class SelectCardEvent extends CardEvent {
 
   SelectCardEvent(this.selectedId);
 }
+
+final class CardDeleteEvent extends CardEvent {
+  final int id;
+
+  CardDeleteEvent(this.id);
+}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
@@ -29,7 +29,7 @@ class MyCartPage extends StatelessWidget {
         title: local.my_cart,
         activ: 3,
         onPressed: () {
-          context.go(Routers.home);
+          context.go(Routes.home);
         },
       ),
       body: BlocBuilder<MyCartBloc, MyCartState>(
@@ -110,7 +110,7 @@ class MyCartPage extends StatelessWidget {
                     OnboardingButton(
                       title: local.go_to_checkout,
                       onPressed: () {
-                        context.go(Routers.checkout);
+                        context.go(Routes.checkout);
                       },
                     ),
                   ],

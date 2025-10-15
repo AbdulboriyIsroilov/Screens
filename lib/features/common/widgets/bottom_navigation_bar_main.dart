@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_style.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
 
@@ -24,11 +24,11 @@ class _BottomNavigationBarMainState extends State<BottomNavigationBarMain> {
   late int _currentIndex;
 
   final List<String> _routes = [
-    Routers.home,
-    Routers.search,
-    Routers.saved,
-    Routers.cart,
-    Routers.account,
+    Routes.home,
+    Routes.search,
+    Routes.saved,
+    Routes.cart,
+    Routes.account,
   ];
 
   @override

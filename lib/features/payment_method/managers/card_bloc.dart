@@ -11,6 +11,7 @@ class CardBloc extends Bloc<CardEvent, CardState> {
     on<CardListEvent>(_fetchCardList);
     on<CardAddEvent>(_fetchCardAdd);
     on<SelectCardEvent>(_onSelectCard);
+    on<CardDeleteEvent>(_fetchAddressDelete);
     add(CardListEvent());
   }
 
@@ -33,7 +34,7 @@ class CardBloc extends Bloc<CardEvent, CardState> {
 
   Future<void> _fetchCardAdd(CardAddEvent event, Emitter<CardState> emit) async {
     emit(state.copyWith(loading: true, errorMessage: null));
-    var result = await _cardRepo.postCardAdd(event.data);
+    var result = await _cardRepo.postCard(event.data);
     result.fold(
           (error) => emit(state.copyWith(errorMessage: error.toString(), loading: false)),
           (success) {
@@ -44,5 +45,16 @@ class CardBloc extends Bloc<CardEvent, CardState> {
 
   void _onSelectCard(SelectCardEvent event, Emitter<CardState> emit) {
     emit(state.copyWith(selectedCardId: event.selectedId));
+  }
+
+  Future<void> _fetchAddressDelete(CardDeleteEvent event, Emitter<CardState> emit) async {
+    emit(state.copyWith(errorMessage: null));
+    var result = await _cardRepo.deleteCard(id: event.id);
+    result.fold(
+          (error) => emit(state.copyWith(errorMessage: error.toString())),
+          (success) {
+        add(CardListEvent());
+      },
+    );
   }
 }

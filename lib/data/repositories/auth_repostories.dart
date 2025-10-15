@@ -2,7 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../core/client.dart';
 import '../../core/router/router.dart';
-import '../../core/router/routers.dart';
+import '../../core/router/routes.dart';
 import '../../core/utils/result.dart';
 
 class AuthRepository {
@@ -47,6 +47,6 @@ class AuthRepository {
     _secureStorage.delete(key: "token");
     _secureStorage.delete(key: "login");
     _secureStorage.delete(key: "password");
-    router.go(Routers.login);
+    router.go(Routes.login);
   }
 }

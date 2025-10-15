@@ -11,7 +11,7 @@ class MyCartButton extends StatelessWidget {
     required this.svg,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String svg;
 
   static void _defaultOnPressed() {}

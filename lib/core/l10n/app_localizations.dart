@@ -861,6 +861,60 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Track Your Order'**
   String get track_your_order;
+
+  /// Bu chat appbar title
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Service'**
+  String get customer_service;
+
+  /// Bu chat text field
+  ///
+  /// In en, this message translates to:
+  /// **'Write your message...'**
+  String get write_your_message;
+
+  /// Bu filter
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filters;
+
+  /// Bu sort by
+  ///
+  /// In en, this message translates to:
+  /// **'Sort By'**
+  String get sort_by;
+
+  /// Bu sort by title1
+  ///
+  /// In en, this message translates to:
+  /// **'Relevance'**
+  String get relevance;
+
+  /// Bu sort by title2
+  ///
+  /// In en, this message translates to:
+  /// **'Price: Low - High'**
+  String get price_low_high;
+
+  /// Bu sort by title3
+  ///
+  /// In en, this message translates to:
+  /// **'Price: High - Low'**
+  String get price_high_low;
+
+  /// Bu filter succes
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
+  String get apply_filters;
+
+  /// Bu delete
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

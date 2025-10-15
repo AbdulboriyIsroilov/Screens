@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/formatter.dart';
-import 'package:screens/core/router/routers.dart';
-import 'package:screens/core/utils/app_style.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/data/models/card_models/add_catd_model.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
@@ -156,7 +155,7 @@ class _NewCardPageState extends State<NewCardPage> {
                               titleButton: local.thanks,
                               onPressed: () {
                                 context.pop();
-                                context.go(Routers.card);
+                                context.go(Routes.card);
                               },
                             );
                           },

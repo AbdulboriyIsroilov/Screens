@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
 class SplashPage extends StatefulWidget {
@@ -33,12 +33,12 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
         if (value != null) {
           controller.forward();
           Future.delayed(Duration(seconds: 4), () {
-            context.go(Routers.home);
+            context.go(Routes.home);
           });
         } else {
           controller.forward();
           Future.delayed(Duration(seconds: 4), () {
-            context.go(Routers.onboarding);
+            context.go(Routes.onboarding);
           });
         }
       },

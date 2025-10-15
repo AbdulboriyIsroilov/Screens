@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
 import 'package:screens/features/common/widgets/empty_widget.dart';
 import 'package:screens/features/saved/managers/saved_bloc.dart';
@@ -22,6 +24,9 @@ class SavedPage extends StatelessWidget {
       appBar: AppBarCommon(
         title: local.saved_items,
         activ: 2,
+        onPressed: (){
+          context.go(Routes.home);
+        },
       ),
       body: BlocBuilder<SavedBloc, SavedState>(
         builder: (context, state) => state.loading

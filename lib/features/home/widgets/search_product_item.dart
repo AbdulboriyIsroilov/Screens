@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/utils/app_svg.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 
 import '../../../data/models/product_models/product_model.dart';
 
@@ -55,7 +55,7 @@ class SearchProductItem extends StatelessWidget {
             // Arrow Icon
             GestureDetector(
               onTap: () {
-                context.push(Routers.productDetailsById(id: mahsulot.id));
+                context.push(Routes.productDetailsById(id: mahsulot.id));
               },
               child: SvgPicture.asset(
                 AppSvgs.arrowTop,

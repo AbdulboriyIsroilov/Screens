@@ -8,7 +8,7 @@ import 'package:screens/features/common/widgets/text_field_pasword.dart';
 import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/utils/app_style.dart';
 import '../../common/widgets/app_bar_leading.dart';
 import '../../common/widgets/text_button_popular.dart';
@@ -133,7 +133,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                                 title2: local.fp_diolog_title,
                                 titleButton: local.login,
                                 onPressed: () {
-                                  context.go(Routers.login);
+                                  context.go(Routes.login);
                                 },
                               );
                             },

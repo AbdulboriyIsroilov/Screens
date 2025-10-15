@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/account/widgets/account_row.dart';
@@ -28,7 +28,7 @@ class AccountPages extends StatelessWidget {
         title: local.account,
         activ: 4,
         onPressed: () {
-          context.go(Routers.home);
+          context.go(Routes.home);
         },
       ),
       body: SingleChildScrollView(
@@ -40,7 +40,7 @@ class AccountPages extends StatelessWidget {
               child: AccountRow(
                 svg: AppSvgs.box,
                 title: local.my_orders,
-                onPressed: () => context.push(Routers.myOrders),
+                onPressed: () => context.push(Routes.myOrders),
               ),
             ),
 
@@ -54,22 +54,22 @@ class AccountPages extends StatelessWidget {
                   AccountRow(
                     svg: AppSvgs.details,
                     title: local.my_details,
-                    onPressed: () => context.push(Routers.myDetail),
+                    onPressed: () => context.push(Routes.myDetail),
                   ),
                   AccountRow(
                     svg: AppSvgs.home,
                     title: local.address_book,
-                    onPressed: () => context.push(Routers.address),
+                    onPressed: () => context.push(Routes.address),
                   ),
                   AccountRow(
                     svg: AppSvgs.card,
                     title: local.payment_methods,
-                    onPressed: () => context.push(Routers.card),
+                    onPressed: () => context.push(Routes.card),
                   ),
                   AccountRow(
                     svg: AppSvgs.bell,
                     title: local.notifications,
-                    onPressed: () => context.push(Routers.notificationSettings),
+                    onPressed: () => context.push(Routes.notificationSettings),
                   ),
                   AccountRow(
                     svg: AppSvgs.language,
@@ -107,12 +107,12 @@ class AccountPages extends StatelessWidget {
                   AccountRow(
                     svg: AppSvgs.question,
                     title: local.f_a_qs,
-                    onPressed: () => context.push(Routers.faq),
+                    onPressed: () => context.push(Routes.faq),
                   ),
                   AccountRow(
                     svg: AppSvgs.headphones,
                     title: local.help_center,
-                    onPressed: () => context.push(Routers.helpCenter),
+                    onPressed: () => context.push(Routes.helpCenter),
                   ),
                 ],
               ),

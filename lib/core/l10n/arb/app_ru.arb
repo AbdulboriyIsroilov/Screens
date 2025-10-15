@@ -127,7 +127,15 @@
   "your_new_card_been_added": "Ваша новая карта добавлена.",
   "your_order_been_placed": "Ваш заказ оформлен.",
   "thanks": "Спасибо",
-  "track_your_order": "Отслеживать заказ"
-
+  "track_your_order": "Отслеживать заказ",
+  "customer_service": "Служба поддержки",
+  "write_your_message": "Напишите ваше сообщение...",
+  "filters": "Фильтры",
+  "sort_by": "Сортировать по",
+  "relevance": "Актуальность",
+  "price_low_high": "Цена: от низкой к высокой",
+  "price_high_low": "Цена: от высокой к низкой",
+  "apply_filters": "Применить фильтры",
+  "delete": "Удалить"
 
 }

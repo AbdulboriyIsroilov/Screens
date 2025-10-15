@@ -56,19 +56,19 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error,width: 1.5),
+              borderSide: BorderSide(color: AppColors.error, width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.grey,width: 1.5),
+              borderSide: BorderSide(color: AppColors.grey, width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.error,width: 1.5),
+              borderSide: BorderSide(color: AppColors.error, width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: widget.succes ? AppColors.succes : AppColors.black,width: 1.5),
+              borderSide: BorderSide(color: widget.succes ? AppColors.succes : AppColors.black, width: 1.5),
             ),
             hintText: widget.hint,
             hintStyle: AppStyles.w400s16.copyWith(color: AppColors.grey),
@@ -79,9 +79,15 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
               },
               icon: widget.succes
                   ? passw
-                        ? SvgPicture.asset(AppSvgs.eye)
-                        : SvgPicture.asset(AppSvgs.eyeOff)
-                  : SvgPicture.asset(AppSvgs.warningCircle),
+                        ? SvgPicture.asset(
+                            AppSvgs.eye,
+                            colorFilter: ColorFilter.mode(theme.colorScheme.onInverseSurface, BlendMode.srcIn),
+                          )
+                        : SvgPicture.asset(
+                            AppSvgs.eyeOff,
+                            colorFilter: ColorFilter.mode(theme.colorScheme.onInverseSurface, BlendMode.srcIn),
+                          )
+                  : SvgPicture.asset(AppSvgs.warningCircle,),
             ),
           ),
         ),

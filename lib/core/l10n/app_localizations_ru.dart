@@ -394,4 +394,31 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get track_your_order => 'Отслеживать заказ';
+
+  @override
+  String get customer_service => 'Служба поддержки';
+
+  @override
+  String get write_your_message => 'Напишите ваше сообщение...';
+
+  @override
+  String get filters => 'Фильтры';
+
+  @override
+  String get sort_by => 'Сортировать по';
+
+  @override
+  String get relevance => 'Актуальность';
+
+  @override
+  String get price_low_high => 'Цена: от низкой к высокой';
+
+  @override
+  String get price_high_low => 'Цена: от высокой к низкой';
+
+  @override
+  String get apply_filters => 'Применить фильтры';
+
+  @override
+  String get delete => 'Удалить';
 }

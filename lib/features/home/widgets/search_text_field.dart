@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:screens/core/utils/app_svg.dart';
 
-import '../../../core/utils/app_colors.dart';
 import '../managers/home_bloc.dart';
 import '../managers/home_event.dart';
 
@@ -50,7 +49,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
     return TextField(
       controller: widget.controller,
       style: theme.textTheme.bodyLarge,
-      cursorColor: AppColors.black,
+      cursorColor: theme.colorScheme.onPrimaryFixed,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         constraints: BoxConstraints(
@@ -63,11 +62,11 @@ class _SearchTextFieldState extends State<SearchTextField> {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: theme.colorScheme.inversePrimary,width: 1.5),
+          borderSide: BorderSide(color: theme.colorScheme.inversePrimary, width: 1.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color: theme.colorScheme.inversePrimary,width: 1.5),
+          borderSide: BorderSide(color: theme.colorScheme.inversePrimary, width: 1.5),
         ),
         hintText: widget.search,
         hintStyle: theme.textTheme.bodySmall,

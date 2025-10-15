@@ -14,6 +14,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     on<AddressListEvent>(_fetchAddressList);
     on<SelectAddressEvent>(_selectAddress);
     on<AddNewAddressEvent>(_fetchNewAddress);
+    on<AddressDeleteEvent>(_fetchAddressDelete);
     add(AddressListEvent());
   }
 
@@ -40,11 +41,22 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
 
   Future<void> _fetchNewAddress(AddNewAddressEvent event, Emitter<AddressState> emit) async {
     emit(state.copyWith(newAddress: EnumState.loading, errorMessage: null));
-    var result = await _addressRepo.postNewAddress(event.data);
+    var result = await _addressRepo.postAddress(event.data);
     result.fold(
       (error) => emit(state.copyWith(errorMessage: error.toString(), newAddress: EnumState.error)),
       (success) {
         emit(state.copyWith(newAddress: EnumState.success));
+        add(AddressListEvent());
+      },
+    );
+  }
+
+  Future<void> _fetchAddressDelete(AddressDeleteEvent event, Emitter<AddressState> emit) async {
+    emit(state.copyWith(errorMessage: null));
+    var result = await _addressRepo.deleteAddress(id: event.id);
+    result.fold(
+          (error) => emit(state.copyWith(errorMessage: error.toString())),
+          (success) {
         add(AddressListEvent());
       },
     );

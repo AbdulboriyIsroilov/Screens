@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_verify.dart';
 import 'package:screens/features/forgot_password/managers/forgot_password_state.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../data/models/forgot_password_models/reset_password_email.dart';
@@ -85,15 +85,15 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
               builder: (context, state) => Center(
                 child: RichText(
                   text: TextSpan(
-                    style: AppStyles.w400s14,
+                    style: theme.textTheme.titleSmall,
                     children: [
                       TextSpan(
                         text: local.email_not_received,
-                        style: AppStyles.w400s14,
+                        style: theme.textTheme.titleSmall,
                       ),
                       TextSpan(
                         text: local.resend_code,
-                        style: AppStyles.w500s14,
+                        style: theme.textTheme.titleLarge,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
                             await context.read<ForgotPasswordCubit>().fetchForgotEmail(
@@ -117,7 +117,7 @@ class _EnterDigitCodeState extends State<EnterDigitCode> {
                         await context.read<ForgotPasswordCubit>().fetchForgotVerify(
                           passwordModel: ResetPasswordVerify(email: state.email, code: kod),
                         );
-                        context.push(Routers.resetPassword);
+                        context.push(Routes.resetPassword);
                       }
                     : null,
               ),

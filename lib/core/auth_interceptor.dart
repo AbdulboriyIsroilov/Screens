@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:screens/core/router/router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 
 class AuthInterceptor extends Interceptor {
   AuthInterceptor({
@@ -22,10 +22,6 @@ class AuthInterceptor extends Interceptor {
     super.onRequest(options, handler);
   }
 
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    super.onError(err, handler);
-  }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
@@ -64,7 +60,7 @@ class AuthInterceptor extends Interceptor {
     await secureStorage.delete(key: "token");
     await secureStorage.delete(key: "login");
     await secureStorage.delete(key: "password");
-    router.go(Routers.login);
+    router.go(Routes.login);
     return;
   }
 }

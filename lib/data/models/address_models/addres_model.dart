@@ -1,14 +1,11 @@
 class AddressModel {
   final int id;
-  final num lat, lng;
-  final String title, fullAddress;
+  final String nickname, fullAddress;
   final bool isDefault;
 
   AddressModel({
     required this.id,
-    required this.lat,
-    required this.lng,
-    required this.title,
+    required this.nickname,
     required this.fullAddress,
     required this.isDefault,
   });
@@ -16,9 +13,7 @@ class AddressModel {
   factory AddressModel.fromJson(Map<String, dynamic> json) {
     return AddressModel(
       id: json["id"],
-      lat: json["lat"],
-      lng: json["lng"],
-      title: json["title"],
+      nickname: json["nickname"],
       fullAddress: json["fullAddress"],
       isDefault: json["isDefault"],
     );

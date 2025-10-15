@@ -15,3 +15,9 @@ final class AddNewAddressEvent extends AddressEvent {
 
   AddNewAddressEvent(this.data);
 }
+
+final class AddressDeleteEvent extends AddressEvent {
+  final int id;
+
+  AddressDeleteEvent(this.id);
+}

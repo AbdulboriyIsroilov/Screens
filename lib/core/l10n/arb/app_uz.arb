@@ -127,7 +127,15 @@
   "your_new_card_been_added": "Yangi kartangiz qo‘shildi.",
   "your_order_been_placed": "Buyurtmangiz joylashtirildi.",
   "thanks": "Rahmat",
-  "track_your_order": "Buyurtmani kuzatish"
-
+  "track_your_order": "Buyurtmani kuzatish",
+  "customer_service": "Mijozlarga xizmat ko‘rsatish",
+  "write_your_message": "Xabaringizni yozing...",
+  "filters": "Filtrlar",
+  "sort_by": "Saralash bo‘yicha",
+  "relevance": "Moslik",
+  "price_low_high": "Narx: arzonidan qimmatigacha",
+  "price_high_low": "Narx: qimmatidan arzongacha",
+  "apply_filters": "Filtrlarni qo‘llash",
+  "delete": "O‘chirish"
 
 }

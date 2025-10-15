@@ -396,4 +396,31 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get track_your_order => 'Track Your Order';
+
+  @override
+  String get customer_service => 'Customer Service';
+
+  @override
+  String get write_your_message => 'Write your message...';
+
+  @override
+  String get filters => 'Filters';
+
+  @override
+  String get sort_by => 'Sort By';
+
+  @override
+  String get relevance => 'Relevance';
+
+  @override
+  String get price_low_high => 'Price: Low - High';
+
+  @override
+  String get price_high_low => 'Price: High - Low';
+
+  @override
+  String get apply_filters => 'Apply Filters';
+
+  @override
+  String get delete => 'Delete';
 }

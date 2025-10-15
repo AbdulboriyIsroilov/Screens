@@ -642,7 +642,53 @@
     "track_your_order": "Track Your Order",
         "@track_your_order":{
         "description":"Bu new addres"
+    },
+
+    "customer_service": "Customer Service",
+        "@customer_service":{
+        "description":"Bu chat appbar title"
+    },
+
+    "write_your_message": "Write your message...",
+        "@write_your_message":{
+        "description":"Bu chat text field"
+    },
+
+    "filters": "Filters",
+        "@filters":{
+        "description":"Bu filter"
+    },
+
+    "sort_by": "Sort By",
+        "@sort_by":{
+        "description":"Bu sort by"
+    },
+
+    "relevance": "Relevance",
+        "@relevance":{
+        "description":"Bu sort by title1"
+    },
+
+    "price_low_high": "Price: Low - High",
+        "@price_low_high":{
+        "description":"Bu sort by title2"
+    },
+
+    "price_high_low": "Price: High - Low",
+        "@price_high_low":{
+        "description":"Bu sort by title3"
+    },
+
+    "apply_filters": "Apply Filters",
+        "@apply_filters":{
+        "description":"Bu filter succes"
+    },
+
+    "delete": "Delete",
+        "@delete":{
+        "description":"Bu delete"
     }
+
 
 
 }

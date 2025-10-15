@@ -12,7 +12,7 @@ import 'package:screens/features/common/widgets/text_button_popular.dart';
 import 'package:screens/features/common/widgets/text_field_not_pasword.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/router/routers.dart';
+import '../../../core/router/routes.dart';
 import '../../common/widgets/show_diolog_modul.dart';
 
 class AddressBottomSheet extends StatefulWidget {
@@ -117,7 +117,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
               context.read<AddressBloc>().add(
                 AddNewAddressEvent(
                   AddNewAddressModel(
-                    title: widget.addressNameController.text,
+                    nickname: widget.addressNameController.text,
                     fullAddress: widget.fullAddress,
                     lat: widget.lat,
                     lng: widget.lng,
@@ -136,7 +136,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
                     titleButton: local.thanks,
                     onPressed: () {
                       context.pop();
-                      context.go(Routers.address);
+                      context.go(Routes.address);
                     },
                   );
                 },

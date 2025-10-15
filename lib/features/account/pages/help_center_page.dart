@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/account/widgets/help_center_button.dart';
 import 'package:screens/features/common/widgets/app_bar_common.dart';
@@ -27,7 +28,13 @@ class HelpCenterPage extends StatelessWidget {
         child: Column(
           spacing: 14.h,
           children: [
-            HelpCenterButton(svg: AppSvgs.headphones, title: "Customer Service"),
+            HelpCenterButton(
+              svg: AppSvgs.headphones,
+              title: local.customer_service,
+              onPressed: () {
+                context.push(Routes.chat);
+              },
+            ),
             HelpCenterButton(svg: AppSvgs.whatsapp, title: "Whatsapp"),
             HelpCenterButton(svg: AppSvgs.web, title: "Website"),
             HelpCenterButton(svg: AppSvgs.facebook, title: "Facebook"),

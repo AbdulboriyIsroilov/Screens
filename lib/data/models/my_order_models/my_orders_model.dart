@@ -1,10 +1,11 @@
 class MyOrdersModel {
-  final int id, price;
+  final int id, price,productId;
   final String title, image, size, status;
   final num? rating;
 
   MyOrdersModel({
     required this.id,
+    required this.productId,
     required this.title,
     required this.image,
     required this.size,
@@ -16,6 +17,7 @@ class MyOrdersModel {
   factory MyOrdersModel.fromJson(Map<String, dynamic> json) {
     return MyOrdersModel(
       id: json["id"],
+      productId: json["productId"],
       title: json["title"],
       image: json["image"],
       size: json["size"],

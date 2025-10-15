@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/data/models/forgot_password_models/reset_password_email.dart';
 import 'package:screens/features/common/widgets/app_bar_leading.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
@@ -84,7 +84,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       await context.read<ForgotPasswordCubit>().fetchForgotEmail(
                         passwordModel: ResetPasswordEmail(email: emailController.text),
                       );
-                      context.push(Routers.enterDigitCode);
+                      context.push(Routes.enterDigitCode);
                     }
                   : null,
             ),

@@ -7,6 +7,7 @@ import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/common/widgets/text_button_popular.dart';
+import '../../../core/l10n/app_localizations.dart';
 import '../managers/home_bloc.dart';
 import '../managers/home_event.dart';
 
@@ -35,6 +36,7 @@ class _FilterSheetState extends State<FilterSheet> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    MyLocalizations local = MyLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.fromLTRB(24.5.w, 10.h, 24.5.w, 31.h),
       child: Column(
@@ -56,7 +58,7 @@ class _FilterSheetState extends State<FilterSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Filters", style: theme.textTheme.labelLarge),
+                  Text(local.filters, style: theme.textTheme.labelLarge),
                   GestureDetector(
                     onTap: () => context.pop(),
                     child: SvgPicture.asset(
@@ -73,16 +75,16 @@ class _FilterSheetState extends State<FilterSheet> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 12.h,
                 children: [
-                  Text("Sort By", style: theme.textTheme.bodyMedium),
+                  Text(local.sort_by, style: theme.textTheme.bodyMedium),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        _buildSortButton("Relevance"),
+                        _buildSortButton(local.relevance),
                         const SizedBox(width: 8),
-                        _buildSortButton("Price: Low - High"),
+                        _buildSortButton(local.price_low_high),
                         const SizedBox(width: 8),
-                        _buildSortButton("Price: High - Low"),
+                        _buildSortButton(local.price_high_low),
                       ],
                     ),
                   ),
@@ -100,7 +102,7 @@ class _FilterSheetState extends State<FilterSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Price", style: theme.textTheme.bodyMedium),
+                  Text(local.price, style: theme.textTheme.bodyMedium),
                   Text(
                     "\$${_minPrice.toInt()} - \$${_maxPrice.toInt()}",
                     style: AppStyles.w400s14.copyWith(color: AppColors.textGrey),
@@ -132,7 +134,7 @@ class _FilterSheetState extends State<FilterSheet> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Size", style: theme.textTheme.bodyMedium),
+                  Text(local.size, style: theme.textTheme.bodyMedium),
                   DropdownButton<String>(
                     value: _selectedSize,
                     items: sizeMap.keys.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
@@ -145,7 +147,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ],
               ),
               TextButtonPopular(
-                title: "Apply Filters",
+                title: local.apply_filters,
                 border: false,
                 color: theme.colorScheme.onInverseSurface,
                 onPressed: () {
@@ -186,7 +188,6 @@ class _FilterSheetState extends State<FilterSheet> {
 
                   context.pop();
                 },
-
               ),
             ],
           ),

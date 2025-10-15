@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:screens/core/router/routers.dart';
+import 'package:screens/core/router/routes.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/address_page/managers/address_bloc.dart';
@@ -14,7 +14,7 @@ import '../../../core/utils/enum_state.dart';
 class DeliveryAddressWidget extends StatefulWidget {
   final String title;
   final String changeTitle;
-  final ValueChanged<int>? onAddressSelected; // 🔧 int ga o‘zgardi
+  final ValueChanged<int>? onAddressSelected;
 
   const DeliveryAddressWidget({
     super.key,
@@ -39,7 +39,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
           children: [
             Text(widget.title, style: theme.textTheme.bodyMedium),
             GestureDetector(
-              onTap: () => context.go(Routers.address),
+              onTap: () => context.go(Routes.address),
               child: Text(
                 widget.changeTitle,
                 style: AppStyles.w500s14.copyWith(
@@ -54,17 +54,18 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
             if (state.addressEnum == EnumState.loading) {
               return const LoadingWidget();
             }
-
             if (state.address.isEmpty) {
               return Text("No address found", style: AppStyles.w500s14);
             }
 
-            final address = state.address.last;
+            final defaultAddress = state.address.firstWhere(
+                  (e) => e.isDefault,
+              orElse: () => state.address.first,
+            );
 
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              widget.onAddressSelected?.call(address.id);
+              widget.onAddressSelected?.call(defaultAddress.id);
             });
-
             return Row(
               spacing: 8.w,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,11 +74,11 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(address.title, style: AppStyles.w600s14),
+                    Text(defaultAddress.nickname, style: AppStyles.w600s14),
                     SizedBox(
                       width: 263,
                       child: Text(
-                        address.fullAddress,
+                        defaultAddress.fullAddress,
                         style: AppStyles.w400s14,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -88,7 +89,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
               ],
             );
           },
-        ),
+        )
       ],
     );
   }
