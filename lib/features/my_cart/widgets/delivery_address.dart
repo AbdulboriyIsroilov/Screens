@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:screens/core/router/routes.dart';
+import 'package:screens/core/utils/app_colors.dart';
 import 'package:screens/core/utils/app_style.dart';
 import 'package:screens/core/utils/app_svg.dart';
 import 'package:screens/features/address_page/managers/address_bloc.dart';
 import 'package:screens/features/address_page/managers/address_state.dart';
 import 'package:screens/features/common/widgets/loading_widget.dart';
+
 import '../../../core/utils/enum_state.dart';
 
 class DeliveryAddressWidget extends StatefulWidget {
@@ -43,6 +45,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
               child: Text(
                 widget.changeTitle,
                 style: AppStyles.w500s14.copyWith(
+                  color: theme.colorScheme.onPrimaryFixed,
                   decoration: TextDecoration.underline,
                 ),
               ),
@@ -59,7 +62,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
             }
 
             final defaultAddress = state.address.firstWhere(
-                  (e) => e.isDefault,
+              (e) => e.isDefault,
               orElse: () => state.address.first,
             );
 
@@ -74,12 +77,12 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(defaultAddress.nickname, style: AppStyles.w600s14),
+                    Text(defaultAddress.nickname, style: theme.textTheme.titleMedium),
                     SizedBox(
                       width: 263,
                       child: Text(
                         defaultAddress.fullAddress,
-                        style: AppStyles.w400s14,
+                        style: AppStyles.w400s14.copyWith(color: AppColors.textGrey),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -89,7 +92,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
               ],
             );
           },
-        )
+        ),
       ],
     );
   }

@@ -1,7 +1,7 @@
 
 class AppSvgs {
-  static const address = "assets/icons/Address.svg";
-  static const arrow = "assets/icons/Arrow.svg";
+  // static const address = "assets/icons/Address.svg";
+  // static const arrow = "assets/icons/Arrow.svg";
   static const moon = "assets/icons/moon.svg";
   static const sun = "assets/icons/sun.svg";
   static const arrowTop = "assets/icons/Arrow_top.svg";
@@ -12,21 +12,21 @@ class AppSvgs {
   static const bell = "assets/icons/Bell.svg";
   static const bellDuotone = "assets/icons/Bell-duotone.svg";
   static const box = "assets/icons/Box.svg";
-  static const boxDuotone = "assets/icons/Box-duotone.svg";
-  static const bxlVisa = "assets/icons/bxl_visa.svg";
+  // static const boxDuotone = "assets/icons/Box-duotone.svg";
+  // static const bxlVisa = "assets/icons/bxl_visa.svg";
   static const cancel = "assets/icons/Cancel.svg";
-  static const cancelCircle = "assets/icons/Cancel-circle.svg";
-  static const cardDuotone = "assets/icons/Card-duotone.svg";
+  // static const cancelCircle = "assets/icons/Cancel-circle.svg";
+  // static const cardDuotone = "assets/icons/Card-duotone.svg";
   static const cart = "assets/icons/Cart.svg";
   static const card = "assets/icons/Card.svg";
   static const cartDuotone = "assets/icons/Cart-duotone.svg";
   static const discount = "assets/icons/discount.svg";
   static const cash = "assets/icons/Cash.svg";
-  static const check = "assets/icons/Check.svg";
+  // static const check = "assets/icons/Check.svg";
   static const chevron = "assets/icons/Chevron.svg";
   static const correct = "assets/icons/correct.svg";
   static const details = "assets/icons/Details.svg";
-  static const discountDuotone = "assets/icons/Discount-duotone.svg";
+  // static const discountDuotone = "assets/icons/Discount-duotone.svg";
   static const edit = "assets/icons/Edit.svg";
   static const eye = "assets/icons/Eye.svg";
   static const eyeOff = "assets/icons/eye-off.svg";
@@ -40,10 +40,10 @@ class AppSvgs {
   static const send = "assets/icons/send.svg";
   static const image = "assets/icons/Image.svg";
   static const instagram = "assets/icons/Instagram (1).svg";
-  static const like = "assets/icons/like.svg";
+  // static const like = "assets/icons/like.svg";
   static const location = "assets/icons/Location.svg";
-  static const locationDuotone = "assets/icons/Location-duotone.svg";
-  static const logosApplePay = "assets/icons/logos_apple-pay.svg";
+  // static const locationDuotone = "assets/icons/Location-duotone.svg";
+  // static const logosApplePay = "assets/icons/logos_apple-pay.svg";
   static const logosFacebook = "assets/icons/logos_facebook.svg";
   static const logosGoogleIcon = "assets/icons/logos_google-icon.svg";
   static const logout = "assets/icons/Logout.svg";
@@ -52,7 +52,7 @@ class AppSvgs {
   static const phone = "assets/icons/Phone.svg";
   static const plus = "assets/icons/Plus.svg";
   static const question = "assets/icons/Question.svg";
-  static const riMastercardFill = "assets/icons/ri_mastercard-fill.svg";
+  // static const riMastercardFill = "assets/icons/ri_mastercard-fill.svg";
   static const search = "assets/icons/Search.svg";
   static const searchDuotone = "assets/icons/Search-duotone.svg";
   static const splash = "assets/icons/splash.svg";
@@ -61,8 +61,8 @@ class AppSvgs {
   static const trash = "assets/icons/Trash.svg";
   static const twitter = "assets/icons/Twitter.svg";
   static const user = "assets/icons/User.svg";
-  static const userDuotone = "assets/icons/User-duotone.svg";
-  static const walletDuotone = "assets/icons/Wallet-duotone.svg";
+  // static const userDuotone = "assets/icons/User-duotone.svg";
+  // static const walletDuotone = "assets/icons/Wallet-duotone.svg";
   static const warningCircle = "assets/icons/WarningCircle.svg";
   static const warning = "assets/icons/Warning.svg";
   static const web = "assets/icons/Web.svg";

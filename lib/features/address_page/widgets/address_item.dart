@@ -54,7 +54,7 @@ class AddressItem extends StatelessWidget {
                       width: 115.w,
                       child: Text(
                         address.nickname,
-                        style: AppStyles.w600s14,
+                        style: theme.textTheme.titleMedium,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

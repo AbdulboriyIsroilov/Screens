@@ -130,7 +130,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(order.title, style: AppStyles.w600s14),
+                                            Text(order.title, style: theme.textTheme.titleMedium),
                                             Text("Size ${order.size}", style: AppStyles.w400s12),
                                           ],
                                         ),
@@ -159,7 +159,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> with SingleTickerProviderSt
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
-                                        Text("\$ ${order.price}", style: AppStyles.w600s14),
+                                        Text("\$ ${order.price}", style: theme.textTheme.titleMedium),
                                         SizedBox(
                                           width: 90.w,
                                           height: 30.h,

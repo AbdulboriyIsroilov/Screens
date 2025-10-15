@@ -122,15 +122,15 @@ class OrderSummery extends StatelessWidget {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary,width: 1.5),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary,width: 1.5),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r),
-                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary),
+                          borderSide: BorderSide(color: theme.colorScheme.inversePrimary,width: 1.5),
                         ),
                       ),
                     ),
